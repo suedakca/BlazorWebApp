@@ -1,0 +1,286 @@
+@page "/data"
+@using BlazorWebApp.Models
+@using BlazorWebApp.Data
+@using Microsoft.EntityFrameworkCore
+@inject AppDbContext DbContext
+@attribute [StreamRendering]
+
+<PageTitle>Veri Havuzu | Excel Görünümü</PageTitle>
+
+<div class="h-100 w-100 d-flex flex-column bg-white">
+    <FilterBar OnFilterChanged="HandleFilterChanged" />
+
+    <div class="grid-controls p-2 d-flex justify-content-between align-items-center border-bottom bg-light">
+        <div class="d-flex gap-2">
+            <button class="btn btn-sm btn-outline-success"><span class="bi bi-file-earmark-excel"></span><span class="d-none d-md-inline ms-1">Excel'e Aktar</span></button>
+            <button class="btn btn-sm btn-outline-primary"><span class="bi bi-printer"></span><span class="d-none d-md-inline ms-1">Yazdır</span></button>
+        </div>
+        <div class="text-muted small">
+            @if (filteredData != null)
+            {
+                <span>Toplam <b>@filteredData.Count</b> <span class="d-none d-sm-inline">kayıt listelendi.</span></span>
+            }
+        </div>
+    </div>
+
+    <div class="table-wrapper flex-grow-1 overflow-auto">
+        <table class="excel-table">
+            <thead>
+                <tr>
+                    <th class="col-index">#</th>
+                    <th class="d-none d-lg-table-cell">ID</th>
+                    <th class="d-none d-md-table-cell">Proje</th>
+                    <th class="d-none d-xl-table-cell">Yıl</th>
+                    <th class="d-none d-lg-table-cell">Bölge</th>
+                    <th class="d-none d-lg-table-cell">Şube</th>
+                    <th>Müşteri</th>
+                    <th>Adı</th>
+                    <th class="d-none d-sm-table-cell">Kategori</th>
+                    <th class="text-center">Öncelik</th>
+                    <th class="d-none d-xxl-table-cell">Atanan</th>
+                    <th class="text-end">Değer (TL)</th>
+                    <th class="text-center">Ödeme</th>
+                    <th class="text-center">Durum</th>
+                    <th class="d-none d-xxl-table-cell">Açıklama</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (filteredData == null)
+                {
+                    @for (int i = 0; i < 10; i++)
+                    {
+                        <tr class="skeleton-row">
+                            <td class="col-index"><div class="skeleton-box"></div></td>
+                            <td class="d-none d-lg-table-cell"><div class="skeleton-box"></div></td>
+                            <td class="d-none d-md-table-cell"><div class="skeleton-box"></div></td>
+                            <td class="d-none d-xl-table-cell"><div class="skeleton-box"></div></td>
+                            <td class="d-none d-lg-table-cell"><div class="skeleton-box"></div></td>
+                            <td class="d-none d-lg-table-cell"><div class="skeleton-box"></div></td>
+                            <td><div class="skeleton-box"></div></td>
+                            <td><div class="skeleton-box"></div></td>
+                            <td class="d-none d-sm-table-cell"><div class="skeleton-box"></div></td>
+                            <td><div class="skeleton-box"></div></td>
+                            <td class="d-none d-xxl-table-cell"><div class="skeleton-box"></div></td>
+                            <td><div class="skeleton-box"></div></td>
+                            <td><div class="skeleton-box"></div></td>
+                            <td><div class="skeleton-box"></div></td>
+                            <td class="d-none d-xxl-table-cell"><div class="skeleton-box"></div></td>
+                        </tr>
+                    }
+                }
+                else if (!filteredData.Any())
+                {
+                    <tr>
+                        <td colspan="15" class="text-center p-5 text-muted">
+                            <span class="bi bi-search fs-1 d-block mb-3"></span>
+                            Kriterlere uygun veri bulunamadı.
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    int index = 1;
+                    @foreach (var item in filteredData)
+                    {
+                        <tr>
+                            <td class="col-index">@(index++)</td>
+                            <td class="d-none d-lg-table-cell">@item.Id</td>
+                            <td class="d-none d-md-table-cell"><span class="badge bg-light text-dark border">@item.Project</span></td>
+                            <td class="d-none d-xl-table-cell">@item.Year</td>
+                            <td class="d-none d-lg-table-cell text-muted">@item.Region</td>
+                            <td class="d-none d-lg-table-cell">@item.Branch</td>
+                            <td class="fw-medium">@item.Customer</td>
+                            <td class="fw-bold">@item.Name</td>
+                            <td class="d-none d-sm-table-cell">@item.Category</td>
+                            <td class="text-center">
+                                <span class="priority-badge @item.Priority.ToLower()">
+                                    @item.Priority
+                                </span>
+                            </td>
+                            <td class="d-none d-xxl-table-cell">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="avatar-sm">@item.AssignedTo.Substring(0, 1)</div>
+                                    @item.AssignedTo
+                                </div>
+                            </td>
+                            <td class="text-end font-monospace fw-bold">@item.Value.ToString("N0")</td>
+                            <td class="text-center">
+                                <span class="payment-dot @item.PaymentStatus.ToLower()"></span>
+                                <span class="x-small fw-bold">@item.PaymentStatus</span>
+                            </td>
+                            <td class="text-center">
+                                <span class="status-pill @(item.Status == "Active" ? "active" : "inactive")">
+                                    @(item.Status == "Active" ? "Aktif" : "Pasif")
+                                </span>
+                            </td>
+                            <td class="text-truncate d-none d-xxl-table-cell" style="max-width: 200px;">@item.Description</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .excel-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-size: 0.85rem;
+    }
+
+    .excel-table thead th {
+        position: sticky;
+        top: 0;
+        background: #f8f9fa;
+        color: var(--text-muted);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.58rem;
+        letter-spacing: 0.5px;
+        padding: 0.4rem 0.6rem;
+        border-bottom: 2px solid var(--border-color);
+        z-index: 10;
+        border-right: 1px solid #f1f3f4;
+    }
+
+    .excel-table tbody td {
+        padding: 0.35rem 0.6rem;
+        border-bottom: 1px solid #f1f3f4;
+        border-right: 1px solid #f1f3f4;
+        transition: background 0.2s;
+        vertical-align: middle;
+        white-space: nowrap;
+        color: var(--text-main);
+        font-size: 0.8rem;
+    }
+
+    .excel-table tbody tr:hover td {
+        background-color: #f8f9fa;
+    }
+
+    .col-index {
+        width: 50px;
+        color: #bdc1c6;
+        text-align: center;
+        background: #f8f9fa !important;
+        border-right: 1px solid var(--border-color) !important;
+    }
+
+    .status-pill {
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        font-size: 0.725rem;
+        font-weight: 600;
+        display: inline-block;
+    }
+
+    .status-pill.active {
+        background: #e6f4ea;
+        color: #137333;
+    }
+
+    .status-pill.inactive {
+        background: #f1f3f4;
+        color: #5f6368;
+    }
+
+    /* Priority Badges */
+    .priority-badge {
+        padding: 0.15rem 0.4rem;
+        border-radius: 3px;
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    .priority-badge.high { background: #feeef0; color: #d93025; }
+    .priority-badge.medium { background: #feefc3; color: #f29900; }
+    .priority-badge.low { background: #e8f0fe; color: #1a73e8; }
+
+    /* Avatars */
+    .avatar-sm {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: bold;
+    }
+
+    /* Payment Indicators */
+    .payment-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 4px;
+    }
+    .payment-dot.paid { background: #34a853; }
+    .payment-dot.pending { background: #fbbc04; }
+    .payment-dot.overdue { background: #ea4335; }
+
+    .skeleton-box {
+        height: 12px;
+        background: linear-gradient(90deg, #f0f0f0 25%, #e8eaed 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+        border-radius: 4px;
+        width: 100%;
+    }
+
+    @@keyframes loading {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+</style>
+
+
+@code {
+    private List<SampleData>? filteredData;
+    private FilterBar.FilterCriteria currentCriteria = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadData();
+    }
+
+    private async Task HandleFilterChanged(FilterBar.FilterCriteria criteria)
+    {
+        currentCriteria = criteria;
+        await LoadData();
+    }
+
+    private async Task LoadData()
+    {
+        try 
+        {
+            filteredData = null; // Show skeletons
+            await Task.Delay(300); // UI feedback
+            
+            var query = DbContext.SampleDatas.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(currentCriteria.Project))
+            {
+                query = query.Where(x => x.Project == currentCriteria.Project);
+            }
+
+            if (currentCriteria.Year.HasValue)
+            {
+                query = query.Where(x => x.Year == currentCriteria.Year.Value);
+            }
+
+            filteredData = await query.ToListAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading data: {ex.Message}");
+            filteredData = new List<SampleData>(); // Empty list on error
+        }
+    }
+}
+

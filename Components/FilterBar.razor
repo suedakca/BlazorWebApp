@@ -1,0 +1,122 @@
+<div class="filter-wrapper px-4 py-2 bg-white border-bottom">
+    <div class="row g-2 align-items-end mb-2">
+        <div class="col-12 col-md-4 col-xl-3">
+            <label class="form-label x-small fw-bold text-muted mb-1">PROJE SEÇİMİ</label>
+            <select class="form-select form-select-sm border-light-subtle bg-light-subtle" @onchange="OnProjectChanged">
+                <option value="">Tüm Projeler</option>
+                <option value="Alpha">Alpha Projesi</option>
+                <option value="Beta">Beta Projesi</option>
+                <option value="Gamma">Gamma Projesi</option>
+                <option value="Delta">Delta Projesi</option>
+            </select>
+        </div>
+        <div class="col-6 col-md-3 col-xl-2">
+            <label class="form-label x-small fw-bold text-muted mb-1">YIL</label>
+            <select class="form-select form-select-sm border-light-subtle bg-light-subtle" @onchange="OnYearChanged">
+                <option value="">Tüm Yıllar</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+            </select>
+        </div>
+        <div class="col-6 col-md-5 col-xl-7 d-flex justify-content-end gap-2">
+            <button class="btn btn-sm btn-primary px-3 fw-medium" @onclick="OnApplyFilters">
+                <span class="bi bi-funnel-fill me-1"></span>Uygula
+            </button>
+            <button class="btn btn-sm btn-outline-secondary px-3 fw-medium" @onclick="() => OnFilterChanged.InvokeAsync(new FilterCriteria())">
+                Temizle
+            </button>
+        </div>
+    </div>
+
+    <div class="row g-2 mb-1">
+        <div class="col-6 col-lg-3">
+            <div class="kpi-card p-2 border-start border-4 border-primary rounded-2 shadow-sm bg-white h-100">
+                <div class="text-muted x-small fw-bold mb-1">TOPLAM SATIŞ (İSTANBUL)</div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="h6 mb-0 fw-bold">₺14.2M</div>
+                    <div class="badge bg-success-subtle text-success x-small">+12% <span class="bi bi-arrow-up"></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="kpi-card p-2 border-start border-4 border-info rounded-2 shadow-sm bg-white h-100">
+                <div class="text-muted x-small fw-bold mb-1">TOPLAM SATIŞ (ANKARA)</div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="h6 mb-0 fw-bold">₺7.1M</div>
+                    <div class="badge bg-danger-subtle text-danger x-small">-5% <span class="bi bi-arrow-down"></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="kpi-card p-2 border-start border-4 border-success rounded-2 shadow-sm bg-white h-100">
+                <div class="text-muted x-small fw-bold mb-1">KİRALAMA (İZMİR)</div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="h6 mb-0 fw-bold">%88</div>
+                    <div class="text-muted x-small">1.250 Ünite</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="kpi-card p-2 border-start border-4 border-warning rounded-2 shadow-sm bg-white h-100">
+                <div class="text-muted x-small fw-bold mb-1">KİRALAMA (ANTALYA)</div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="h6 mb-0 fw-bold">%94</div>
+                    <div class="text-muted x-small">850 Ünite</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .x-small { font-size: 0.65rem !important; }
+    .filter-wrapper {
+        background-color: var(--bg-white) !important;
+    }
+    
+    .form-select-sm {
+        height: 34px;
+        font-size: 0.8rem;
+    }
+    
+    .branch-card {
+        box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        transition: transform 0.2s;
+    }
+    
+    .branch-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+</style>
+
+@code {
+    [Parameter] public EventCallback<FilterCriteria> OnFilterChanged { get; set; }
+
+    private FilterCriteria criteria = new();
+
+    private void OnProjectChanged(ChangeEventArgs e)
+    {
+        criteria.Project = e.Value?.ToString();
+    }
+
+    private void OnYearChanged(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int year))
+            criteria.Year = year;
+        else
+            criteria.Year = null;
+    }
+
+    private async Task OnApplyFilters()
+    {
+        await OnFilterChanged.InvokeAsync(criteria);
+    }
+
+    public class FilterCriteria
+    {
+        public string? Project { get; set; }
+        public int? Year { get; set; }
+    }
+}

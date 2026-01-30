@@ -1,0 +1,213 @@
+@page "/analytics"
+@using BlazorWebApp.Models
+@using BlazorWebApp.Data
+@using Microsoft.EntityFrameworkCore
+@inject AppDbContext DbContext
+@attribute [StreamRendering]
+
+<PageTitle>Analiz Görünümü | Kart Tasarımı</PageTitle>
+
+<div class="h-100 w-100 d-flex flex-column bg-light">
+    <FilterBar OnFilterChanged="HandleFilterChanged" />
+
+    <div class="analytics-content flex-grow-1 p-4 overflow-auto">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="mb-0 fw-bold text-dark">Analiz Özeti</h4>
+            <div class="text-muted small">
+                @if (filteredData != null)
+                {
+                    <span>Toplam <b>@filteredData.Count</b> kayıt analiz ediliyor.</span>
+                }
+            </div>
+        </div>
+
+        @if (filteredData == null)
+        {
+            <div class="row g-4">
+                @for (int i = 0; i < 6; i++)
+                {
+                    <div class="col-12 col-md-6 col-xl-4">
+                        <div class="card border-0 shadow-sm skeleton-card">
+                            <div class="card-body">
+                                <div class="skeleton-box mb-3" style="width: 60%; height: 24px;"></div>
+                                <div class="skeleton-box mb-2" style="width: 100%; height: 60px;"></div>
+                                <div class="d-flex gap-2">
+                                    <div class="skeleton-box" style="width: 30%; height: 20px;"></div>
+                                    <div class="skeleton-box" style="width: 30%; height: 20px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else if (!filteredData.Any())
+        {
+            <div class="text-center p-5 bg-white rounded-4 shadow-sm">
+                <span class="bi bi-search fs-1 d-block mb-3 text-muted"></span>
+                <p class="text-muted">Kriterlere uygun analiz verisi bulunamadı.</p>
+            </div>
+        }
+        else
+        {
+            <div class="row g-4">
+                @foreach (var item in filteredData)
+                {
+                    <div class="col-12 col-md-6 col-xl-4">
+                        <div class="card border-0 shadow-sm analytics-card h-100">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle mb-2">@item.Project</span>
+                                        <h5 class="fw-bold mb-0">@item.Name</h5>
+                                    </div>
+                                    <span class="priority-tag @item.Priority.ToLower()">@item.Priority</span>
+                                </div>
+
+                                <div class="value-display my-4">
+                                    <div class="text-muted x-small fw-bold text-uppercase">YATIRIM DEĞERİ</div>
+                                    <div class="display-6 fw-bold text-dark">₺@item.Value.ToString("N0")</div>
+                                </div>
+
+                                <div class="details-grid mt-auto pt-3 border-top">
+                                    <div class="row g-2 text-muted x-small fw-bold">
+                                        <div class="col-6">
+                                            <div class="mb-1"><span class="bi bi-person me-1"></span>MÜŞTERİ</div>
+                                            <div class="text-dark">@item.Customer</div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-1"><span class="bi bi-geo-alt me-1"></span>BÖLGE</div>
+                                            <div class="text-dark">@item.Region</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-light border-0 px-4 py-3 d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="avatar-sm">@item.AssignedTo.Substring(0, 1)</div>
+                                    <span class="small fw-medium">@item.AssignedTo</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="payment-dot @item.PaymentStatus.ToLower()"></span>
+                                    <span class="x-small fw-bold">@item.PaymentStatus</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .analytics-card {
+        transition: transform 0.2s, shadow 0.2s;
+        border-radius: 16px;
+    }
+    
+    .analytics-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+    }
+
+    .priority-tag {
+        padding: 0.25rem 0.75rem;
+        border-radius: 50px;
+        font-size: 0.65rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .priority-tag.high { background: #feeef0; color: #d93025; }
+    .priority-tag.medium { background: #feefc3; color: #f29900; }
+    .priority-tag.low { background: #e8f0fe; color: #1a73e8; }
+
+    .x-small { font-size: 0.65rem; }
+
+    .avatar-sm {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #1a73e8;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: bold;
+        box-shadow: 0 2px 5px rgba(26,115,232,0.3);
+    }
+
+    .payment-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .payment-dot.paid { background: #34a853; }
+    .payment-dot.pending { background: #fbbc04; }
+    .payment-dot.overdue { background: #ea4335; }
+
+    .skeleton-card {
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .skeleton-box {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e8eaed 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+        border-radius: 4px;
+    }
+
+    @@keyframes loading {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+</style>
+
+@code {
+    private List<SampleData>? filteredData;
+    private FilterBar.FilterCriteria currentCriteria = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadData();
+    }
+
+    private async Task HandleFilterChanged(FilterBar.FilterCriteria criteria)
+    {
+        currentCriteria = criteria;
+        await LoadData();
+    }
+
+    private async Task LoadData()
+    {
+        try 
+        {
+            filteredData = null;
+            await Task.Delay(500); // Visual feedback
+            
+            var query = DbContext.SampleDatas.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(currentCriteria.Project))
+            {
+                query = query.Where(x => x.Project == currentCriteria.Project);
+            }
+
+            if (currentCriteria.Year.HasValue)
+            {
+                query = query.Where(x => x.Year == currentCriteria.Year.Value);
+            }
+
+            filteredData = await query.ToListAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading analytics data: {ex.Message}");
+            filteredData = new List<SampleData>();
+        }
+    }
+}

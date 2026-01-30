@@ -1,0 +1,155 @@
+﻿@inherits LayoutComponentBase
+@using BlazorWebApp.Services
+@using System
+@implements IDisposable
+@inject TabService TabService
+@inject NavigationManager NavManager
+
+<div class="page">
+    <div class="sidebar @(IsSidebarExpanded ? "expanded" : "")">
+        <div class="sidebar-brand d-flex align-items-center p-3 text-white" style="height: var(--topbar-height)">
+            <span class="bi bi-rocket-takeoff fs-4 me-2"></span>
+            <span class="fw-bold">ANTIGRAVITY</span>
+            <button class="btn btn-link text-white ms-auto p-0" @onclick="ToggleSidebar">
+                <span class="bi bi-x-lg fs-5"></span>
+            </button>
+        </div>
+        <NavMenu IsExpanded="true" OnNavigate="() => CloseSidebar()" />
+    </div>
+
+    @if (IsSidebarExpanded)
+    {
+        <div class="sidebar-backdrop" @onclick="() => CloseSidebar()"></div>
+    }
+
+    <main>
+        <div class="top-bar">
+            <button class="btn btn-link text-dark p-0 me-3" @onclick="ToggleSidebar">
+                <span class="bi bi-list fs-2"></span>
+            </button>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Hızlı ara..." />
+            </div>
+            
+            <div class="profile-img-container" @onclick="ToggleProfilePopup">
+                <img src="https://ui-avatars.com/api/?name=Kullanıcı&background=0D8ABC&color=fff" class="profile-img" alt="Profile" />
+            </div>
+        </div>
+
+        <div class="tab-bar">
+            @foreach (var tab in TabService.Tabs)
+            {
+                <div class="tab-item @(tab.IsActive ? "active" : "")" @onclick="() => SelectTab(tab)">
+                    <span class="bi @tab.Icon"></span>
+                    <span>@tab.Title</span>
+                    <span class="tab-close ms-2" @onclick:stopPropagation="true" @onclick="() => TabService.RemoveTab(tab.Id)">&times;</span>
+                </div>
+            }
+        </div>
+
+        <div class="content-area">
+            @if (TabService.Tabs.Any(t => t.IsActive))
+            {
+                var activeTab = TabService.Tabs.First(t => t.IsActive);
+                @* In a real app, you might use a DynamicComponent or keep multiple components cached. 
+                     For this demo, we can just show the @Body if the active tab matches the current URL, 
+                     or redirect if needed. However, since @Body is what Blazor gives us for the current route,
+                     we'll assume the current route is what's being shown. *@
+                @Body
+            }
+            else
+            {
+                <div class="p-4 text-center">
+                    <h3>Hoş Geldiniz</h3>
+                    <p>Lütfen menüden bir sayfa seçin.</p>
+                </div>
+            }
+        </div>
+
+        <footer>
+            <div class="user-info">
+                <span><span class="bi bi-person-circle"></span> Sueda Akça</span>
+                <span class="ms-3"><span class="bi bi-clock"></span> Son Giriş: @DateTime.Now.ToShortTimeString()</span>
+                <span class="ms-auto"><span class="bi bi-gear-fill"></span> Ayarlar</span>
+            </div>
+        </footer>
+    </main>
+
+    @if (IsProfilePopupOpen)
+    {
+        <div class="popup-overlay" @onclick="ToggleProfilePopup"></div>
+    }
+
+    <div class="profile-popup @(IsProfilePopupOpen ? "show" : "")" @onclick:stopPropagation="true">
+        <div class="text-center mb-3">
+            <img src="https://ui-avatars.com/api/?name=Kullanıcı&background=0D8ABC&color=fff&size=128" class="rounded-circle mb-2" width="64" />
+            <h5 class="mb-0">Sueda Akça</h5>
+            <small class="text-muted">Administrator</small>
+        </div>
+        <hr />
+        <div class="list-group list-group-flush">
+            <button class="list-group-item list-group-item-action border-0"><span class="bi bi-person"></span> Profilim</button>
+            <button class="list-group-item list-group-item-action border-0"><span class="bi bi-envelope"></span> Mesajlar</button>
+            <button class="list-group-item list-group-item-action border-0 text-danger"><span class="bi bi-box-arrow-right"></span> Çıkış Yap</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private bool IsSidebarExpanded = false;
+    private bool IsProfilePopupOpen = false;
+
+    protected override void OnInitialized()
+    {
+        TabService.OnChange += HandleTabChange;
+        
+        // Add a default tab if none exist
+        if (!TabService.Tabs.Any())
+        {
+            TabService.AddTab("Giriş", "/", "bi-house-door");
+        }
+    }
+
+    private void HandleTabChange()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void SelectTab(TabInfo tab)
+    {
+        if (tab == null) return;
+        TabService.SetActiveTab(tab.Id);
+        if (!string.IsNullOrEmpty(tab.Url))
+        {
+            NavManager.NavigateTo(tab.Url);
+        }
+    }
+
+    private void ToggleSidebar()
+    {
+        IsSidebarExpanded = !IsSidebarExpanded;
+    }
+
+    private void CloseSidebar()
+    {
+        IsSidebarExpanded = false;
+        StateHasChanged();
+    }
+
+    private void ToggleProfilePopup()
+    {
+        IsProfilePopupOpen = !IsProfilePopupOpen;
+    }
+
+    public void Dispose()
+    {
+        TabService.OnChange -= HandleTabChange;
+    }
+}
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+
