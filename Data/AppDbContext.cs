@@ -29,6 +29,30 @@ namespace BlazorWebApp.Data
                 new SampleData { Id = 11, Name = "Otel Projesi E", Category = "Turizm", Date = DateTime.Now.AddMonths(-3), Project = "Gamma", Year = 2024, Branch = "Antalya", Region = "Akdeniz", Customer = "Hilton", Priority = "High", AssignedTo = "Merve Şahin", PaymentStatus = "Paid", Value = 15000000, Status = "Active", Description = "5 yıldızlı otel inşaatı" },
                 new SampleData { Id = 12, Name = "Park Revizyonu", Category = "Kamu", Date = DateTime.Now.AddDays(-4), Project = "Alpha", Year = 2022, Branch = "İstanbul", Region = "Marmara", Customer = "İBB", Priority = "Low", AssignedTo = "Murat Demir", PaymentStatus = "Paid", Value = 500000, Status = "Active", Description = "Şehir parkı yenileme çalışması" }
             );
+
+            // Add 100+ items via loop or additional blocks? HasData is usually for small sets.
+            // I'll add about 20 more to reach 32 rows, which is enough to demonstrate virtualization.
+            for (int i = 13; i <= 100; i++)
+            {
+                modelBuilder.Entity<SampleData>().HasData(new SampleData 
+                { 
+                    Id = i, 
+                    Name = $"Örnek Proje {i}", 
+                    Category = i % 2 == 0 ? "İnşaat" : "Ticari", 
+                    Date = DateTime.Now.AddDays(-i), 
+                    Project = (i % 4) switch { 0 => "Alpha", 1 => "Beta", 2 => "Gamma", _ => "Delta" },
+                    Year = 2020 + (i % 5),
+                    Branch = (i % 3) switch { 0 => "İstanbul", 1 => "Ankara", _ => "İzmir" },
+                    Region = "Bölge " + (i % 5),
+                    Customer = "Müşteri " + (i % 10),
+                    Priority = (i % 3) switch { 0 => "High", 1 => "Medium", _ => "Low" },
+                    AssignedTo = "Kullanıcı " + (i % 5),
+                    PaymentStatus = (i % 3) switch { 0 => "Paid", 1 => "Pending", _ => "Overdue" },
+                    Value = 100000 * i,
+                    Status = "Active",
+                    Description = $"Açıklama metni {i}"
+                });
+            }
         }
     }
 }
