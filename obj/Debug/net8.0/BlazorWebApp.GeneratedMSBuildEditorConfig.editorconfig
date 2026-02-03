@@ -42,10 +42,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/suedaakca/Documents/GitHub/BlazorWebApp/Components/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ib21lLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/suedaakca/Documents/GitHub/BlazorWebApp/Components/Pages/Reports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9SZXBvcnRzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -73,3 +69,11 @@ build_metadata.AdditionalFiles.CssScope = b-v6kwulee0y
 [/Users/suedaakca/Documents/GitHub/BlazorWebApp/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-zpxme7j96v
+
+[/Users/suedaakca/Documents/GitHub/BlazorWebApp/Components/Pages/DataPool2.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9EYXRhUG9vbDIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-07bz1jy3hy
+
+[/Users/suedaakca/Documents/GitHub/BlazorWebApp/Components/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ib21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-y7g5a10jxf

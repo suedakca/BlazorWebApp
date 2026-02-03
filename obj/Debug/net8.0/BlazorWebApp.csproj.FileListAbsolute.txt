@@ -133,3 +133,6 @@
 /Users/suedaakca/Documents/GitHub/BlazorWebApp/obj/Debug/net8.0/BlazorWebApp.pdb
 /Users/suedaakca/Documents/GitHub/BlazorWebApp/obj/Debug/net8.0/BlazorWebApp.genruntimeconfig.cache
 /Users/suedaakca/Documents/GitHub/BlazorWebApp/obj/Debug/net8.0/ref/BlazorWebApp.dll
+/Users/suedaakca/Documents/GitHub/BlazorWebApp/obj/Debug/net8.0/BlazorWebApp.sourcelink.json
+/Users/suedaakca/Documents/GitHub/BlazorWebApp/obj/Debug/net8.0/scopedcss/Components/Pages/Home.razor.rz.scp.css
+/Users/suedaakca/Documents/GitHub/BlazorWebApp/obj/Debug/net8.0/scopedcss/Components/Pages/DataPool2.razor.rz.scp.css

@@ -2,7 +2,7 @@
 @inject TabService TabService
 @inject NavigationManager NavManager
 
-<div class="nav-scrollable text-white @(IsExpanded ? "expanded" : "")">
+<div class="nav-scrollable @(IsExpanded ? "expanded" : "")">
     <nav class="flex-column">
         <div class="nav-item">
             <div class="nav-link @(GetActiveClass("/"))" @onclick='() => OpenTab("Dashboard", "/", "bi-house-door")'>
@@ -11,12 +11,17 @@
             </div>
         </div>
 
-        <div class="nav-divider"></div>
-
         <div class="nav-item">
             <div class="nav-link @(GetActiveClass("/data"))" @onclick='() => OpenTab("Veri Havuzu", "/data", "bi-table")'>
                 <div class="nav-icon"><span class="bi bi-table"></span></div>
                 <div class="nav-text">Veri Havuzu</div>
+            </div>
+        </div>
+
+        <div class="nav-item">
+            <div class="nav-link @(GetActiveClass("/data-pool-2"))" @onclick='() => OpenTab("Veri Havuzu - 2", "/data-pool-2", "bi-lightning-charge")'>
+                <div class="nav-icon"><span class="bi bi-lightning-charge"></span></div>
+                <div class="nav-text">Veri Havuzu - 2</div>
             </div>
         </div>
 

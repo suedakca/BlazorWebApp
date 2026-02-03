@@ -1,0 +1,79 @@
+.data-pool-table thead th[b-07bz1jy3hy] {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.data-pool-table tbody td[b-07bz1jy3hy] {
+    font-size: 0.85rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.data-pool-table tbody tr[b-07bz1jy3hy] {
+    transition: background-color 0.1s;
+}
+
+.data-pool-table tbody tr:hover[b-07bz1jy3hy] {
+    background-color: var(--primary-soft);
+}
+
+.bg-soft-primary[b-07bz1jy3hy] {
+    background-color: rgba(0, 119, 182, 0.1);
+}
+
+.status-indicator[b-07bz1jy3hy] {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.status-indicator .dot[b-07bz1jy3hy] {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.status-indicator.aktif[b-07bz1jy3hy] {
+    background-color: #ecfdf5;
+    color: #047857;
+}
+.status-indicator.aktif .dot[b-07bz1jy3hy] { background-color: #10b981; }
+
+.status-indicator.pasif[b-07bz1jy3hy] {
+    background-color: #f3f4f6;
+    color: #6b7280;
+}
+.status-indicator.pasif .dot[b-07bz1jy3hy] { background-color: #9ca3af; }
+
+.status-indicator.bekliyor[b-07bz1jy3hy] {
+    background-color: #fffbeb;
+    color: #b45309;
+}
+.status-indicator.bekliyor .dot[b-07bz1jy3hy] { background-color: #f59e0b; }
+
+.btn-icon[b-07bz1jy3hy] {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+.hover-primary:hover[b-07bz1jy3hy] {
+    color: var(--primary-color) !important;
+    background-color: var(--primary-soft);
+}

@@ -1,34 +1,52 @@
 .nav-scrollable[b-zpxme7j96v] {
     flex: 1;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .nav-item[b-zpxme7j96v] {
     padding: 0.4rem 1rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
+.nav-scrollable.expanded .nav-item[b-zpxme7j96v] {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.nav-scrollable.expanded .nav-item:nth-child(1)[b-zpxme7j96v] { transition-delay: 0.1s; }
+.nav-scrollable.expanded .nav-item:nth-child(2)[b-zpxme7j96v] { transition-delay: 0.15s; }
+.nav-scrollable.expanded .nav-item:nth-child(3)[b-zpxme7j96v] { transition-delay: 0.2s; }
+.nav-scrollable.expanded .nav-item:nth-child(4)[b-zpxme7j96v] { transition-delay: 0.25s; }
+.nav-scrollable.expanded .nav-item:nth-child(5)[b-zpxme7j96v] { transition-delay: 0.30s; }
+.nav-scrollable.expanded .nav-item:nth-child(6)[b-zpxme7j96v] { transition-delay: 0.35s; }
+.nav-scrollable.expanded .nav-item:nth-child(7)[b-zpxme7j96v] { transition-delay: 0.40s; }
 
 .nav-link[b-zpxme7j96v] {
     display: flex;
     align-items: center;
     padding: 0.8rem 1rem;
-    color: rgba(255,255,255,0.7);
+    color: var(--text-muted);
     text-decoration: none;
     border-radius: 12px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-right: 0;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     font-weight: 500;
 }
 
 .nav-link:hover[b-zpxme7j96v] {
-    background: rgba(255,255,255,0.08);
-    color: white;
+    background: var(--bg-light);
+    color: var(--text-main);
     transform: translateX(4px);
 }
 
 .nav-link.active[b-zpxme7j96v] {
-    background: rgba(255,255,255,0.15);
-    color: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: #e8f0fe;
+    color: #1967d2;
+    font-weight: 600;
 }
 
 .nav-icon[b-zpxme7j96v] {
@@ -43,8 +61,16 @@
 
 .nav-divider[b-zpxme7j96v] {
     height: 1px;
-    background: rgba(255,255,255,0.08);
+    background: var(--border-color);
     margin: 1.5rem 1rem;
+    opacity: 0;
+    transform: scaleX(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform-origin: left;
 }
 
-
+.nav-scrollable.expanded .nav-divider[b-zpxme7j96v] {
+    opacity: 1;
+    transform: scaleX(1);
+    transition-delay: 0.2s;
+}

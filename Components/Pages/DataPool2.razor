@@ -1,0 +1,202 @@
+@page "/data-pool-2"
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@attribute [StreamRendering]
+
+<PageTitle>Veri Havuzu 2 | Yüksek Performans</PageTitle>
+
+<div class="h-100 w-100 d-flex flex-column bg-white">
+    <!-- Header -->
+    <div class="p-3 border-bottom d-flex justify-content-between align-items-center bg-white sticky-top shadow-sm" style="z-index: 100;">
+        <div>
+            <h4 class="mb-1 text-primary fw-bold" style="letter-spacing: -0.5px;">Veri Havuzu - 2</h4>
+        </div>
+        <div class="d-flex gap-2">
+             <div class="input-group input-group-sm" style="width: 250px;">
+                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+                <input type="text" class="form-control border-start-0 ps-0" placeholder="Kayıtlarda ara..." />
+            </div>
+            <button class="btn btn-sm btn-outline-info" @onclick="ToggleSummary"><i class="bi bi-bar-chart"></i> Özet Veriler</button>
+            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-funnel"></i> Filtrele</button>
+            <button class="btn btn-sm btn-primary"><i class="bi bi-download"></i> Dışa Aktar</button>
+        </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="flex-grow-1 overflow-auto bg-light">
+        <div class="container-fluid p-0">
+            <table class="table table-hover table-borderless mb-0 w-100 data-pool-table">
+                <thead class="bg-light sticky-top" style="top: 0; z-index: 10;">
+                    <tr>
+                        <th class="ps-4" style="width: 80px;">ID</th>
+                        <th style="width: 120px;">REF NO</th>
+                        <th style="width: 120px;">TARİH</th>
+                        <th>MÜŞTERİ</th>
+                        <th>BÖLGE</th>
+                        <th>KATEGORİ</th>
+                        <th class="text-end">TUTAR</th>
+                        <th class="text-center">DURUM</th>
+                        <th class="text-end pe-4" style="width: 100px;">İŞLEM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <Virtualize ItemsProvider="LoadData" Context="item" ItemSize="45">
+                        <ItemContent>
+                            <tr class="align-middle border-bottom">
+                                <td class="ps-4 text-muted font-monospace">#@item.Id</td>
+                                <td><span class="badge bg-light text-secondary border font-monospace">@item.RefNo</span></td>
+                                <td class="text-muted small">@item.Date.ToShortDateString()</td>
+                                <td class="fw-medium text-dark">@item.CustomerName</td>
+                                <td class="text-muted small">@item.Region</td>
+                                <td><span class="badge rounded-pill bg-soft-primary text-primary">@item.Category</span></td>
+                                <td class="text-end font-monospace fw-bold text-dark">@item.Amount.ToString("N0") ₺</td>
+                                <td class="text-center">
+                                    <div class="status-indicator @item.Status.ToLower()">
+                                        <span class="dot"></span>
+                                        <span class="label">@item.Status</span>
+                                    </div>
+                                </td>
+                                <td class="text-end pe-4">
+                                    <button class="btn btn-icon btn-sm text-muted hover-primary"><i class="bi bi-three-dots"></i></button>
+                                </td>
+                            </tr>
+                        </ItemContent>
+                        <Placeholder>
+                            <tr class="placeholder-glow">
+                                <td class="ps-4"><span class="placeholder col-6"></span></td>
+                                <td><span class="placeholder col-8"></span></td>
+                                <td><span class="placeholder col-6"></span></td>
+                                <td><span class="placeholder col-10"></span></td>
+                                <td><span class="placeholder col-4"></span></td>
+                                <td><span class="placeholder col-6"></span></td>
+                                <td><span class="placeholder col-4"></span></td>
+                                <td><span class="placeholder col-8"></span></td>
+                                <td class="pe-4"><span class="placeholder col-2"></span></td>
+                            </tr>
+                        </Placeholder>
+                    </Virtualize>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@if (showSummary)
+{
+    <div class="modal-backdrop fade show"></div>
+    <div class="modal fade show d-block" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h5 class="modal-title fw-bold text-primary">Veri Özeti</h5>
+                    <button type="button" class="btn-close" @onclick="ToggleSummary"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm bg-light">
+                                <div class="card-body">
+                                    <h6 class="card-title text-muted mb-3 text-uppercase small fw-bold">Bölge Dağılımı</h6>
+                                    <table class="table table-sm table-borderless mb-0">
+                                        <tbody>
+                                            <tr><td>Marmara</td><td class="text-end fw-bold">45%</td></tr>
+                                            <tr><td>Ege</td><td class="text-end fw-bold">25%</td></tr>
+                                            <tr><td>İç Anadolu</td><td class="text-end fw-bold">20%</td></tr>
+                                            <tr><td>Akdeniz</td><td class="text-end fw-bold">10%</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm bg-light">
+                                <div class="card-body">
+                                    <h6 class="card-title text-muted mb-3 text-uppercase small fw-bold">Durum Özeti</h6>
+                                    <table class="table table-sm table-borderless mb-0">
+                                        <tbody>
+                                            <tr><td><span class="status-indicator aktif"><span class="dot"></span>Aktif</span></td><td class="text-end fw-bold">850,000</td></tr>
+                                            <tr><td><span class="status-indicator bekliyor"><span class="dot"></span>Bekliyor</span></td><td class="text-end fw-bold">450,000</td></tr>
+                                            <tr><td><span class="status-indicator pasif"><span class="dot"></span>Pasif</span></td><td class="text-end fw-bold">200,000</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-12">
+                            <div class="card border-0 shadow-sm bg-light">
+                                <div class="card-body">
+                                    <h6 class="card-title text-muted mb-3 text-uppercase small fw-bold">Finansal Özet</h6>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span>Toplam Ciro</span>
+                                        <span class="fs-5 fw-bold text-dark">45.2 Milyon ₺</span>
+                                    </div>
+                                    <div class="progress" style="height: 6px;">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 75%"></div>
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 15%"></div>
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 10%"></div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-1 text-muted x-small">
+                                        <span>Tahsil Edilen (%75)</span>
+                                        <span>Bekleyen (%15)</span>
+                                        <span>İptal (%10)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0">
+                    <button type="button" class="btn btn-secondary" @onclick="ToggleSummary">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private bool showSummary = false;
+
+    private void ToggleSummary()
+    {
+        showSummary = !showSummary;
+    }
+
+    private async ValueTask<ItemsProviderResult<DataRecord>> LoadData(ItemsProviderRequest request)
+    {
+        // Simulate waiting for data
+        await Task.Delay(100);
+
+        // Generate dummy data on the fly
+        var totalRecords = 1500000;
+        var records = new List<DataRecord>();
+
+        for (int i = 0; i < request.Count; i++)
+        {
+            var index = request.StartIndex + i;
+            records.Add(new DataRecord
+            {
+                Id = index + 1,
+                RefNo = $"REF-{100000 + index}",
+                Date = DateTime.Now.AddDays(-index % 1000),
+                CustomerName = $"Müşteri {(index % 500) + 1} A.Ş.",
+                Region = (index % 4) switch { 0 => "Marmara", 1 => "Ege", 2 => "İç Anadolu", _ => "Akdeniz" },
+                Category = (index % 3) switch { 0 => "Kurumsal", 1 => "Bireysel", _ => "Kamu" },
+                Amount = (decimal)((index * 137.5) % 50000) + 1000,
+                Status = (index % 5) == 0 ? "Pasif" : (index % 3) == 0 ? "Bekliyor" : "Aktif"
+            });
+        }
+
+        return new ItemsProviderResult<DataRecord>(records, totalRecords);
+    }
+
+    public class DataRecord
+    {
+        public int Id { get; set; }
+        public string RefNo { get; set; } = "";
+        public DateTime Date { get; set; }
+        public string CustomerName { get; set; } = "";
+        public string Region { get; set; } = "";
+        public string Category { get; set; } = "";
+        public decimal Amount { get; set; }
+        public string Status { get; set; } = "";
+    }
+}

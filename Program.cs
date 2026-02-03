@@ -11,6 +11,7 @@ builder.Services.AddDbContext<BlazorWebApp.Data.AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<BlazorWebApp.Services.TabService>();
+builder.Services.AddScoped<BlazorWebApp.Services.UserService>();
 
 var app = builder.Build();
 

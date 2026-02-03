@@ -2,62 +2,161 @@
 
 <PageTitle>Dashboard | Ana Sayfa</PageTitle>
 
-<div class="p-4">
-    <div class="welcome-banner p-5 mb-4 rounded-4 text-white" style="background: linear-gradient(135deg, #0d47a1 0%, #4285f4 100%);">
-        <h1 class="display-5 fw-bold">Hoş Geldiniz, Sueda Hanım!</h1>
-        <p class="fs-4">Bugün sistemde bekleyen 3 yeni rapor ve 2 proje güncellemesi bulunuyor.</p>
-        <button class="btn btn-light btn-lg text-primary fw-bold" type="button">Özet Raporu Gör</button>
+<div class="container-fluid p-4">
+    <!-- Hero Section -->
+    <div class="dashboard-hero text-white p-5 mb-5 shadow">
+        <div class="hero-pattern"></div>
+        <div class="row align-items-center position-relative" style="z-index: 1;">
+            <div class="col-lg-8">
+                <h1 class="display-5 fw-bold mb-3">Hoş Geldiniz, Sueda Hanım!</h1>
+                <p class="fs-5 opacity-75 mb-4" style="max-width: 600px;">
+                    Bugün sistemde ilgilenmeniz gereken <strong>3 yeni rapor</strong> ve incelenmeyi bekleyen <strong>2 proje güncellemesi</strong> bulunuyor.
+                </p>
+                <div class="d-flex gap-3">
+                    <button class="btn btn-light px-4 py-2 fw-semibold text-primary shadow-sm" type="button">
+                        <span class="bi bi-file-text me-2"></span>Özet Raporu Gör
+                    </button>
+                    <button class="btn btn-outline-light px-4 py-2 fw-semibold" type="button">
+                        <span class="bi bi-gear me-2"></span>Projeleri Yönet
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 d-none d-lg-block text-end opacity-50">
+                <span class="bi bi-bar-chart-line-fill" style="font-size: 8rem;"></span>
+            </div>
+        </div>
     </div>
 
+    <!-- Stats Grid -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-6 col-lg-3">
+            <div class="card stat-card h-100 p-4 border-0">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div class="stat-icon bg-primary bg-opacity-10 text-primary">
+                        <span class="bi bi-building"></span>
+                    </div>
+                    <span class="badge bg-success bg-opacity-10 text-success px-2 py-1 rounded-pill">
+                        <span class="bi bi-arrow-up-short"></span> +12%
+                    </span>
+                </div>
+                <div class="text-muted small mb-1 fw-medium">Aktif Projeler</div>
+                <h3 class="fw-bold mb-0 text-dark">24</h3>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card stat-card h-100 p-4 border-0">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div class="stat-icon bg-success bg-opacity-10 text-success">
+                        <span class="bi bi-currency-dollar"></span>
+                    </div>
+                    <span class="badge bg-success bg-opacity-10 text-success px-2 py-1 rounded-pill">
+                        <span class="bi bi-arrow-up-short"></span> +5.2%
+                    </span>
+                </div>
+                <div class="text-muted small mb-1 fw-medium">Aylık Gelir</div>
+                <h3 class="fw-bold mb-0 text-dark">₺2.4M</h3>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card stat-card h-100 p-4 border-0">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div class="stat-icon bg-warning bg-opacity-10 text-warning">
+                        <span class="bi bi-people"></span>
+                    </div>
+                    <span class="badge bg-danger bg-opacity-10 text-danger px-2 py-1 rounded-pill">
+                        <span class="bi bi-arrow-down-short"></span> -2.1%
+                    </span>
+                </div>
+                <div class="text-muted small mb-1 fw-medium">Yeni Başvurular</div>
+                <h3 class="fw-bold mb-0 text-dark">156</h3>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card stat-card h-100 p-4 border-0">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div class="stat-icon bg-danger bg-opacity-10 text-danger">
+                        <span class="bi bi-shield-exclamation"></span>
+                    </div>
+                    <span class="badge bg-secondary bg-opacity-10 text-secondary px-2 py-1 rounded-pill">
+                        Sabit
+                    </span>
+                </div>
+                <div class="text-muted small mb-1 fw-medium">Kritik Uyarılar</div>
+                <h3 class="fw-bold mb-0 text-dark">2</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Row -->
     <div class="row g-4">
-        <div class="col-md-3">
-            <div class="card border-0 shadow-sm h-100 p-3">
-                <div class="d-flex align-items-center">
-                    <div class="bg-primary bg-opacity-10 p-3 rounded-3 text-primary me-3">
-                        <span class="bi bi-building fs-3"></span>
+        <!-- Chart Section -->
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-transparent border-0 p-4 pb-0 d-flex justify-content-between align-items-center">
+                    <h5 class="fw-bold mb-0">Performans Özeti</h5>
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-light border dropdown-toggle" type="button">This Week</button>
                     </div>
-                    <div>
-                        <div class="text-muted small">Aktif Projeler</div>
-                        <div class="h4 mb-0 fw-bold">24</div>
+                </div>
+                <div class="card-body p-4">
+                    <div class="chart-container">
+                        <div class="text-center">
+                            <span class="bi bi-graph-up fs-1 d-block mb-2 opacity-50"></span>
+                            <span>Grafik Verileri Yükleniyor...</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card border-0 shadow-sm h-100 p-3">
-                <div class="d-flex align-items-center">
-                    <div class="bg-success bg-opacity-10 p-3 rounded-3 text-success me-3">
-                        <span class="bi bi-currency-dollar fs-3"></span>
-                    </div>
-                    <div>
-                        <div class="text-muted small">Aylık Gelir</div>
-                        <div class="h4 mb-0 fw-bold">₺2.4M</div>
-                    </div>
+
+        <!-- Recent Activity -->
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-transparent border-0 p-4 pb-0">
+                    <h5 class="fw-bold mb-0">Son Aktiviteler</h5>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card border-0 shadow-sm h-100 p-3">
-                <div class="d-flex align-items-center">
-                    <div class="bg-warning bg-opacity-10 p-3 rounded-3 text-warning me-3">
-                        <span class="bi bi-people fs-3"></span>
-                    </div>
-                    <div>
-                        <div class="text-muted small">Yeni Başvurular</div>
-                        <div class="h4 mb-0 fw-bold">156</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card border-0 shadow-sm h-100 p-3">
-                <div class="d-flex align-items-center">
-                    <div class="bg-danger bg-opacity-10 p-3 rounded-3 text-danger me-3">
-                        <span class="bi bi-exclamation-triangle fs-3"></span>
-                    </div>
-                    <div>
-                        <div class="text-muted small">Kritik Uyarılar</div>
-                        <div class="h4 mb-0 fw-bold">2</div>
+                <div class="card-body p-4">
+                    <div class="activity-list">
+                        <div class="activity-item d-flex gap-3">
+                            <div class="mt-1">
+                                <span class="badge bg-primary rounded-circle p-1" style="width: 8px; height: 8px; display: block;"></span>
+                            </div>
+                            <div>
+                                <p class="mb-1 text-dark fw-medium">Yeni Proje Oluşturuldu</p>
+                                <small class="text-muted">Marketing Dashboard projesi başlatıldı.</small>
+                                <div class="mt-1 text-xs text-muted" style="font-size: 0.75rem;">2 saat önce</div>
+                            </div>
+                        </div>
+                        <div class="activity-item d-flex gap-3">
+                            <div class="mt-1">
+                                <span class="badge bg-success rounded-circle p-1" style="width: 8px; height: 8px; display: block;"></span>
+                            </div>
+                            <div>
+                                <p class="mb-1 text-dark fw-medium">Ödeme Alındı</p>
+                                <small class="text-muted">XYZ Ltd. Şti. ödemesi onaylandı.</small>
+                                <div class="mt-1 text-xs text-muted" style="font-size: 0.75rem;">5 saat önce</div>
+                            </div>
+                        </div>
+                        <div class="activity-item d-flex gap-3">
+                            <div class="mt-1">
+                                <span class="badge bg-warning rounded-circle p-1" style="width: 8px; height: 8px; display: block;"></span>
+                            </div>
+                            <div>
+                                <p class="mb-1 text-dark fw-medium">Sistem Uyarısı</p>
+                                <small class="text-muted">Disk doluluk oranı %85 seviyesinde.</small>
+                                <div class="mt-1 text-xs text-muted" style="font-size: 0.75rem;">1 gün önce</div>
+                            </div>
+                        </div>
+                         <div class="activity-item d-flex gap-3">
+                            <div class="mt-1">
+                                <span class="badge bg-info rounded-circle p-1" style="width: 8px; height: 8px; display: block;"></span>
+                            </div>
+                            <div>
+                                <p class="mb-1 text-dark fw-medium">Rapor Hazır</p>
+                                <small class="text-muted">Aylık satış raporu indirilmeye hazır.</small>
+                                <div class="mt-1 text-xs text-muted" style="font-size: 0.75rem;">1 gün önce</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

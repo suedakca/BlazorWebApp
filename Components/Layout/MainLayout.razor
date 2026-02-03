@@ -3,18 +3,21 @@
 @using System
 @implements IDisposable
 @inject TabService TabService
+@inject Services.UserService UserService
 @inject NavigationManager NavManager
 
 <div class="page">
     <div class="sidebar @(IsSidebarExpanded ? "expanded" : "")">
-        <div class="sidebar-brand d-flex align-items-center p-3 text-white" style="height: var(--topbar-height)">
-            <span class="bi bi-rocket-takeoff fs-4 me-2"></span>
-            <span class="fw-bold">ANTIGRAVITY</span>
-            <button class="btn btn-link text-white ms-auto p-0" @onclick="ToggleSidebar">
+        <div class="sidebar-brand d-flex align-items-center p-3" style="height: var(--topbar-height)">
+            <div class="d-flex align-items-center gap-2">
+                <img src="images/logo.png" alt="Okyanus Logo" style="height: 48px; width: auto;" />
+                <span class="brand-text">Okyanus</span>
+            </div>
+            <button class="btn btn-link ms-auto p-0 sidebar-toggle" @onclick="ToggleSidebar">
                 <span class="bi bi-x-lg fs-5"></span>
             </button>
         </div>
-        <NavMenu IsExpanded="true" OnNavigate="() => CloseSidebar()" />
+        <NavMenu IsExpanded="@IsSidebarExpanded" OnNavigate="() => CloseSidebar()" />
     </div>
 
     @if (IsSidebarExpanded)
@@ -32,7 +35,7 @@
             </div>
             
             <div class="profile-img-container" @onclick="ToggleProfilePopup">
-                <img src="https://ui-avatars.com/api/?name=Kullanıcı&background=0D8ABC&color=fff" class="profile-img" alt="Profile" />
+                <img src="https://ui-avatars.com/api/?name=@Uri.EscapeDataString(UserService.CurrentUser)&background=0077b6&color=fff" class="profile-img" alt="Profile" />
             </div>
         </div>
 
@@ -51,10 +54,6 @@
             @if (TabService.Tabs.Any(t => t.IsActive))
             {
                 var activeTab = TabService.Tabs.First(t => t.IsActive);
-                @* In a real app, you might use a DynamicComponent or keep multiple components cached. 
-                     For this demo, we can just show the @Body if the active tab matches the current URL, 
-                     or redirect if needed. However, since @Body is what Blazor gives us for the current route,
-                     we'll assume the current route is what's being shown. *@
                 @Body
             }
             else
@@ -68,7 +67,7 @@
 
         <footer>
             <div class="user-info">
-                <span><span class="bi bi-person-circle"></span> Sueda Akça</span>
+                <span><span class="bi bi-person-circle"></span> @UserService.CurrentUser</span>
                 <span class="ms-3"><span class="bi bi-clock"></span> Son Giriş: @DateTime.Now.ToShortTimeString()</span>
                 <span class="ms-auto"><span class="bi bi-gear-fill"></span> Ayarlar</span>
             </div>
@@ -82,8 +81,8 @@
 
     <div class="profile-popup @(IsProfilePopupOpen ? "show" : "")" @onclick:stopPropagation="true">
         <div class="text-center mb-3">
-            <img src="https://ui-avatars.com/api/?name=Kullanıcı&background=0D8ABC&color=fff&size=128" class="rounded-circle mb-2" width="64" />
-            <h5 class="mb-0">Sueda Akça</h5>
+            <img src="https://ui-avatars.com/api/?name=@Uri.EscapeDataString(UserService.CurrentUser)&background=0077b6&color=fff&size=128" class="rounded-circle mb-2" width="64" />
+            <h5 class="mb-0">@UserService.CurrentUser</h5>
             <small class="text-muted">Administrator</small>
         </div>
         <hr />
@@ -98,20 +97,45 @@
 @code {
     private bool IsSidebarExpanded = false;
     private bool IsProfilePopupOpen = false;
+    private string newUserParams = "";
 
     protected override void OnInitialized()
     {
         TabService.OnChange += HandleTabChange;
+        UserService.OnChange += HandleUserChange;
         
         // Add a default tab if none exist
         if (!TabService.Tabs.Any())
         {
-            TabService.AddTab("Giriş", "/", "bi-house-door");
+            TabService.AddTab("Ana Sayfa", "/", "bi-house-door");
         }
     }
 
+    private void HandleUserChange()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+    
+    private void SwitchUser()
+    {
+        if (!string.IsNullOrWhiteSpace(newUserParams))
+        {
+            UserService.SetUser(newUserParams);
+            newUserParams = "";
+            // Close popup optional, verify with user preference or just keep open
+        }
+    }
+
+    // ... existing methods ...
+
     private void HandleTabChange()
     {
+        if (!TabService.Tabs.Any())
+        {
+            TabService.AddTab("Ana Sayfa", "/", "bi-house-door");
+            NavManager.NavigateTo("/");
+            return; // StateHasChanged will be called by AddTab's Notify
+        }
         InvokeAsync(StateHasChanged);
     }
 
@@ -144,6 +168,7 @@
     public void Dispose()
     {
         TabService.OnChange -= HandleTabChange;
+        UserService.OnChange -= HandleUserChange;
     }
 }
 
