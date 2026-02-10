@@ -31,7 +31,7 @@
                 <span class="bi bi-list fs-2"></span>
             </button>
             <div class="search-container">
-                <input type="text" class="search-input" placeholder="Hızlı ara..." />
+                <input type="text" class="search-input" placeholder="Hızlı ara..." @bind="globalSearchTerm" @bind:event="oninput" @onkeyup="HandleSearchKeys" />
             </div>
             
             <div class="profile-img-container" @onclick="ToggleProfilePopup">
@@ -107,7 +107,7 @@
         // Add a default tab if none exist
         if (!TabService.Tabs.Any())
         {
-            TabService.AddTab("Ana Sayfa", "/", "bi-house-door");
+            TabService.AddTab("Ana Sayfa", "/", "bi-house-door", null);
         }
     }
 
@@ -180,6 +180,20 @@
     {
         TabService.OnChange -= HandleTabChange;
         UserService.OnChange -= HandleUserChange;
+    }
+
+    private string globalSearchTerm = "";
+
+    private void HandleSearchKeys(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            if (!string.IsNullOrWhiteSpace(globalSearchTerm))
+            {
+                var url = $"/search?q={Uri.EscapeDataString(globalSearchTerm)}";
+                TabService.AddTab($"Ara: {globalSearchTerm}", url, "bi-search", "global-search");
+            }
+        }
     }
 }
 

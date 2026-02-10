@@ -1,4 +1,5 @@
 @page "/data-pool-3"
+@rendermode InteractiveServer
 @using BlazorWebApp.Services
 @using BlazorWebApp.Models
 @inject PoolService PoolService
@@ -19,11 +20,11 @@
             </div>
         </div>
         <div class="d-flex gap-2 align-items-center">
-            <div class="btn-group shadow-sm p-1 bg-white rounded">
-                 <button class="btn btn-sm btn-white border-0 active fw-medium">Hepsi</button>
-                 <button class="btn btn-sm btn-white border-0 fw-medium">Aktif</button>
-                 <button class="btn btn-sm btn-white border-0 fw-medium">Tamamlanan</button>
-            </div>
+            <!-- Toggle Summary Button -->
+             <button class="btn btn-sm @(showSummary ? "btn-secondary" : "btn-outline-primary") shadow-sm" @onclick="ToggleSummary">
+                 <i class="bi @(showSummary ? "bi-eye-slash" : "bi-eye") me-1"></i>
+                 @(showSummary ? "Özeti Gizle" : "Özet Verileri Göster")
+            </button>
              <button class="btn btn-sm btn-primary shadow-sm" @onclick="ExportExcel">
                 <i class="bi bi-download me-1"></i>Dışa Aktar
             </button>
@@ -148,7 +149,120 @@
     </div>
 </div>
 
+<!-- Summary Modal -->
+@if (showSummary)
+{
+    <div class="modal fade show" style="display: block; background-color: rgba(0,0,0,0.5);" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold text-dark">
+                        <i class="bi bi-graph-up me-2 text-primary"></i>Özet Veriler
+                    </h5>
+                    <button type="button" class="btn-close" @onclick="ToggleSummary"></button>
+                </div>
+                <div class="modal-body p-4 bg-light">
+                    <div class="row g-3">
+                        <!-- Total Sales Istanbul -->
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="stat-card p-3 rounded-3 bg-white shadow-sm border-0 d-flex flex-column h-100 position-relative overflow-hidden">
+                                <div class="stat-icon-bg bg-primary text-primary bg-opacity-10">
+                                    <i class="bi bi-currency-dollar"></i>
+                                </div>
+                                <div class="position-relative z-1">
+                                    <div class="text-secondary small fw-bold mb-1 tracking-wide">TOPLAM SATIŞ (İST)</div>
+                                    <h3 class="fw-bold text-dark mb-1">₺14.2M</h3>
+                                    <div class="d-flex align-items-center">
+                                        <span class="badge bg-success-subtle text-success rounded-pill px-2 py-1 small">
+                                            <i class="bi bi-arrow-up-short"></i> %12
+                                        </span>
+                                        <span class="text-muted ms-2 x-small">Geçen aya göre</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Total Sales Ankara -->
+                        <div class="col-12 col-md-6 col-lg-3">
+                             <div class="stat-card p-3 rounded-3 bg-white shadow-sm border-0 d-flex flex-column h-100 position-relative overflow-hidden">
+                                <div class="stat-icon-bg bg-danger text-danger bg-opacity-10">
+                                    <i class="bi bi-graph-down"></i>
+                                </div>
+                                <div class="position-relative z-1">
+                                    <div class="text-secondary small fw-bold mb-1 tracking-wide">TOPLAM SATIŞ (ANK)</div>
+                                    <h3 class="fw-bold text-dark mb-1">₺7.1M</h3>
+                                    <div class="d-flex align-items-center">
+                                        <span class="badge bg-danger-subtle text-danger rounded-pill px-2 py-1 small">
+                                            <i class="bi bi-arrow-down-short"></i> %5
+                                        </span>
+                                        <span class="text-muted ms-2 x-small">Geçen aya göre</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rental Izmir -->
+                        <div class="col-12 col-md-6 col-lg-3">
+                             <div class="stat-card p-3 rounded-3 bg-white shadow-sm border-0 d-flex flex-column h-100 position-relative overflow-hidden">
+                                <div class="stat-icon-bg bg-success text-success bg-opacity-10">
+                                    <i class="bi bi-building-check"></i>
+                                </div>
+                                <div class="position-relative z-1">
+                                     <div class="text-secondary small fw-bold mb-1 tracking-wide">DOLULUK (İZMİR)</div>
+                                    <h3 class="fw-bold text-dark mb-1">%88</h3>
+                                    <div class="d-flex align-items-center">
+                                        <div class="progress flex-grow-1" style="height: 6px;">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 88%"></div>
+                                        </div>
+                                        <span class="text-muted ms-2 fw-medium x-small">1.250 Ünite</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rental Antalya -->
+                         <div class="col-12 col-md-6 col-lg-3">
+                             <div class="stat-card p-3 rounded-3 bg-white shadow-sm border-0 d-flex flex-column h-100 position-relative overflow-hidden">
+                                <div class="stat-icon-bg bg-warning text-warning bg-opacity-10">
+                                    <i class="bi bi-sun"></i>
+                                </div>
+                                <div class="position-relative z-1">
+                                     <div class="text-secondary small fw-bold mb-1 tracking-wide">DOLULUK (ANTALYA)</div>
+                                    <h3 class="fw-bold text-dark mb-1">%94</h3>
+                                    <div class="d-flex align-items-center">
+                                        <div class="progress flex-grow-1" style="height: 6px;">
+                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 94%"></div>
+                                        </div>
+                                        <span class="text-muted ms-2 fw-medium x-small">850 Ünite</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
 <style>
+    .x-small { font-size: 0.70rem !important; }
+    .tracking-wide { letter-spacing: 0.5px; }
+    .stat-card { transition: all 0.2s; }
+    .stat-card:hover { transform: translateY(-2px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.08)!important; }
+    .stat-icon-bg {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        opacity: 0.2;
+    }
     .sticky-header th { position: sticky; top: 0; background-color: #f8f9fa; z-index: 100; border-bottom: 2px solid #edf2f9; color: #5e6e82; font-weight: 600; padding: 1rem; }
     td { padding: 1rem; color: #4d5969; font-weight: 500; }
     tr:hover td { background-color: #f9fbfd; color: #1e2e3e; }
@@ -159,21 +273,83 @@
     private string poolDisplayName = "Proje Yönetimi";
     private string poolDescription = "Aktif proje takip ve bütçe yönetim havuzu";
     private bool isLoading = true;
+    private bool showSummary = false;
     private int totalCount = 0;
+    private string searchTerm = "";
+    
+    [SupplyParameterFromQuery]
+    public string? q { get; set; }
+
     private Virtualize<ProjectRecord>? virtualizeComponent;
 
     protected override async Task OnInitializedAsync()
     {
+        // Sync query param to local search term if present
+        if (!string.IsNullOrEmpty(q))
+        {
+            searchTerm = q;
+        }
+
         // Minimal delay to ensure UI renders loading state if needed, though usually not strictly necessary with EF
         await Task.Yield();
         isLoading = false;
     }
 
+    protected override async Task OnParametersSetAsync()
+    {
+        if (q != searchTerm)
+        {
+            searchTerm = q ?? "";
+            if (virtualizeComponent != null)
+            {
+                await virtualizeComponent.RefreshDataAsync();
+            }
+        }
+    }
+
+    private void ToggleSummary()
+    {
+        showSummary = !showSummary;
+    }
+
+    private async Task HandleFilterChanged(FilterBar.FilterCriteria criteria)
+    {
+        // In this demo, we just refresh the data grid.
+        // Real implementation would pass criteria to LoadData or Filter the query.
+        if (virtualizeComponent != null)
+        {
+            await virtualizeComponent.RefreshDataAsync();
+        }
+    }
+
+    private async Task SearchData()
+    {
+        if (virtualizeComponent != null)
+        {
+            await virtualizeComponent.RefreshDataAsync();
+        }
+    }
+
     private async ValueTask<ItemsProviderResult<ProjectRecord>> LoadData(ItemsProviderRequest request)
     {
-        var result = await PoolService.GetProjectRecordsAsync(request.StartIndex, request.Count);
-        totalCount = result.TotalCount;
-        return new ItemsProviderResult<ProjectRecord>(result.Items, result.TotalCount);
+         var result = await PoolService.GetProjectRecordsAsync(0, 1000); // Get all for client-side filtering (demo)
+         
+         var filteredItems = result.Items;
+         
+         if (!string.IsNullOrWhiteSpace(searchTerm))
+         {
+             filteredItems = filteredItems.Where(x => 
+                (x.ProjectName?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (x.CustomerName?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false)
+             ).ToList();
+         }
+
+         totalCount = filteredItems.Count;
+         
+         // Slice for pagination
+         var pagedItems = filteredItems.Skip(request.StartIndex).Take(request.Count).ToList();
+
+        return new ItemsProviderResult<ProjectRecord>(pagedItems, totalCount);
     }
 
     private string GetStatusColor(string? status)

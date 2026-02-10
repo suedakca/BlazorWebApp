@@ -1,4 +1,6 @@
 window.renderAreaChart = (elementId) => {
+    const el = document.querySelector("#" + elementId);
+    if (el) el.innerHTML = "";
     var options = {
         series: [{
             name: 'Net Satış',
@@ -36,6 +38,8 @@ window.renderAreaChart = (elementId) => {
 };
 
 window.renderDonutChart = (elementId) => {
+    const el = document.querySelector("#" + elementId);
+    if (el) el.innerHTML = "";
     var options = {
         series: [44, 55, 41, 17, 15],
         chart: {
@@ -62,6 +66,8 @@ window.renderDonutChart = (elementId) => {
 };
 
 window.renderBarChart = (elementId) => {
+    const el = document.querySelector("#" + elementId);
+    if (el) el.innerHTML = "";
     var options = {
         series: [{
             data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
@@ -92,6 +98,8 @@ window.renderBarChart = (elementId) => {
 };
 
 window.renderRadialChart = (elementId) => {
+    const el = document.querySelector("#" + elementId);
+    if (el) el.innerHTML = "";
     var options = {
         series: [76],
         chart: {

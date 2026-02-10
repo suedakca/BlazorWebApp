@@ -267,15 +267,37 @@ footer {
     top: 75px;
     right: 2rem;
     width: 300px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-xl);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
     z-index: 1200;
     padding: 1.5rem;
-    border: 1px solid var(--border-subtle);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     display: none;
     transform-origin: top right;
+}
+
+.profile-popup .list-group-item {
+    background-color: transparent !important;
+    border-radius: var(--radius-md) !important;
+    margin-bottom: 4px;
+    border: none;
+    transition: all 0.2s;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.profile-popup .list-group-item:hover {
+    background-color: var(--primary-soft) !important;
+    color: var(--primary-color) !important;
+    transform: translateX(5px);
+}
+
+.profile-popup .list-group-item.text-danger:hover {
+    background-color: #fee2e2 !important;
+    color: var(--danger-color) !important;
 }
 
 .profile-popup.show {

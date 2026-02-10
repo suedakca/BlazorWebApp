@@ -18,8 +18,22 @@ namespace BlazorWebApp.Services
         public List<TabInfo> Tabs { get; private set; } = new();
         public event Action? OnChange;
 
-        public void AddTab(string title, string url, string icon = "bi-file-earmark")
+        public void AddTab(string title, string url, string icon = "bi-file-earmark", string? id = null)
         {
+            // If ID is provided, check if exists and update
+            if (!string.IsNullOrEmpty(id))
+            {
+                var existingTabById = Tabs.FirstOrDefault(t => t.Id == id);
+                if (existingTabById != null)
+                {
+                    existingTabById.Title = title;
+                    existingTabById.Url = url;
+                    SetActiveTab(id);
+                    return;
+                }
+            }
+
+            // Fallback to URL check if no ID or ID not found (but URL might exist for different ID)
             var existingTab = Tabs.FirstOrDefault(t => t.Url == url);
             if (existingTab != null)
             {
@@ -32,6 +46,7 @@ namespace BlazorWebApp.Services
 
             var newTab = new TabInfo
             {
+                Id = id ?? Guid.NewGuid().ToString(),
                 Title = title,
                 Url = url,
                 IsActive = true,

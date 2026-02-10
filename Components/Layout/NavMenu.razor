@@ -54,7 +54,7 @@
         {
              // We use InvokeAsync to ensure thread safety with UI updates if needed, though TabService is simple C# class.
              // Calling AddTab will trigger state change in MainLayout
-             TabService.AddTab(item.Title, item.Url, item.Icon);
+             TabService.AddTab(item.Title, item.Url, item.Icon, null);
              StateHasChanged();
         }
     }

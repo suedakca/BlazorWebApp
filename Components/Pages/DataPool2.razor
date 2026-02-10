@@ -4,50 +4,66 @@
 @inject PoolService PoolService
 @inject IJSRuntime JSRuntime
 
-<PageTitle>Ticari Veri Havuzu | @poolDisplayName</PageTitle>
+<PageTitle>Şube Teftiş Havuzu | @poolDisplayName</PageTitle>
 
 <div class="h-100 w-100 d-flex flex-column bg-white">
     <!-- Header & Toolbar -->
     <div class="px-4 py-3 border-bottom d-flex justify-content-between align-items-center bg-light">
         <div>
-            <h5 class="fw-bold text-dark mb-0"><i class="bi bi-database me-2 text-primary"></i>@poolDisplayName</h5>
+            <h5 class="fw-bold text-dark mb-0"><i class="bi bi-building-check me-2 text-primary"></i>@poolDisplayName</h5>
             <small class="text-muted">@poolDescription</small>
         </div>
         <div class="d-flex gap-2">
-            <div class="input-group input-group-sm" style="width: 250px;">
-                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
-                <input type="text" class="form-control border-start-0 ps-0" placeholder="Kayıt ara..." />
-            </div>
             <button class="btn btn-sm btn-white border shadow-sm" @onclick="ExportExcel">
                 <i class="bi bi-file-earmark-spreadsheet text-success me-1"></i>Excel
-            </button>
-            <button class="btn btn-sm btn-primary shadow-sm">
-                <i class="bi bi-plus-lg me-1"></i>Yeni Ekle
             </button>
         </div>
     </div>
 
     <!-- Data Grid -->
     <div class="flex-grow-1 overflow-auto">
-        <table class="table table-hover mb-0 align-middle" style="font-size: 0.85rem;">
+        <table class="table table-hover mb-0 align-middle table-bordered" style="font-size: 0.7rem; min-width: 3600px; border-collapse: separate; border-spacing: 0;">
             <thead class="bg-light sticky-top" style="z-index: 10;">
                 <tr>
-                    <th class="ps-4" style="width: 80px;">ID</th>
-                    <th style="width: 120px;">REF NO</th>
-                    <th style="width: 120px;">TARİH</th>
-                    <th>MÜŞTERİ</th>
-                    <th>BÖLGE</th>
-                    <th>KATEGORİ</th>
-                    <th class="text-end">TUTAR</th>
-                    <th class="text-center">DURUM</th>
-                    <th class="text-end pe-4" style="width: 100px;">İŞLEM</th>
+                    <th class="ps-3 sticky-col-1" style="width: 100px; min-width: 100px; max-width: 100px; left: 0;">Şube Kodu</th>
+                    <th class="sticky-col-2" style="width: 130px; min-width: 130px; max-width: 150px; left: 100px;">Şube Adı</th>
+                    <th>Görev ID</th>
+                    <th>Şube Tipi</th>
+                    <th>Açılış Tarihi</th>
+                    <th>Bulunduğu Şehir</th>
+                    <th>Rapor Tarihi</th>
+                    <th class="text-center">Teftiş Raporu</th>
+                    <th>İnceleme Dönemi (Başlangıç)</th>
+                    <th>İnceleme Dönemi (Bitiş)</th>
+                    <th class="text-center">Gerçek Kişi Kimlik Belgesi Eksiklikleri</th>
+                    <th class="text-center">Müşteri Fotoğrafı Eksiklikleri</th>
+                    <th class="text-center">Müşteri Fotoğrafı Güncel</th>
+                    <th class="text-center">Müşteri İmza Eksiklikleri</th>
+                    <th class="text-center">Müşteri İmza Güncel</th>
+                    <th class="text-center">Hesap Açılışı Sistemsel Bilgi Eksiklikler</th>
+                    <th class="text-center">Hesap Açılışı Sistemsel Bilgi Güncel</th>
+                    <th class="text-center">Dekont Eksiklikler</th>
+                    <th class="text-center">Dekont Güncel</th>
+                    <th>Mutabakat Eksiklikleri</th>
+                    <th>Mutabakat Güncel</th>
+                    <th>Toplam Puan</th>
+                    <th>Bulgu Seviyesi (Toplam Risk Puanı)</th>
+                    <th class="text-center">Genel Görüş</th>
+                    <th>Müşteri Adedi (Kimlik)</th>
+                    <th>Kimlik Eksik Adet</th>
+                    <th>Divit Ekran Görüntüsü Hariç Eksik Kimlik Adedi</th>
+                    <th>Nakit İşlem Adedi</th>
+                    <th>Dekont (Eksik Adet)</th>
+                    <th>Dekont (Sorunsuz Adet)</th>
+                    <th>Şubeyle görüşüldü mü?</th>
+                    <th>Şubeyle görüşme tarihi?</th>
                 </tr>
             </thead>
             <tbody>
                 @if (isLoading)
                 {
                     <tr>
-                        <td colspan="9" class="text-center p-5">
+                        <td colspan="32" class="text-center p-5">
                             <div class="spinner-border text-primary" role="status"></div>
                             <div class="mt-2 text-muted small">Veriler yükleniyor...</div>
                         </td>
@@ -58,71 +74,125 @@
                     <Virtualize ItemsProvider="LoadData" Context="item" @ref="virtualizeComponent">
                         <ItemContent>
                             <tr>
-                                <!-- ID -->
-                                <td class="ps-4 text-muted font-monospace">@item.Id</td>
+                                <td class="ps-3 fw-bold sticky-col-1 bg-white" style="left: 0; min-width: 100px; max-width: 100px;">@item.BranchCode</td>
+                                <td class="sticky-col-2 bg-white" style="left: 100px; min-width: 130px; max-width: 130px;">@item.BranchName</td>
+                                <td><span class="badge bg-light text-dark border">@item.TaskId</span></td>
+                                <td>@item.BranchType</td>
+                                <td>@item.OpeningDate.ToShortDateString()</td>
+                                <td>@item.City</td>
+                                <td>@item.ReportDate.ToShortDateString()</td>
+                                <td class="text-center">
+                                    @if (item.HasInspectionReport)
+                                    {
+                                        <button class="btn btn-sm btn-soft-primary rounded-pill px-3 py-1 fw-medium shadow-sm d-inline-flex align-items-center gap-2" style="font-size: 0.75rem;">
+                                            <i class="bi bi-file-earmark-text"></i> Görüntüle
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted small fst-italic">Rapor Yok</span>
+                                    }
+                                </td>
+                                <td>@item.AuditPeriodStart.ToShortDateString()</td>
+                                <td>@item.AuditPeriodEnd.ToShortDateString()</td>
                                 
-                                <!-- RefNo -->
-                                <td>
-                                    <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle rounded-1 font-monospace">
-                                        @item.RefNo
-                                    </span>
+                                <td class="text-center">
+                                    <button class="btn btn-sm @GetColorClass(item.IndividualIdDeficiencies) rounded-pill px-3 py-1 fw-medium shadow-sm d-inline-flex align-items-center justify-content-center" style="font-size: 0.75rem; min-width: 70px;">
+                                        @item.IndividualIdDeficiencies
+                                    </button>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm @GetColorClass(item.PhotoDeficiencies) rounded-pill px-3 py-1 fw-medium shadow-sm d-inline-flex align-items-center justify-content-center" style="font-size: 0.75rem; min-width: 70px;">
+                                        @item.PhotoDeficiencies
+                                    </button>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm @GetColorClass(item.PhotoUpToDate) rounded-pill px-3 py-1 fw-medium shadow-sm d-inline-flex align-items-center justify-content-center" style="font-size: 0.75rem; min-width: 70px;">
+                                        @item.PhotoUpToDate
+                                    </button>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm @GetColorClass(item.SignatureDeficiencies) rounded-pill px-3 py-1 fw-medium shadow-sm d-inline-flex align-items-center justify-content-center" style="font-size: 0.75rem; min-width: 70px;">
+                                        @item.SignatureDeficiencies
+                                    </button>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm @GetColorClass(item.SignatureUpToDate) rounded-pill px-3 py-1 fw-medium shadow-sm d-inline-flex align-items-center justify-content-center" style="font-size: 0.75rem; min-width: 70px;">
+                                        @item.SignatureUpToDate
+                                    </button>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm @GetColorClass(item.SystemDeficiencies) rounded-pill px-3 py-1 fw-medium shadow-sm d-inline-flex align-items-center justify-content-center" style="font-size: 0.75rem; min-width: 70px;">
+                                        @item.SystemDeficiencies
+                                    </button>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm @GetColorClass(item.SystemUpToDate) rounded-pill px-3 py-1 fw-medium shadow-sm d-inline-flex align-items-center justify-content-center" style="font-size: 0.75rem; min-width: 70px;">
+                                        @item.SystemUpToDate
+                                    </button>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm @GetColorClass(item.ReceiptDeficiencies) rounded-pill px-3 py-1 fw-medium shadow-sm d-inline-flex align-items-center justify-content-center" style="font-size: 0.75rem; min-width: 70px;">
+                                        @item.ReceiptDeficiencies
+                                    </button>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm @GetColorClass(item.ReceiptUpToDate) rounded-pill px-3 py-1 fw-medium shadow-sm d-inline-flex align-items-center justify-content-center" style="font-size: 0.75rem; min-width: 70px;">
+                                        @item.ReceiptUpToDate
+                                    </button>
                                 </td>
                                 
-                                <!-- Date -->
-                                <td class="text-muted small">
-                                    <span class="d-flex align-items-center gap-2">
-                                        <i class='bi bi-calendar4 text-muted'></i>
-                                        @item.Date.ToShortDateString()
-                                    </span>
+                                <td class="text-center">
+                                    <button class="btn btn-sm @GetColorClass(item.ReconciliationDeficiencies) rounded-pill px-3 py-1 fw-medium shadow-sm d-inline-flex align-items-center justify-content-center" style="font-size: 0.75rem; min-width: 70px;">
+                                        @item.ReconciliationDeficiencies
+                                    </button>
                                 </td>
-                                
-                                <!-- Customer -->
-                                <td class="fw-medium text-dark">@item.CustomerName</td>
-                                
-                                <!-- Region -->
-                                <td class="text-muted small">@item.Region</td>
-                                
-                                <!-- Category -->
-                                <td>
-                                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill">
-                                        @item.Category
-                                    </span>
+                                <td class="text-center">
+                                    <button class="btn btn-sm @GetColorClass(item.ReconciliationUpToDate) rounded-pill px-3 py-1 fw-medium shadow-sm d-inline-flex align-items-center justify-content-center" style="font-size: 0.75rem; min-width: 70px;">
+                                        @item.ReconciliationUpToDate
+                                    </button>
                                 </td>
-                                
-                                <!-- Amount -->
-                                <td class="text-end font-monospace fw-bold text-dark">
-                                    @item.Amount.ToString("N2") ₺
-                                </td>
-                                
-                                <!-- Status -->
+                                <td class="fw-bold text-primary">@item.TotalScore.ToString("F2")</td>
+                                <td class="fw-bold @(item.RiskScore > 10 ? "text-danger" : "text-success")">@item.RiskScore.ToString("F2")</td>
                                 <td class="text-center">
                                     @{
-                                        var statusColor = item.Status == "Aktif" ? "success" : (item.Status == "Bekliyor" ? "warning" : "danger");
-                                        var statusText = item.Status; // Using direct status text from DB as it seems to be localized in seed
+                                        var badgeClass = item.OverallOpinion switch {
+                                            "Olumlu" or "İyi" => "bg-success-subtle text-success",
+                                            "Gelişime Açık" or "Orta" => "bg-warning-subtle text-warning",
+                                            _ => "bg-danger-subtle text-danger"
+                                        };
                                     }
-                                    <span class="badge bg-@statusColor-subtle text-@statusColor border border-@statusColor-subtle">
-                                        @statusText
-                                    </span>
+                                    <span class="badge @badgeClass border border-opacity-10 rounded-pill px-3 py-1 fw-light" style="font-size: 0.80rem;">@item.OverallOpinion</span>
                                 </td>
-                                
-                                <!-- Actions -->
-                                <td class="text-end pe-4">
-                                    <button class='btn btn-sm btn-light border me-1'><i class='bi bi-eye'></i></button>
-                                    <button class='btn btn-sm btn-light border'><i class='bi bi-pencil'></i></button>
+                                <td>@item.CustomerCount</td>
+                                <td>@item.MissingIdCount</td>
+                                <td>@item.MissingIdExcludingDivit</td>
+                                <td>@item.CashTransactionCount</td>
+                                <td>@item.MissingReceiptCount</td>
+                                <td>@item.ValidReceiptCount</td>
+                                <td class="text-center">
+                                    @if(item.IsBranchInterviewed) 
+                                    { 
+                                        <span class="badge bg-success-subtle text-success border border-success border-opacity-10 rounded-pill px-3 py-1 fw-semibold" style="font-size: 0.75rem;">
+                                            <i class="bi bi-check-circle me-1"></i>Görüşüldü
+                                        </span>
+                                    } 
+                                    else 
+                                    { 
+                                        <span class="badge bg-secondary-subtle text-secondary border border-secondary border-opacity-10 rounded-pill px-3 py-1 fw-semibold" style="font-size: 0.75rem;">
+                                            <i class="bi bi-dash-circle me-1"></i>Görüşülmedi
+                                        </span>
+                                    }
                                 </td>
+                                <td>@(item.BranchInterviewDate?.ToShortDateString() ?? "-")</td>
                             </tr>
                         </ItemContent>
                         <Placeholder>
                              <tr>
-                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
-                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
-                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
-                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
-                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
-                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
-                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
-                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
-                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                @for (int i = 0; i < 32; i++)
+                                {
+                                    <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                }
                             </tr>
                         </Placeholder>
                     </Virtualize>
@@ -144,18 +214,55 @@
 </div>
 
 <style>
-    .sticky-top { top: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-    th { font-weight: 600; color: #555; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; padding-top: 1rem !important; padding-bottom: 1rem !important; }
-    td { padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; border-bottom-color: #f0f0f0; }
-    tr:hover td { background-color: #f8fbff; }
-</style>
+    .sticky-top { position: sticky; top: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.05); background-color: #f8f9fa; }
+    .sticky-col-1 { position: sticky; border-right: 1px solid #dee2e6 !important; background-color: inherit; }
+    .sticky-col-2 { position: sticky; border-right: 1px solid #dee2e6 !important; background-color: inherit; }
+    
+    th { font-weight: 600; color: #555; text-transform: uppercase; font-size: 0.6rem; letter-spacing: 0.5px; padding: 0.75rem !important; white-space: normal; vertical-align: middle; background-color: #f8f9fa !important; line-height: 1.2; max-width: 150px; }
+    td { padding: 0.5rem 0.75rem !important; border-bottom-color: #f0f0f0; white-space: nowrap; }
+    tr:hover td { background-color: #f8fbff !important; }
+    
+    .btn-soft-primary { background-color: rgba(13, 110, 253, 0.1); color: #0d6efd; border: none; transition: all 0.2s; }
+    .btn-soft-primary:hover { background-color: rgba(13, 110, 253, 0.2); color: #0a58ca; transform: translateY(-1px); }
+    
+    .btn-soft-danger { background-color: rgba(220, 53, 69, 0.1); color: #dc3545; border: none; transition: all 0.2s; }
+    .btn-soft-danger:hover { background-color: rgba(220, 53, 69, 0.2); color: #b02a37; transform: translateY(-1px); }
+    
+    .btn-soft-success { background-color: rgba(25, 135, 84, 0.1); color: #198754; border: none; transition: all 0.2s; }
+    .btn-soft-success:hover { background-color: rgba(25, 135, 84, 0.2); color: #146c43; transform: translateY(-1px); }
+    
+    .btn-soft-warning { background-color: rgba(255, 193, 7, 0.1); color: #ffc107; border: none; transition: all 0.2s; }
+    .btn-soft-warning:hover { background-color: rgba(255, 193, 7, 0.2); color: #e0a800; transform: translateY(-1px); }
+    
+    .btn-soft-info { background-color: rgba(13, 202, 240, 0.1); color: #0dcaf0; border: none; transition: all 0.2s; }
+    .btn-soft-info:hover { background-color: rgba(13, 202, 240, 0.2); color: #3dd5f3; transform: translateY(-1px); }
+    
+    .btn-soft-secondary { background-color: rgba(108, 117, 125, 0.1); color: #6c757d; border: none; }
+    .btn-soft-secondary:hover { background-color: rgba(108, 117, 125, 0.2); color: #5c636a; }
 
+    thead th.sticky-col-1 { z-index: 30 !important; background-color: #f8f9fa !important; }
+    thead th.sticky-col-2 { z-index: 29 !important; background-color: #f8f9fa !important; }
+
+    tbody td.sticky-col-1 { background-color: #fff !important; }
+    tbody td.sticky-col-2 { background-color: #fff !important; }
+
+    tbody tr:hover td.sticky-col-1, tbody tr:hover td.sticky-col-2 { background-color: #f8fbff !important; }
+
+    /* Badge Soft Styles */
+    .badge-soft-primary { background-color: rgba(13, 110, 253, 0.1); color: #0d6efd; }
+    .badge-soft-success { background-color: rgba(25, 135, 84, 0.1); color: #198754; }
+    .badge-soft-warning { background-color: rgba(255, 193, 7, 0.1); color: #b48900; }
+    .badge-soft-danger { background-color: rgba(220, 53, 69, 0.1); color: #dc3545; }
+    .badge-soft-info { background-color: rgba(13, 202, 240, 0.1); color: #0aa2c0; }
+    .badge-soft-secondary { background-color: rgba(108, 117, 125, 0.1); color: #6c757d; }
+
+</style>
 @code {
-    private string poolDisplayName = "Ticari Kayıtlar";
-    private string poolDescription = "Yüksek performanslı ticari işlem veri havuzu";
+    private string poolDisplayName = "Şube Teftiş Paneli";
+    private string poolDescription = "Şube denetim ve operasyonel risk takip havuzu";
     private bool isLoading = true;
     private int totalCount = 0;
-    private Virtualize<CommercialRecord>? virtualizeComponent;
+    private Virtualize<BranchInspectionRecord>? virtualizeComponent;
     
     protected override async Task OnInitializedAsync()
     {
@@ -163,40 +270,62 @@
         isLoading = false;
     }
 
-    private async ValueTask<ItemsProviderResult<CommercialRecord>> LoadData(ItemsProviderRequest request)
+    private async ValueTask<ItemsProviderResult<BranchInspectionRecord>> LoadData(ItemsProviderRequest request)
     {
-        var result = await PoolService.GetCommercialRecordsAsync(request.StartIndex, request.Count);
+        var result = await PoolService.GetBranchInspectionRecordsAsync(request.StartIndex, request.Count);
         totalCount = result.TotalCount;
-        return new ItemsProviderResult<CommercialRecord>(result.Items, result.TotalCount);
+
+        return new ItemsProviderResult<BranchInspectionRecord>(result.Items, result.TotalCount);
+    }
+    
+    private string GetColorClass(string value)
+    {
+        return value switch
+        {
+            "Yüksek" => "btn-soft-danger",
+            "Orta" => "btn-soft-warning",
+            "Düşük" => "btn-soft-primary",
+            "Bilgi" => "btn-soft-info",
+            "Gelişim Fırsatı" => "btn-soft-success",
+            _ => "btn-soft-secondary"
+        };
+    }
+
+    private (string BadgeClass, string IconClass) GetOpinionStyle(string opinion)
+    {
+        return opinion switch
+        {
+            "Olumlu" or "İyi" => ("badge-soft-success border-success", "bi-check-circle-fill"),
+            "Gelişime Açık" or "Orta" => ("badge-soft-warning border-warning", "bi-exclamation-triangle-fill"),
+            "Riskli" or "Kritik" => ("badge-soft-danger border-danger", "bi-x-octagon-fill"),
+            _ => ("badge-soft-secondary border-secondary", "bi-info-circle-fill")
+        };
     }
 
     private async Task ExportExcel()
     {
         if (totalCount == 0) return;
         
-        var (items, count) = await PoolService.GetCommercialRecordsAsync(0, 1000); 
+        var (items, count) = await PoolService.GetBranchInspectionRecordsAsync(0, 5000); 
         
         var sb = new System.Text.StringBuilder();
-        // Headers
-        sb.AppendLine("ID;REF NO;TARİH;MÜŞTERİ;BÖLGE;KATEGORİ;TUTAR;DURUM");
-        
-        // Rows
+        sb.AppendLine("Sube;Sehir;RaporTarihi;ToplamPuan;BulguSeviyesi;GenelGorus;MusteriAdedi;NakitIslemAdedi");
         foreach (var item in items)
         {
              var rowValues = new List<string>
              {
-                 item.Id.ToString(),
-                 item.RefNo,
-                 item.Date.ToShortDateString(),
-                 item.CustomerName,
-                 item.Region,
-                 item.Category,
-                 item.Amount.ToString("N2"),
-                 item.Status
+                 item.BranchName,
+                 item.City,
+                 item.ReportDate.ToShortDateString(),
+                 item.TotalScore.ToString(),
+                 item.RiskScore.ToString(),
+                 item.OverallOpinion,
+                 item.CustomerCount.ToString(),
+                 item.CashTransactionCount.ToString()
              };
              sb.AppendLine(string.Join(";", rowValues));
         }
 
-        await JSRuntime.InvokeVoidAsync("downloadFile", "data_pool_export.csv", "text/csv", sb.ToString());
+        await JSRuntime.InvokeVoidAsync("downloadFile", "sube_teftis_export.csv", "text/csv", sb.ToString());
     }
 }

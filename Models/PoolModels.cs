@@ -61,4 +61,42 @@ namespace BlazorWebApp.Models
         public decimal Budget { get; set; }
         public DateTime DueDate { get; set; }
     }
+
+    // Record for Branch Inspection (Veri Havuzu 2)
+    public class BranchInspectionRecord
+    {
+        public int Id { get; set; }
+        public string BranchCode { get; set; } = "";
+        public string BranchName { get; set; } = "";
+        public string TaskId { get; set; } = "";
+        public string BranchType { get; set; } = "";
+        public DateTime OpeningDate { get; set; }
+        public string City { get; set; } = "";
+        public DateTime ReportDate { get; set; }
+        public bool HasInspectionReport { get; set; } // Button
+        public DateTime AuditPeriodStart { get; set; }
+        public DateTime AuditPeriodEnd { get; set; }
+        public string IndividualIdDeficiencies { get; set; } = ""; // Button (Label)
+        public string PhotoDeficiencies { get; set; } = ""; // Button (Label)
+        public string PhotoUpToDate { get; set; } = ""; // Button (Label)
+        public string SignatureDeficiencies { get; set; } = ""; // Button (Label)
+        public string SignatureUpToDate { get; set; } = ""; // Button (Label)
+        public string SystemDeficiencies { get; set; } = ""; // Button (Label)
+        public string SystemUpToDate { get; set; } = ""; // Button (Label)
+        public string ReceiptDeficiencies { get; set; } = ""; // Button (Label)
+        public string ReceiptUpToDate { get; set; } = ""; // Button (Label)
+        public string ReconciliationDeficiencies { get; set; } = "";
+        public string ReconciliationUpToDate { get; set; } = "";
+        public double TotalScore { get; set; }
+        public double RiskScore { get; set; }
+        public string OverallOpinion { get; set; } = "";
+        public int CustomerCount { get; set; }
+        public int MissingIdCount { get; set; }
+        public int MissingIdExcludingDivit { get; set; }
+        public int CashTransactionCount { get; set; }
+        public int MissingReceiptCount { get; set; }
+        public int ValidReceiptCount { get; set; }
+        public bool IsBranchInterviewed { get; set; }
+        public DateTime? BranchInterviewDate { get; set; }
+    }
 }

@@ -213,20 +213,9 @@
     
      private async ValueTask<ItemsProviderResult<Dictionary<string, object>>> LoadData(ItemsProviderRequest request)
     {
-        // In a real scenario, we'd pass filters to GetDynamicRecordsAsync
-        // For now, simple pagination
-        var result = await PoolService.GetDynamicRecordsAsync("UnifiedData", request.StartIndex, request.Count);
-        
-        // Manual client-side filtering (not ideal for large DBs, but dynamic filtering is complex)
+        var result = await PoolService.GetDynamicRecordsAsync("UnifiedData", request.StartIndex, request.Count, currentCriteria.Project, currentCriteria.Year);
+
         var items = result.Items;
-        if (!string.IsNullOrWhiteSpace(currentCriteria.Project))
-        {
-            items = items.Where(x => x.ContainsKey("Project") && x["Project"]?.ToString() == currentCriteria.Project).ToList();
-        }
-        
-        // Note: Total count might be wrong if we filter client-side after fetching a page. 
-        // Correct way is to build dynamic SQL with WHERE clauses.
-        // For this demo:
         totalCount = result.TotalCount;
         
         return new ItemsProviderResult<Dictionary<string, object>>(items, totalCount);
@@ -239,8 +228,7 @@
         {
             value = item[col.PropertyName];
         } else if (item.ContainsKey(col.PropertyName.Split('.')[0])) {
-             // Handle simple nesting if needed, or just flat
-             value = item[col.PropertyName.Split('.')[0]];
+            value = item[col.PropertyName.Split('.')[0]];
         }
 
         if (col.DataType == "PriorityBadge")

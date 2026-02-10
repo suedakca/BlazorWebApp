@@ -1,4 +1,5 @@
 @page "/reports"
+@rendermode InteractiveServer
 @inject IJSRuntime JSRuntime
 
 <PageTitle>Raporlama Merkezi</PageTitle>
@@ -24,12 +25,9 @@
             </div>
              <div class="col-md-6">
                 <div class="d-flex justify-content-md-end gap-2">
-                    <div class="btn-group shadow-sm">
-                        <button class="btn btn-white border">Günlük</button>
-                        <button class="btn btn-white border active">Haftalık</button>
-                        <button class="btn btn-white border">Aylık</button>
-                    </div>
-                    <button class="btn btn-primary shadow-sm" @onclick='async () => await JSRuntime.InvokeVoidAsync("printPage")'><i class="bi bi-file-earmark-pdf me-2"></i>PDF</button>
+                    <button class="btn btn-primary shadow-sm" @onclick="ExportPdf">
+                        <i class="bi bi-file-earmark-pdf me-2"></i>PDF
+                    </button>
                 </div>
             </div>
         </div>
@@ -132,9 +130,28 @@
     .bg-soft-primary { background-color: #dbeafe; }
     .bg-soft-warning { background-color: #fef3c7; }
     .bg-soft-danger { background-color: #fee2e2; }
+    .btn-white { background: white; color: #666; }
+    .btn-white.active { background: #0077b6 !important; color: white !important; border-color: #0077b6 !important; }
 </style>
 
 @code {
+    private string selectedPeriod = "Haftalık";
+
+    private async Task ChangePeriod(string period)
+    {
+        selectedPeriod = period;
+        await JSRuntime.InvokeVoidAsync("console.log", $"Period changed to: {period}");
+        await JSRuntime.InvokeVoidAsync("renderAreaChart", "chart-revenue");
+        await JSRuntime.InvokeVoidAsync("renderDonutChart", "chart-category");
+        await JSRuntime.InvokeVoidAsync("renderBarChart", "chart-branch");
+        await JSRuntime.InvokeVoidAsync("renderRadialChart", "chart-satisfaction");
+    }
+
+    private async Task ExportPdf()
+    {
+        await JSRuntime.InvokeVoidAsync("printPage");
+    }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)

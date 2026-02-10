@@ -14,6 +14,7 @@ namespace BlazorWebApp.Data
         public DbSet<PoolColumn> PoolColumns { get; set; }
         public DbSet<CommercialRecord> CommercialRecords { get; set; }
         public DbSet<ProjectRecord> ProjectRecords { get; set; }
+        public DbSet<BranchInspectionRecord> BranchInspections { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -137,6 +138,54 @@ namespace BlazorWebApp.Data
                     Progress = new Random(i).Next(10, 100),
                     Budget = new Random(i).Next(50000, 500000),
                     DueDate = DateTime.Now.AddDays(new Random(i).Next(5, 120))
+                });
+                }
+
+            // --- Seed Branch Inspection Records (Data Pool 2 Refactor) ---
+            var cities = new[] { "İstanbul", "Ankara", "İzmir", "Bursa", "Antalya", "Adana", "Konya", "Gaziantep" };
+            var opinions = new[] { "Olumlu", "Gelişime Açık", "Riskli", "Kritik", "İyi", "Orta" };
+            var riskLevels = new[] { "Gelişim Fırsatı", "Bilgi", "Düşük", "Orta", "Yüksek" };
+            
+            for (int i = 1; i <= 50; i++)
+            {
+                var city = cities[i % cities.Length];
+                var date = DateTime.Now.AddDays(-i * 3);
+                
+                modelBuilder.Entity<BranchInspectionRecord>().HasData(new BranchInspectionRecord
+                {
+                    Id = i,
+                    BranchCode = $"{1000 + i}",
+                    BranchName = $"{city} Şube {i}",
+                    TaskId = $"TASK-{2024}-{i:000}",
+                    BranchType = i % 3 == 0 ? "Kurumsal" : "Bireysel",
+                    OpeningDate = DateTime.Now.AddYears(-5).AddDays(i * 10),
+                    City = city,
+                    ReportDate = date,
+                    HasInspectionReport = i % 2 == 0,
+                    AuditPeriodStart = date.AddMonths(-1),
+                    AuditPeriodEnd = date,
+                    IndividualIdDeficiencies = riskLevels[i % riskLevels.Length],
+                    PhotoDeficiencies = riskLevels[(i + 1) % riskLevels.Length],
+                    PhotoUpToDate = riskLevels[(i + 2) % riskLevels.Length],
+                    SignatureDeficiencies = riskLevels[(i + 3) % riskLevels.Length],
+                    SignatureUpToDate = riskLevels[(i + 4) % riskLevels.Length],
+                    SystemDeficiencies = riskLevels[i % riskLevels.Length],
+                    SystemUpToDate = riskLevels[(i + 1) % riskLevels.Length],
+                    ReceiptDeficiencies = riskLevels[(i + 2) % riskLevels.Length],
+                    ReceiptUpToDate = riskLevels[(i + 3) % riskLevels.Length],
+                    ReconciliationDeficiencies = riskLevels[(i + 4) % riskLevels.Length],
+                    ReconciliationUpToDate = riskLevels[i % riskLevels.Length],
+                    TotalScore = 85.5 + (i % 15),
+                    RiskScore = 15.0 - (i % 10),
+                    OverallOpinion = opinions[i % opinions.Length],
+                    CustomerCount = 500 + (i * 10),
+                    MissingIdCount = i % 10,
+                    MissingIdExcludingDivit = i % 5,
+                    CashTransactionCount = 1000 + (i * 20),
+                    MissingReceiptCount = i % 8,
+                    ValidReceiptCount = 1000 - (i % 8),
+                    IsBranchInterviewed = i % 2 == 0,
+                    BranchInterviewDate = i % 2 == 0 ? (DateTime?)date.AddDays(-1) : null
                 });
             }
         }
