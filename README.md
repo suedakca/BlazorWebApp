@@ -18,6 +18,17 @@ Projeyi çalıştırmadan önce bilgisayarınızda aşağıdakilerin kurulu oldu
 - [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) (veya Docker üzerinde çalışan bir instance)
 - Bir kod editörü (Önerilen: VS Code veya Visual Studio 2022)
 
+### 🎨 Tasarım ve Arayüz Gereksinimleri
+
+Projenin modern arayüzünün (fontlar, ikonlar, grafikler) eksiksiz çalışması için **aktif bir internet bağlantısı** gereklidir (CDN bağımlılıkları).
+
+- **Google Fonts:** Proje, modern ve okunabilir `Inter` ve `Outfit` font ailelerini kullanır.
+- **ApexCharts JS:** Gelişmiş grafik kütüphanesi.
+- **Bootstrap Icons:** Kullanıcı arayüzünde kullanılan tüm ikon seti.
+- **Bootstrap Bundle JS:** Menü ve interaktif bileşenler.
+
+Ayrıca, projenin **CSS Isolation** özelliğinin doğru çalışması ve stil dosyalarının üretilmesi için projeyi ilk kez çalıştırırken mutlaka bir kez `dotnet build` komutu çalıştırılmalıdır (veya `dotnet run` öncesi bu işlem otomatik yapılır).
+
 ## 📦 Kurulum Adımları
 
 1. **Projeyi Klonlayın:**
