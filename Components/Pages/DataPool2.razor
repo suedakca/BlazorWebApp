@@ -1,202 +1,202 @@
 @page "/data-pool-2"
-@using Microsoft.AspNetCore.Components.Web.Virtualization
-@attribute [StreamRendering]
+@using BlazorWebApp.Services
+@using BlazorWebApp.Models
+@inject PoolService PoolService
+@inject IJSRuntime JSRuntime
 
-<PageTitle>Veri Havuzu 2 | Yüksek Performans</PageTitle>
+<PageTitle>Ticari Veri Havuzu | @poolDisplayName</PageTitle>
 
 <div class="h-100 w-100 d-flex flex-column bg-white">
-    <!-- Header -->
-    <div class="p-3 border-bottom d-flex justify-content-between align-items-center bg-white sticky-top shadow-sm" style="z-index: 100;">
+    <!-- Header & Toolbar -->
+    <div class="px-4 py-3 border-bottom d-flex justify-content-between align-items-center bg-light">
         <div>
-            <h4 class="mb-1 text-primary fw-bold" style="letter-spacing: -0.5px;">Veri Havuzu - 2</h4>
+            <h5 class="fw-bold text-dark mb-0"><i class="bi bi-database me-2 text-primary"></i>@poolDisplayName</h5>
+            <small class="text-muted">@poolDescription</small>
         </div>
         <div class="d-flex gap-2">
-             <div class="input-group input-group-sm" style="width: 250px;">
-                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
-                <input type="text" class="form-control border-start-0 ps-0" placeholder="Kayıtlarda ara..." />
+            <div class="input-group input-group-sm" style="width: 250px;">
+                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" class="form-control border-start-0 ps-0" placeholder="Kayıt ara..." />
             </div>
-            <button class="btn btn-sm btn-outline-info" @onclick="ToggleSummary"><i class="bi bi-bar-chart"></i> Özet Veriler</button>
-            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-funnel"></i> Filtrele</button>
-            <button class="btn btn-sm btn-primary"><i class="bi bi-download"></i> Dışa Aktar</button>
+            <button class="btn btn-sm btn-white border shadow-sm" @onclick="ExportExcel">
+                <i class="bi bi-file-earmark-spreadsheet text-success me-1"></i>Excel
+            </button>
+            <button class="btn btn-sm btn-primary shadow-sm">
+                <i class="bi bi-plus-lg me-1"></i>Yeni Ekle
+            </button>
         </div>
     </div>
 
-    <!-- Grid -->
-    <div class="flex-grow-1 overflow-auto bg-light">
-        <div class="container-fluid p-0">
-            <table class="table table-hover table-borderless mb-0 w-100 data-pool-table">
-                <thead class="bg-light sticky-top" style="top: 0; z-index: 10;">
+    <!-- Data Grid -->
+    <div class="flex-grow-1 overflow-auto">
+        <table class="table table-hover mb-0 align-middle" style="font-size: 0.85rem;">
+            <thead class="bg-light sticky-top" style="z-index: 10;">
+                <tr>
+                    <th class="ps-4" style="width: 80px;">ID</th>
+                    <th style="width: 120px;">REF NO</th>
+                    <th style="width: 120px;">TARİH</th>
+                    <th>MÜŞTERİ</th>
+                    <th>BÖLGE</th>
+                    <th>KATEGORİ</th>
+                    <th class="text-end">TUTAR</th>
+                    <th class="text-center">DURUM</th>
+                    <th class="text-end pe-4" style="width: 100px;">İŞLEM</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (isLoading)
+                {
                     <tr>
-                        <th class="ps-4" style="width: 80px;">ID</th>
-                        <th style="width: 120px;">REF NO</th>
-                        <th style="width: 120px;">TARİH</th>
-                        <th>MÜŞTERİ</th>
-                        <th>BÖLGE</th>
-                        <th>KATEGORİ</th>
-                        <th class="text-end">TUTAR</th>
-                        <th class="text-center">DURUM</th>
-                        <th class="text-end pe-4" style="width: 100px;">İŞLEM</th>
+                        <td colspan="9" class="text-center p-5">
+                            <div class="spinner-border text-primary" role="status"></div>
+                            <div class="mt-2 text-muted small">Veriler yükleniyor...</div>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    <Virtualize ItemsProvider="LoadData" Context="item" ItemSize="45">
+                }
+                else
+                {
+                    <Virtualize ItemsProvider="LoadData" Context="item" @ref="virtualizeComponent">
                         <ItemContent>
-                            <tr class="align-middle border-bottom">
-                                <td class="ps-4 text-muted font-monospace">#@item.Id</td>
-                                <td><span class="badge bg-light text-secondary border font-monospace">@item.RefNo</span></td>
-                                <td class="text-muted small">@item.Date.ToShortDateString()</td>
-                                <td class="fw-medium text-dark">@item.CustomerName</td>
-                                <td class="text-muted small">@item.Region</td>
-                                <td><span class="badge rounded-pill bg-soft-primary text-primary">@item.Category</span></td>
-                                <td class="text-end font-monospace fw-bold text-dark">@item.Amount.ToString("N0") ₺</td>
-                                <td class="text-center">
-                                    <div class="status-indicator @item.Status.ToLower()">
-                                        <span class="dot"></span>
-                                        <span class="label">@item.Status</span>
-                                    </div>
+                            <tr>
+                                <!-- ID -->
+                                <td class="ps-4 text-muted font-monospace">@item.Id</td>
+                                
+                                <!-- RefNo -->
+                                <td>
+                                    <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle rounded-1 font-monospace">
+                                        @item.RefNo
+                                    </span>
                                 </td>
+                                
+                                <!-- Date -->
+                                <td class="text-muted small">
+                                    <span class="d-flex align-items-center gap-2">
+                                        <i class='bi bi-calendar4 text-muted'></i>
+                                        @item.Date.ToShortDateString()
+                                    </span>
+                                </td>
+                                
+                                <!-- Customer -->
+                                <td class="fw-medium text-dark">@item.CustomerName</td>
+                                
+                                <!-- Region -->
+                                <td class="text-muted small">@item.Region</td>
+                                
+                                <!-- Category -->
+                                <td>
+                                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill">
+                                        @item.Category
+                                    </span>
+                                </td>
+                                
+                                <!-- Amount -->
+                                <td class="text-end font-monospace fw-bold text-dark">
+                                    @item.Amount.ToString("N2") ₺
+                                </td>
+                                
+                                <!-- Status -->
+                                <td class="text-center">
+                                    @{
+                                        var statusColor = item.Status == "Aktif" ? "success" : (item.Status == "Bekliyor" ? "warning" : "danger");
+                                        var statusText = item.Status; // Using direct status text from DB as it seems to be localized in seed
+                                    }
+                                    <span class="badge bg-@statusColor-subtle text-@statusColor border border-@statusColor-subtle">
+                                        @statusText
+                                    </span>
+                                </td>
+                                
+                                <!-- Actions -->
                                 <td class="text-end pe-4">
-                                    <button class="btn btn-icon btn-sm text-muted hover-primary"><i class="bi bi-three-dots"></i></button>
+                                    <button class='btn btn-sm btn-light border me-1'><i class='bi bi-eye'></i></button>
+                                    <button class='btn btn-sm btn-light border'><i class='bi bi-pencil'></i></button>
                                 </td>
                             </tr>
                         </ItemContent>
                         <Placeholder>
-                            <tr class="placeholder-glow">
-                                <td class="ps-4"><span class="placeholder col-6"></span></td>
-                                <td><span class="placeholder col-8"></span></td>
-                                <td><span class="placeholder col-6"></span></td>
-                                <td><span class="placeholder col-10"></span></td>
-                                <td><span class="placeholder col-4"></span></td>
-                                <td><span class="placeholder col-6"></span></td>
-                                <td><span class="placeholder col-4"></span></td>
-                                <td><span class="placeholder col-8"></span></td>
-                                <td class="pe-4"><span class="placeholder col-2"></span></td>
+                             <tr>
+                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
                             </tr>
                         </Placeholder>
                     </Virtualize>
-                </tbody>
-            </table>
+                }
+            </tbody>
+        </table>
+    </div>
+
+     <!-- Footer Status -->
+    <div class="border-top px-4 py-2 bg-light d-flex justify-content-between align-items-center small text-muted">
+        <div>
+            Toplam <strong>@totalCount</strong> kayıt listeleniyor
+        </div>
+        <div>
+            <span class="me-3"><i class="bi bi-clock me-1"></i>Son Güncelleme: @DateTime.Now.ToShortTimeString()</span>
         </div>
     </div>
+
 </div>
 
-@if (showSummary)
-{
-    <div class="modal-backdrop fade show"></div>
-    <div class="modal fade show d-block" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg">
-                <div class="modal-header border-bottom-0 pb-0">
-                    <h5 class="modal-title fw-bold text-primary">Veri Özeti</h5>
-                    <button type="button" class="btn-close" @onclick="ToggleSummary"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="card h-100 border-0 shadow-sm bg-light">
-                                <div class="card-body">
-                                    <h6 class="card-title text-muted mb-3 text-uppercase small fw-bold">Bölge Dağılımı</h6>
-                                    <table class="table table-sm table-borderless mb-0">
-                                        <tbody>
-                                            <tr><td>Marmara</td><td class="text-end fw-bold">45%</td></tr>
-                                            <tr><td>Ege</td><td class="text-end fw-bold">25%</td></tr>
-                                            <tr><td>İç Anadolu</td><td class="text-end fw-bold">20%</td></tr>
-                                            <tr><td>Akdeniz</td><td class="text-end fw-bold">10%</td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card h-100 border-0 shadow-sm bg-light">
-                                <div class="card-body">
-                                    <h6 class="card-title text-muted mb-3 text-uppercase small fw-bold">Durum Özeti</h6>
-                                    <table class="table table-sm table-borderless mb-0">
-                                        <tbody>
-                                            <tr><td><span class="status-indicator aktif"><span class="dot"></span>Aktif</span></td><td class="text-end fw-bold">850,000</td></tr>
-                                            <tr><td><span class="status-indicator bekliyor"><span class="dot"></span>Bekliyor</span></td><td class="text-end fw-bold">450,000</td></tr>
-                                            <tr><td><span class="status-indicator pasif"><span class="dot"></span>Pasif</span></td><td class="text-end fw-bold">200,000</td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="col-12">
-                            <div class="card border-0 shadow-sm bg-light">
-                                <div class="card-body">
-                                    <h6 class="card-title text-muted mb-3 text-uppercase small fw-bold">Finansal Özet</h6>
-                                    <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <span>Toplam Ciro</span>
-                                        <span class="fs-5 fw-bold text-dark">45.2 Milyon ₺</span>
-                                    </div>
-                                    <div class="progress" style="height: 6px;">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 75%"></div>
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 15%"></div>
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 10%"></div>
-                                    </div>
-                                    <div class="d-flex justify-content-between mt-1 text-muted x-small">
-                                        <span>Tahsil Edilen (%75)</span>
-                                        <span>Bekleyen (%15)</span>
-                                        <span>İptal (%10)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer border-top-0">
-                    <button type="button" class="btn btn-secondary" @onclick="ToggleSummary">Kapat</button>
-                </div>
-            </div>
-        </div>
-    </div>
-}
+<style>
+    .sticky-top { top: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    th { font-weight: 600; color: #555; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; padding-top: 1rem !important; padding-bottom: 1rem !important; }
+    td { padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; border-bottom-color: #f0f0f0; }
+    tr:hover td { background-color: #f8fbff; }
+</style>
 
 @code {
-    private bool showSummary = false;
-
-    private void ToggleSummary()
+    private string poolDisplayName = "Ticari Kayıtlar";
+    private string poolDescription = "Yüksek performanslı ticari işlem veri havuzu";
+    private bool isLoading = true;
+    private int totalCount = 0;
+    private Virtualize<CommercialRecord>? virtualizeComponent;
+    
+    protected override async Task OnInitializedAsync()
     {
-        showSummary = !showSummary;
+        await Task.Yield();
+        isLoading = false;
     }
 
-    private async ValueTask<ItemsProviderResult<DataRecord>> LoadData(ItemsProviderRequest request)
+    private async ValueTask<ItemsProviderResult<CommercialRecord>> LoadData(ItemsProviderRequest request)
     {
-        // Simulate waiting for data
-        await Task.Delay(100);
+        var result = await PoolService.GetCommercialRecordsAsync(request.StartIndex, request.Count);
+        totalCount = result.TotalCount;
+        return new ItemsProviderResult<CommercialRecord>(result.Items, result.TotalCount);
+    }
 
-        // Generate dummy data on the fly
-        var totalRecords = 1500000;
-        var records = new List<DataRecord>();
-
-        for (int i = 0; i < request.Count; i++)
+    private async Task ExportExcel()
+    {
+        if (totalCount == 0) return;
+        
+        var (items, count) = await PoolService.GetCommercialRecordsAsync(0, 1000); 
+        
+        var sb = new System.Text.StringBuilder();
+        // Headers
+        sb.AppendLine("ID;REF NO;TARİH;MÜŞTERİ;BÖLGE;KATEGORİ;TUTAR;DURUM");
+        
+        // Rows
+        foreach (var item in items)
         {
-            var index = request.StartIndex + i;
-            records.Add(new DataRecord
-            {
-                Id = index + 1,
-                RefNo = $"REF-{100000 + index}",
-                Date = DateTime.Now.AddDays(-index % 1000),
-                CustomerName = $"Müşteri {(index % 500) + 1} A.Ş.",
-                Region = (index % 4) switch { 0 => "Marmara", 1 => "Ege", 2 => "İç Anadolu", _ => "Akdeniz" },
-                Category = (index % 3) switch { 0 => "Kurumsal", 1 => "Bireysel", _ => "Kamu" },
-                Amount = (decimal)((index * 137.5) % 50000) + 1000,
-                Status = (index % 5) == 0 ? "Pasif" : (index % 3) == 0 ? "Bekliyor" : "Aktif"
-            });
+             var rowValues = new List<string>
+             {
+                 item.Id.ToString(),
+                 item.RefNo,
+                 item.Date.ToShortDateString(),
+                 item.CustomerName,
+                 item.Region,
+                 item.Category,
+                 item.Amount.ToString("N2"),
+                 item.Status
+             };
+             sb.AppendLine(string.Join(";", rowValues));
         }
 
-        return new ItemsProviderResult<DataRecord>(records, totalRecords);
-    }
-
-    public class DataRecord
-    {
-        public int Id { get; set; }
-        public string RefNo { get; set; } = "";
-        public DateTime Date { get; set; }
-        public string CustomerName { get; set; } = "";
-        public string Region { get; set; } = "";
-        public string Category { get; set; } = "";
-        public decimal Amount { get; set; }
-        public string Status { get; set; } = "";
+        await JSRuntime.InvokeVoidAsync("downloadFile", "data_pool_export.csv", "text/csv", sb.ToString());
     }
 }

@@ -1,50 +1,19 @@
 ﻿@using BlazorWebApp.Services
 @inject TabService TabService
 @inject NavigationManager NavManager
+@implements IDisposable
 
 <div class="nav-scrollable @(IsExpanded ? "expanded" : "")">
     <nav class="flex-column">
-        <div class="nav-item">
-            <div class="nav-link @(GetActiveClass("/"))" @onclick='() => OpenTab("Dashboard", "/", "bi-house-door")'>
-                <div class="nav-icon"><span class="bi bi-house-door"></span></div>
-                <div class="nav-text">Dashboard</div>
+        @foreach (var item in MenuItems)
+        {
+            <div class="nav-item">
+                <div class="nav-link @(GetActiveClass(item.Url))" @onclick='() => OpenTab(item.Title, item.Url, item.Icon)'>
+                    <div class="nav-icon"><span class="bi @item.Icon"></span></div>
+                    <div class="nav-text">@item.Title</div>
+                </div>
             </div>
-        </div>
-
-        <div class="nav-item">
-            <div class="nav-link @(GetActiveClass("/data"))" @onclick='() => OpenTab("Veri Havuzu", "/data", "bi-table")'>
-                <div class="nav-icon"><span class="bi bi-table"></span></div>
-                <div class="nav-text">Veri Havuzu</div>
-            </div>
-        </div>
-
-        <div class="nav-item">
-            <div class="nav-link @(GetActiveClass("/data-pool-2"))" @onclick='() => OpenTab("Veri Havuzu - 2", "/data-pool-2", "bi-lightning-charge")'>
-                <div class="nav-icon"><span class="bi bi-lightning-charge"></span></div>
-                <div class="nav-text">Veri Havuzu - 2</div>
-            </div>
-        </div>
-
-        <div class="nav-item">
-            <div class="nav-link @(GetActiveClass("/analytics"))" @onclick='() => OpenTab("Analiz Görünümü", "/analytics", "bi-grid-3x3-gap")'>
-                <div class="nav-icon"><span class="bi bi-grid-3x3-gap"></span></div>
-                <div class="nav-text">Analiz Görünümü</div>
-            </div>
-        </div>
-
-        <div class="nav-item">
-            <div class="nav-link @(GetActiveClass("/reports"))" @onclick='() => OpenTab("Raporlar", "/reports", "bi-file-earmark-bar-graph")'>
-                <div class="nav-icon"><span class="bi bi-file-earmark-bar-graph"></span></div>
-                <div class="nav-text">Raporlar</div>
-            </div>
-        </div>
-
-        <div class="nav-item">
-            <div class="nav-link @(GetActiveClass("/settings"))" @onclick='() => OpenTab("Ayarlar", "/settings", "bi-gear")'>
-                <div class="nav-icon"><span class="bi bi-gear"></span></div>
-                <div class="nav-text">Ayarlar</div>
-            </div>
-        </div>
+        }
     </nav>
 </div>
 
@@ -52,10 +21,48 @@
     [Parameter] public bool IsExpanded { get; set; }
     [Parameter] public EventCallback OnNavigate { get; set; }
 
+    private List<MenuItem> MenuItems = new()
+    {
+        new MenuItem("Dashboard", "/", "bi-house-door"),
+        new MenuItem("Veri Havuzu", "/data", "bi-table"),
+        new MenuItem("Veri Havuzu - 2", "/data-pool-2", "bi-lightning-charge"),
+        new MenuItem("Veri Havuzu - 3", "/data-pool-3", "bi-layers"),
+        new MenuItem("Analiz Görünümü", "/analytics", "bi-grid-3x3-gap"),
+        new MenuItem("Raporlar", "/reports", "bi-file-earmark-bar-graph"),
+        new MenuItem("Ayarlar", "/settings", "bi-gear")
+    };
+
+    protected override void OnInitialized()
+    {
+        NavManager.LocationChanged += MapUrlToTab;
+        // Don't auto-open tab on initial load for now to avoid clutter, or maybe we should?
+        // User asked for "clicking there opens tab", which implies navigation action.
+        // Let's ensure if we land on a specific page (deep link), the tab is there.
+        MapUrlToTab(this, new LocationChangedEventArgs(NavManager.Uri, true));
+    }
+
+    private void MapUrlToTab(object? sender, LocationChangedEventArgs e)
+    {
+        var relativeUrl = NavManager.ToBaseRelativePath(e.Location);
+        var url = relativeUrl == "" ? "/" : "/" + relativeUrl;
+
+        // Strip query strings if any (basic implementation)
+        if (url.Contains("?")) url = url.Split('?')[0];
+
+        var item = MenuItems.FirstOrDefault(m => m.Url.Equals(url, StringComparison.OrdinalIgnoreCase));
+        if (item != null)
+        {
+             // We use InvokeAsync to ensure thread safety with UI updates if needed, though TabService is simple C# class.
+             // Calling AddTab will trigger state change in MainLayout
+             TabService.AddTab(item.Title, item.Url, item.Icon);
+             StateHasChanged();
+        }
+    }
+
     private async Task OpenTab(string title, string url, string icon)
     {
         await OnNavigate.InvokeAsync();
-        TabService.AddTab(title, url, icon);
+        // This is redundant now if MapUrlToTab works, but keeping it for direct feedback
         NavManager.NavigateTo(url);
     }
 
@@ -65,5 +72,12 @@
         if (string.IsNullOrEmpty(currentUrl) && url == "/") return "active";
         return ("/" + currentUrl).Equals(url, StringComparison.OrdinalIgnoreCase) ? "active" : "";
     }
+
+    public void Dispose()
+    {
+        NavManager.LocationChanged -= MapUrlToTab;
+    }
+
+    private record MenuItem(string Title, string Url, string Icon);
 }
 

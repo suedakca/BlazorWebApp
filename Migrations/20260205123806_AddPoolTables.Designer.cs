@@ -4,6 +4,7 @@ using BlazorWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorWebApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260205123806_AddPoolTables")]
+    partial class AddPoolTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,7 +70,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 1137.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 2 A.Ş.",
-                            Date = new DateTime(2026, 2, 4, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7530),
+                            Date = new DateTime(2026, 2, 4, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8240),
                             RefNo = "REF-100001",
                             Region = "Ege",
                             Status = "Aktif"
@@ -78,7 +81,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 1275m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 3 A.Ş.",
-                            Date = new DateTime(2026, 2, 3, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7560),
+                            Date = new DateTime(2026, 2, 3, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8300),
                             RefNo = "REF-100002",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -89,7 +92,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 1412.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 4 A.Ş.",
-                            Date = new DateTime(2026, 2, 2, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7580),
+                            Date = new DateTime(2026, 2, 2, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8310),
                             RefNo = "REF-100003",
                             Region = "Akdeniz",
                             Status = "Bekliyor"
@@ -100,7 +103,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 1550m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 5 A.Ş.",
-                            Date = new DateTime(2026, 2, 1, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7590),
+                            Date = new DateTime(2026, 2, 1, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8330),
                             RefNo = "REF-100004",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -111,7 +114,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 1687.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 6 A.Ş.",
-                            Date = new DateTime(2026, 1, 31, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7600),
+                            Date = new DateTime(2026, 1, 31, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8340),
                             RefNo = "REF-100005",
                             Region = "Ege",
                             Status = "Pasif"
@@ -122,7 +125,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 1825m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 7 A.Ş.",
-                            Date = new DateTime(2026, 1, 30, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7610),
+                            Date = new DateTime(2026, 1, 30, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8350),
                             RefNo = "REF-100006",
                             Region = "İç Anadolu",
                             Status = "Bekliyor"
@@ -133,7 +136,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 1962.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 8 A.Ş.",
-                            Date = new DateTime(2026, 1, 29, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7620),
+                            Date = new DateTime(2026, 1, 29, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8360),
                             RefNo = "REF-100007",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -144,7 +147,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 2100m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 9 A.Ş.",
-                            Date = new DateTime(2026, 1, 28, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7640),
+                            Date = new DateTime(2026, 1, 28, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8370),
                             RefNo = "REF-100008",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -155,7 +158,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 2237.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 10 A.Ş.",
-                            Date = new DateTime(2026, 1, 27, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7680),
+                            Date = new DateTime(2026, 1, 27, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8380),
                             RefNo = "REF-100009",
                             Region = "Ege",
                             Status = "Bekliyor"
@@ -166,7 +169,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 2375m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 11 A.Ş.",
-                            Date = new DateTime(2026, 1, 26, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7700),
+                            Date = new DateTime(2026, 1, 26, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8390),
                             RefNo = "REF-100010",
                             Region = "İç Anadolu",
                             Status = "Pasif"
@@ -177,7 +180,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 2512.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 12 A.Ş.",
-                            Date = new DateTime(2026, 1, 25, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7720),
+                            Date = new DateTime(2026, 1, 25, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8410),
                             RefNo = "REF-100011",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -188,7 +191,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 2650m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 13 A.Ş.",
-                            Date = new DateTime(2026, 1, 24, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7730),
+                            Date = new DateTime(2026, 1, 24, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8420),
                             RefNo = "REF-100012",
                             Region = "Marmara",
                             Status = "Bekliyor"
@@ -199,7 +202,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 2787.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 14 A.Ş.",
-                            Date = new DateTime(2026, 1, 23, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7740),
+                            Date = new DateTime(2026, 1, 23, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8430),
                             RefNo = "REF-100013",
                             Region = "Ege",
                             Status = "Aktif"
@@ -210,7 +213,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 2925m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 15 A.Ş.",
-                            Date = new DateTime(2026, 1, 22, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7760),
+                            Date = new DateTime(2026, 1, 22, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8440),
                             RefNo = "REF-100014",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -221,7 +224,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 3062.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 16 A.Ş.",
-                            Date = new DateTime(2026, 1, 21, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7770),
+                            Date = new DateTime(2026, 1, 21, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8460),
                             RefNo = "REF-100015",
                             Region = "Akdeniz",
                             Status = "Pasif"
@@ -232,7 +235,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 3200m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 17 A.Ş.",
-                            Date = new DateTime(2026, 1, 20, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7790),
+                            Date = new DateTime(2026, 1, 20, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8470),
                             RefNo = "REF-100016",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -243,7 +246,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 3337.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 18 A.Ş.",
-                            Date = new DateTime(2026, 1, 19, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7800),
+                            Date = new DateTime(2026, 1, 19, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8480),
                             RefNo = "REF-100017",
                             Region = "Ege",
                             Status = "Aktif"
@@ -254,7 +257,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 3475m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 19 A.Ş.",
-                            Date = new DateTime(2026, 1, 18, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7820),
+                            Date = new DateTime(2026, 1, 18, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8490),
                             RefNo = "REF-100018",
                             Region = "İç Anadolu",
                             Status = "Bekliyor"
@@ -265,7 +268,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 3612.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 20 A.Ş.",
-                            Date = new DateTime(2026, 1, 17, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7830),
+                            Date = new DateTime(2026, 1, 17, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8500),
                             RefNo = "REF-100019",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -276,7 +279,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 3750m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 21 A.Ş.",
-                            Date = new DateTime(2026, 1, 16, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7840),
+                            Date = new DateTime(2026, 1, 16, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8510),
                             RefNo = "REF-100020",
                             Region = "Marmara",
                             Status = "Pasif"
@@ -287,7 +290,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 3887.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 22 A.Ş.",
-                            Date = new DateTime(2026, 1, 15, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7860),
+                            Date = new DateTime(2026, 1, 15, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8520),
                             RefNo = "REF-100021",
                             Region = "Ege",
                             Status = "Bekliyor"
@@ -298,7 +301,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 4025m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 23 A.Ş.",
-                            Date = new DateTime(2026, 1, 14, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7880),
+                            Date = new DateTime(2026, 1, 14, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8530),
                             RefNo = "REF-100022",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -309,7 +312,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 4162.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 24 A.Ş.",
-                            Date = new DateTime(2026, 1, 13, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7890),
+                            Date = new DateTime(2026, 1, 13, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8540),
                             RefNo = "REF-100023",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -320,7 +323,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 4300m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 25 A.Ş.",
-                            Date = new DateTime(2026, 1, 12, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7910),
+                            Date = new DateTime(2026, 1, 12, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8550),
                             RefNo = "REF-100024",
                             Region = "Marmara",
                             Status = "Bekliyor"
@@ -331,7 +334,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 4437.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 26 A.Ş.",
-                            Date = new DateTime(2026, 1, 11, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7920),
+                            Date = new DateTime(2026, 1, 11, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8560),
                             RefNo = "REF-100025",
                             Region = "Ege",
                             Status = "Pasif"
@@ -342,7 +345,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 4575m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 27 A.Ş.",
-                            Date = new DateTime(2026, 1, 10, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7930),
+                            Date = new DateTime(2026, 1, 10, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8570),
                             RefNo = "REF-100026",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -353,7 +356,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 4712.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 28 A.Ş.",
-                            Date = new DateTime(2026, 1, 9, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7940),
+                            Date = new DateTime(2026, 1, 9, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8580),
                             RefNo = "REF-100027",
                             Region = "Akdeniz",
                             Status = "Bekliyor"
@@ -364,7 +367,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 4850m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 29 A.Ş.",
-                            Date = new DateTime(2026, 1, 8, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7950),
+                            Date = new DateTime(2026, 1, 8, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8590),
                             RefNo = "REF-100028",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -375,7 +378,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 4987.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 30 A.Ş.",
-                            Date = new DateTime(2026, 1, 7, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7960),
+                            Date = new DateTime(2026, 1, 7, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8600),
                             RefNo = "REF-100029",
                             Region = "Ege",
                             Status = "Aktif"
@@ -386,7 +389,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 5125m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 31 A.Ş.",
-                            Date = new DateTime(2026, 1, 6, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7970),
+                            Date = new DateTime(2026, 1, 6, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8610),
                             RefNo = "REF-100030",
                             Region = "İç Anadolu",
                             Status = "Pasif"
@@ -397,7 +400,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 5262.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 32 A.Ş.",
-                            Date = new DateTime(2026, 1, 5, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7990),
+                            Date = new DateTime(2026, 1, 5, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8620),
                             RefNo = "REF-100031",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -408,7 +411,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 5400m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 33 A.Ş.",
-                            Date = new DateTime(2026, 1, 4, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8000),
+                            Date = new DateTime(2026, 1, 4, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8630),
                             RefNo = "REF-100032",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -419,7 +422,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 5537.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 34 A.Ş.",
-                            Date = new DateTime(2026, 1, 3, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8010),
+                            Date = new DateTime(2026, 1, 3, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8640),
                             RefNo = "REF-100033",
                             Region = "Ege",
                             Status = "Bekliyor"
@@ -430,7 +433,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 5675m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 35 A.Ş.",
-                            Date = new DateTime(2026, 1, 2, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8020),
+                            Date = new DateTime(2026, 1, 2, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8650),
                             RefNo = "REF-100034",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -441,7 +444,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 5812.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 36 A.Ş.",
-                            Date = new DateTime(2026, 1, 1, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8030),
+                            Date = new DateTime(2026, 1, 1, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8670),
                             RefNo = "REF-100035",
                             Region = "Akdeniz",
                             Status = "Pasif"
@@ -452,7 +455,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 5950m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 37 A.Ş.",
-                            Date = new DateTime(2025, 12, 31, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8040),
+                            Date = new DateTime(2025, 12, 31, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8680),
                             RefNo = "REF-100036",
                             Region = "Marmara",
                             Status = "Bekliyor"
@@ -463,7 +466,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 6087.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 38 A.Ş.",
-                            Date = new DateTime(2025, 12, 30, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8060),
+                            Date = new DateTime(2025, 12, 30, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8690),
                             RefNo = "REF-100037",
                             Region = "Ege",
                             Status = "Aktif"
@@ -474,7 +477,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 6225m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 39 A.Ş.",
-                            Date = new DateTime(2025, 12, 29, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8070),
+                            Date = new DateTime(2025, 12, 29, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8700),
                             RefNo = "REF-100038",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -485,7 +488,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 6362.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 40 A.Ş.",
-                            Date = new DateTime(2025, 12, 28, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8080),
+                            Date = new DateTime(2025, 12, 28, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8710),
                             RefNo = "REF-100039",
                             Region = "Akdeniz",
                             Status = "Bekliyor"
@@ -496,7 +499,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 6500m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 41 A.Ş.",
-                            Date = new DateTime(2025, 12, 27, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8090),
+                            Date = new DateTime(2025, 12, 27, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8720),
                             RefNo = "REF-100040",
                             Region = "Marmara",
                             Status = "Pasif"
@@ -507,7 +510,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 6637.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 42 A.Ş.",
-                            Date = new DateTime(2025, 12, 26, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8100),
+                            Date = new DateTime(2025, 12, 26, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8730),
                             RefNo = "REF-100041",
                             Region = "Ege",
                             Status = "Aktif"
@@ -518,7 +521,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 6775m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 43 A.Ş.",
-                            Date = new DateTime(2025, 12, 25, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8120),
+                            Date = new DateTime(2025, 12, 25, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8740),
                             RefNo = "REF-100042",
                             Region = "İç Anadolu",
                             Status = "Bekliyor"
@@ -529,7 +532,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 6912.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 44 A.Ş.",
-                            Date = new DateTime(2025, 12, 24, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8130),
+                            Date = new DateTime(2025, 12, 24, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8750),
                             RefNo = "REF-100043",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -540,7 +543,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 7050m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 45 A.Ş.",
-                            Date = new DateTime(2025, 12, 23, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8140),
+                            Date = new DateTime(2025, 12, 23, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8760),
                             RefNo = "REF-100044",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -551,7 +554,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 7187.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 46 A.Ş.",
-                            Date = new DateTime(2025, 12, 22, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8150),
+                            Date = new DateTime(2025, 12, 22, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8770),
                             RefNo = "REF-100045",
                             Region = "Ege",
                             Status = "Pasif"
@@ -562,7 +565,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 7325m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 47 A.Ş.",
-                            Date = new DateTime(2025, 12, 21, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8160),
+                            Date = new DateTime(2025, 12, 21, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8780),
                             RefNo = "REF-100046",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -573,7 +576,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 7462.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 48 A.Ş.",
-                            Date = new DateTime(2025, 12, 20, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8180),
+                            Date = new DateTime(2025, 12, 20, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8790),
                             RefNo = "REF-100047",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -584,7 +587,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 7600m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 49 A.Ş.",
-                            Date = new DateTime(2025, 12, 19, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8190),
+                            Date = new DateTime(2025, 12, 19, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8800),
                             RefNo = "REF-100048",
                             Region = "Marmara",
                             Status = "Bekliyor"
@@ -595,7 +598,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 7737.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 50 A.Ş.",
-                            Date = new DateTime(2025, 12, 18, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8200),
+                            Date = new DateTime(2025, 12, 18, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8820),
                             RefNo = "REF-100049",
                             Region = "Ege",
                             Status = "Aktif"
@@ -606,7 +609,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 7875m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 51 A.Ş.",
-                            Date = new DateTime(2025, 12, 17, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8210),
+                            Date = new DateTime(2025, 12, 17, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8830),
                             RefNo = "REF-100050",
                             Region = "İç Anadolu",
                             Status = "Pasif"
@@ -617,7 +620,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 8012.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 52 A.Ş.",
-                            Date = new DateTime(2025, 12, 16, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8220),
+                            Date = new DateTime(2025, 12, 16, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8840),
                             RefNo = "REF-100051",
                             Region = "Akdeniz",
                             Status = "Bekliyor"
@@ -628,7 +631,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 8150m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 53 A.Ş.",
-                            Date = new DateTime(2025, 12, 15, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8230),
+                            Date = new DateTime(2025, 12, 15, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8850),
                             RefNo = "REF-100052",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -639,7 +642,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 8287.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 54 A.Ş.",
-                            Date = new DateTime(2025, 12, 14, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8240),
+                            Date = new DateTime(2025, 12, 14, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8860),
                             RefNo = "REF-100053",
                             Region = "Ege",
                             Status = "Aktif"
@@ -650,7 +653,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 8425m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 55 A.Ş.",
-                            Date = new DateTime(2025, 12, 13, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8250),
+                            Date = new DateTime(2025, 12, 13, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8870),
                             RefNo = "REF-100054",
                             Region = "İç Anadolu",
                             Status = "Bekliyor"
@@ -661,7 +664,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 8562.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 56 A.Ş.",
-                            Date = new DateTime(2025, 12, 12, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8260),
+                            Date = new DateTime(2025, 12, 12, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8880),
                             RefNo = "REF-100055",
                             Region = "Akdeniz",
                             Status = "Pasif"
@@ -672,7 +675,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 8700m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 57 A.Ş.",
-                            Date = new DateTime(2025, 12, 11, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8280),
+                            Date = new DateTime(2025, 12, 11, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8890),
                             RefNo = "REF-100056",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -683,7 +686,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 8837.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 58 A.Ş.",
-                            Date = new DateTime(2025, 12, 10, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8290),
+                            Date = new DateTime(2025, 12, 10, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8900),
                             RefNo = "REF-100057",
                             Region = "Ege",
                             Status = "Bekliyor"
@@ -694,7 +697,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 8975m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 59 A.Ş.",
-                            Date = new DateTime(2025, 12, 9, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8300),
+                            Date = new DateTime(2025, 12, 9, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8910),
                             RefNo = "REF-100058",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -705,7 +708,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 9112.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 60 A.Ş.",
-                            Date = new DateTime(2025, 12, 8, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8310),
+                            Date = new DateTime(2025, 12, 8, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8920),
                             RefNo = "REF-100059",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -716,7 +719,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 9250m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 61 A.Ş.",
-                            Date = new DateTime(2025, 12, 7, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8330),
+                            Date = new DateTime(2025, 12, 7, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8930),
                             RefNo = "REF-100060",
                             Region = "Marmara",
                             Status = "Pasif"
@@ -727,7 +730,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 9387.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 62 A.Ş.",
-                            Date = new DateTime(2025, 12, 6, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8340),
+                            Date = new DateTime(2025, 12, 6, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8940),
                             RefNo = "REF-100061",
                             Region = "Ege",
                             Status = "Aktif"
@@ -738,7 +741,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 9525m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 63 A.Ş.",
-                            Date = new DateTime(2025, 12, 5, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8360),
+                            Date = new DateTime(2025, 12, 5, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8950),
                             RefNo = "REF-100062",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -749,7 +752,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 9662.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 64 A.Ş.",
-                            Date = new DateTime(2025, 12, 4, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8370),
+                            Date = new DateTime(2025, 12, 4, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8960),
                             RefNo = "REF-100063",
                             Region = "Akdeniz",
                             Status = "Bekliyor"
@@ -760,7 +763,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 9800m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 65 A.Ş.",
-                            Date = new DateTime(2025, 12, 3, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8380),
+                            Date = new DateTime(2025, 12, 3, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8970),
                             RefNo = "REF-100064",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -771,7 +774,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 9937.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 66 A.Ş.",
-                            Date = new DateTime(2025, 12, 2, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8390),
+                            Date = new DateTime(2025, 12, 2, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8990),
                             RefNo = "REF-100065",
                             Region = "Ege",
                             Status = "Pasif"
@@ -782,7 +785,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 10075m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 67 A.Ş.",
-                            Date = new DateTime(2025, 12, 1, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8400),
+                            Date = new DateTime(2025, 12, 1, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9000),
                             RefNo = "REF-100066",
                             Region = "İç Anadolu",
                             Status = "Bekliyor"
@@ -793,7 +796,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 10212.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 68 A.Ş.",
-                            Date = new DateTime(2025, 11, 30, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8410),
+                            Date = new DateTime(2025, 11, 30, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9010),
                             RefNo = "REF-100067",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -804,7 +807,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 10350m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 69 A.Ş.",
-                            Date = new DateTime(2025, 11, 29, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8420),
+                            Date = new DateTime(2025, 11, 29, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9020),
                             RefNo = "REF-100068",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -815,7 +818,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 10487.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 70 A.Ş.",
-                            Date = new DateTime(2025, 11, 28, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8440),
+                            Date = new DateTime(2025, 11, 28, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9030),
                             RefNo = "REF-100069",
                             Region = "Ege",
                             Status = "Bekliyor"
@@ -826,7 +829,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 10625m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 71 A.Ş.",
-                            Date = new DateTime(2025, 11, 27, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8450),
+                            Date = new DateTime(2025, 11, 27, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9040),
                             RefNo = "REF-100070",
                             Region = "İç Anadolu",
                             Status = "Pasif"
@@ -837,7 +840,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 10762.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 72 A.Ş.",
-                            Date = new DateTime(2025, 11, 26, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8460),
+                            Date = new DateTime(2025, 11, 26, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9050),
                             RefNo = "REF-100071",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -848,7 +851,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 10900m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 73 A.Ş.",
-                            Date = new DateTime(2025, 11, 25, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8470),
+                            Date = new DateTime(2025, 11, 25, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9060),
                             RefNo = "REF-100072",
                             Region = "Marmara",
                             Status = "Bekliyor"
@@ -859,7 +862,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 11037.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 74 A.Ş.",
-                            Date = new DateTime(2025, 11, 24, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8480),
+                            Date = new DateTime(2025, 11, 24, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9070),
                             RefNo = "REF-100073",
                             Region = "Ege",
                             Status = "Aktif"
@@ -870,7 +873,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 11175m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 75 A.Ş.",
-                            Date = new DateTime(2025, 11, 23, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8490),
+                            Date = new DateTime(2025, 11, 23, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9080),
                             RefNo = "REF-100074",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -881,7 +884,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 11312.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 76 A.Ş.",
-                            Date = new DateTime(2025, 11, 22, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8500),
+                            Date = new DateTime(2025, 11, 22, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9100),
                             RefNo = "REF-100075",
                             Region = "Akdeniz",
                             Status = "Pasif"
@@ -892,7 +895,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 11450m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 77 A.Ş.",
-                            Date = new DateTime(2025, 11, 21, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8510),
+                            Date = new DateTime(2025, 11, 21, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9110),
                             RefNo = "REF-100076",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -903,7 +906,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 11587.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 78 A.Ş.",
-                            Date = new DateTime(2025, 11, 20, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8530),
+                            Date = new DateTime(2025, 11, 20, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9120),
                             RefNo = "REF-100077",
                             Region = "Ege",
                             Status = "Aktif"
@@ -914,7 +917,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 11725m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 79 A.Ş.",
-                            Date = new DateTime(2025, 11, 19, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8540),
+                            Date = new DateTime(2025, 11, 19, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9130),
                             RefNo = "REF-100078",
                             Region = "İç Anadolu",
                             Status = "Bekliyor"
@@ -925,7 +928,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 11862.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 80 A.Ş.",
-                            Date = new DateTime(2025, 11, 18, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8550),
+                            Date = new DateTime(2025, 11, 18, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9140),
                             RefNo = "REF-100079",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -936,7 +939,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 12000m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 81 A.Ş.",
-                            Date = new DateTime(2025, 11, 17, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8560),
+                            Date = new DateTime(2025, 11, 17, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9150),
                             RefNo = "REF-100080",
                             Region = "Marmara",
                             Status = "Pasif"
@@ -947,7 +950,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 12137.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 82 A.Ş.",
-                            Date = new DateTime(2025, 11, 16, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8570),
+                            Date = new DateTime(2025, 11, 16, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9160),
                             RefNo = "REF-100081",
                             Region = "Ege",
                             Status = "Bekliyor"
@@ -958,7 +961,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 12275m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 83 A.Ş.",
-                            Date = new DateTime(2025, 11, 15, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8580),
+                            Date = new DateTime(2025, 11, 15, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9170),
                             RefNo = "REF-100082",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -969,7 +972,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 12412.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 84 A.Ş.",
-                            Date = new DateTime(2025, 11, 14, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8600),
+                            Date = new DateTime(2025, 11, 14, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9180),
                             RefNo = "REF-100083",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -980,7 +983,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 12550m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 85 A.Ş.",
-                            Date = new DateTime(2025, 11, 13, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8610),
+                            Date = new DateTime(2025, 11, 13, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9190),
                             RefNo = "REF-100084",
                             Region = "Marmara",
                             Status = "Bekliyor"
@@ -991,7 +994,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 12687.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 86 A.Ş.",
-                            Date = new DateTime(2025, 11, 12, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8620),
+                            Date = new DateTime(2025, 11, 12, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9200),
                             RefNo = "REF-100085",
                             Region = "Ege",
                             Status = "Pasif"
@@ -1002,7 +1005,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 12825m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 87 A.Ş.",
-                            Date = new DateTime(2025, 11, 11, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8630),
+                            Date = new DateTime(2025, 11, 11, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9220),
                             RefNo = "REF-100086",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -1013,7 +1016,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 12962.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 88 A.Ş.",
-                            Date = new DateTime(2025, 11, 10, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8640),
+                            Date = new DateTime(2025, 11, 10, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9230),
                             RefNo = "REF-100087",
                             Region = "Akdeniz",
                             Status = "Bekliyor"
@@ -1024,7 +1027,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 13100m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 89 A.Ş.",
-                            Date = new DateTime(2025, 11, 9, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8650),
+                            Date = new DateTime(2025, 11, 9, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9240),
                             RefNo = "REF-100088",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -1035,7 +1038,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 13237.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 90 A.Ş.",
-                            Date = new DateTime(2025, 11, 8, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8660),
+                            Date = new DateTime(2025, 11, 8, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9250),
                             RefNo = "REF-100089",
                             Region = "Ege",
                             Status = "Aktif"
@@ -1046,7 +1049,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 13375m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 91 A.Ş.",
-                            Date = new DateTime(2025, 11, 7, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8670),
+                            Date = new DateTime(2025, 11, 7, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9260),
                             RefNo = "REF-100090",
                             Region = "İç Anadolu",
                             Status = "Pasif"
@@ -1057,7 +1060,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 13512.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 92 A.Ş.",
-                            Date = new DateTime(2025, 11, 6, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8690),
+                            Date = new DateTime(2025, 11, 6, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9270),
                             RefNo = "REF-100091",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -1068,7 +1071,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 13650m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 93 A.Ş.",
-                            Date = new DateTime(2025, 11, 5, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8700),
+                            Date = new DateTime(2025, 11, 5, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9280),
                             RefNo = "REF-100092",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -1079,7 +1082,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 13787.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 94 A.Ş.",
-                            Date = new DateTime(2025, 11, 4, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8710),
+                            Date = new DateTime(2025, 11, 4, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9290),
                             RefNo = "REF-100093",
                             Region = "Ege",
                             Status = "Bekliyor"
@@ -1090,7 +1093,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 13925m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 95 A.Ş.",
-                            Date = new DateTime(2025, 11, 3, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8720),
+                            Date = new DateTime(2025, 11, 3, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9300),
                             RefNo = "REF-100094",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -1101,7 +1104,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 14062.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 96 A.Ş.",
-                            Date = new DateTime(2025, 11, 2, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8730),
+                            Date = new DateTime(2025, 11, 2, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9320),
                             RefNo = "REF-100095",
                             Region = "Akdeniz",
                             Status = "Pasif"
@@ -1112,7 +1115,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 14200m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 97 A.Ş.",
-                            Date = new DateTime(2025, 11, 1, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(8740),
+                            Date = new DateTime(2025, 11, 1, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9330),
                             RefNo = "REF-100096",
                             Region = "Marmara",
                             Status = "Bekliyor"
@@ -1123,7 +1126,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 14337.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 98 A.Ş.",
-                            Date = new DateTime(2025, 10, 31, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9190),
+                            Date = new DateTime(2025, 10, 31, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9330),
                             RefNo = "REF-100097",
                             Region = "Ege",
                             Status = "Aktif"
@@ -1134,7 +1137,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 14475m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 99 A.Ş.",
-                            Date = new DateTime(2025, 10, 30, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9200),
+                            Date = new DateTime(2025, 10, 30, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9350),
                             RefNo = "REF-100098",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -1145,7 +1148,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 14612.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 100 A.Ş.",
-                            Date = new DateTime(2025, 10, 29, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9210),
+                            Date = new DateTime(2025, 10, 29, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9360),
                             RefNo = "REF-100099",
                             Region = "Akdeniz",
                             Status = "Bekliyor"
@@ -1156,7 +1159,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 14750m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 101 A.Ş.",
-                            Date = new DateTime(2025, 10, 28, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9220),
+                            Date = new DateTime(2025, 10, 28, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9370),
                             RefNo = "REF-100100",
                             Region = "Marmara",
                             Status = "Pasif"
@@ -1167,7 +1170,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 14887.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 102 A.Ş.",
-                            Date = new DateTime(2025, 10, 27, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9230),
+                            Date = new DateTime(2025, 10, 27, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9380),
                             RefNo = "REF-100101",
                             Region = "Ege",
                             Status = "Aktif"
@@ -1178,7 +1181,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 15025m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 103 A.Ş.",
-                            Date = new DateTime(2025, 10, 26, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9240),
+                            Date = new DateTime(2025, 10, 26, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9390),
                             RefNo = "REF-100102",
                             Region = "İç Anadolu",
                             Status = "Bekliyor"
@@ -1189,7 +1192,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 15162.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 104 A.Ş.",
-                            Date = new DateTime(2025, 10, 25, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9250),
+                            Date = new DateTime(2025, 10, 25, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9400),
                             RefNo = "REF-100103",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -1200,7 +1203,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 15300m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 105 A.Ş.",
-                            Date = new DateTime(2025, 10, 24, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9260),
+                            Date = new DateTime(2025, 10, 24, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9410),
                             RefNo = "REF-100104",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -1211,7 +1214,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 15437.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 106 A.Ş.",
-                            Date = new DateTime(2025, 10, 23, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9280),
+                            Date = new DateTime(2025, 10, 23, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9420),
                             RefNo = "REF-100105",
                             Region = "Ege",
                             Status = "Pasif"
@@ -1222,7 +1225,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 15575m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 107 A.Ş.",
-                            Date = new DateTime(2025, 10, 22, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9290),
+                            Date = new DateTime(2025, 10, 22, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9430),
                             RefNo = "REF-100106",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -1233,7 +1236,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 15712.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 108 A.Ş.",
-                            Date = new DateTime(2025, 10, 21, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9300),
+                            Date = new DateTime(2025, 10, 21, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9440),
                             RefNo = "REF-100107",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -1244,7 +1247,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 15850m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 109 A.Ş.",
-                            Date = new DateTime(2025, 10, 20, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9310),
+                            Date = new DateTime(2025, 10, 20, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9450),
                             RefNo = "REF-100108",
                             Region = "Marmara",
                             Status = "Bekliyor"
@@ -1255,7 +1258,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 15987.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 110 A.Ş.",
-                            Date = new DateTime(2025, 10, 19, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9320),
+                            Date = new DateTime(2025, 10, 19, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9460),
                             RefNo = "REF-100109",
                             Region = "Ege",
                             Status = "Aktif"
@@ -1266,7 +1269,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 16125m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 111 A.Ş.",
-                            Date = new DateTime(2025, 10, 18, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9330),
+                            Date = new DateTime(2025, 10, 18, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9470),
                             RefNo = "REF-100110",
                             Region = "İç Anadolu",
                             Status = "Pasif"
@@ -1277,7 +1280,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 16262.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 112 A.Ş.",
-                            Date = new DateTime(2025, 10, 17, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9340),
+                            Date = new DateTime(2025, 10, 17, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9480),
                             RefNo = "REF-100111",
                             Region = "Akdeniz",
                             Status = "Bekliyor"
@@ -1288,7 +1291,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 16400m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 113 A.Ş.",
-                            Date = new DateTime(2025, 10, 16, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9350),
+                            Date = new DateTime(2025, 10, 16, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9490),
                             RefNo = "REF-100112",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -1299,7 +1302,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 16537.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 114 A.Ş.",
-                            Date = new DateTime(2025, 10, 15, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9360),
+                            Date = new DateTime(2025, 10, 15, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9500),
                             RefNo = "REF-100113",
                             Region = "Ege",
                             Status = "Aktif"
@@ -1310,7 +1313,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 16675m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 115 A.Ş.",
-                            Date = new DateTime(2025, 10, 14, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9380),
+                            Date = new DateTime(2025, 10, 14, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9510),
                             RefNo = "REF-100114",
                             Region = "İç Anadolu",
                             Status = "Bekliyor"
@@ -1321,7 +1324,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 16812.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 116 A.Ş.",
-                            Date = new DateTime(2025, 10, 13, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9390),
+                            Date = new DateTime(2025, 10, 13, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9520),
                             RefNo = "REF-100115",
                             Region = "Akdeniz",
                             Status = "Pasif"
@@ -1332,7 +1335,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 16950m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 117 A.Ş.",
-                            Date = new DateTime(2025, 10, 12, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9400),
+                            Date = new DateTime(2025, 10, 12, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9530),
                             RefNo = "REF-100116",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -1343,7 +1346,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 17087.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 118 A.Ş.",
-                            Date = new DateTime(2025, 10, 11, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9410),
+                            Date = new DateTime(2025, 10, 11, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9540),
                             RefNo = "REF-100117",
                             Region = "Ege",
                             Status = "Bekliyor"
@@ -1354,7 +1357,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 17225m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 119 A.Ş.",
-                            Date = new DateTime(2025, 10, 10, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9420),
+                            Date = new DateTime(2025, 10, 10, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9550),
                             RefNo = "REF-100118",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -1365,7 +1368,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 17362.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 120 A.Ş.",
-                            Date = new DateTime(2025, 10, 9, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9430),
+                            Date = new DateTime(2025, 10, 9, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9560),
                             RefNo = "REF-100119",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -1376,7 +1379,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 17500m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 121 A.Ş.",
-                            Date = new DateTime(2025, 10, 8, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9440),
+                            Date = new DateTime(2025, 10, 8, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9570),
                             RefNo = "REF-100120",
                             Region = "Marmara",
                             Status = "Pasif"
@@ -1387,7 +1390,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 17637.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 122 A.Ş.",
-                            Date = new DateTime(2025, 10, 7, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9450),
+                            Date = new DateTime(2025, 10, 7, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9580),
                             RefNo = "REF-100121",
                             Region = "Ege",
                             Status = "Aktif"
@@ -1398,7 +1401,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 17775m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 123 A.Ş.",
-                            Date = new DateTime(2025, 10, 6, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9460),
+                            Date = new DateTime(2025, 10, 6, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9590),
                             RefNo = "REF-100122",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -1409,7 +1412,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 17912.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 124 A.Ş.",
-                            Date = new DateTime(2025, 10, 5, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9480),
+                            Date = new DateTime(2025, 10, 5, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9600),
                             RefNo = "REF-100123",
                             Region = "Akdeniz",
                             Status = "Bekliyor"
@@ -1420,7 +1423,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 18050m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 125 A.Ş.",
-                            Date = new DateTime(2025, 10, 4, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9490),
+                            Date = new DateTime(2025, 10, 4, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9610),
                             RefNo = "REF-100124",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -1431,7 +1434,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 18187.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 126 A.Ş.",
-                            Date = new DateTime(2025, 10, 3, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9500),
+                            Date = new DateTime(2025, 10, 3, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9640),
                             RefNo = "REF-100125",
                             Region = "Ege",
                             Status = "Pasif"
@@ -1442,7 +1445,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 18325m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 127 A.Ş.",
-                            Date = new DateTime(2025, 10, 2, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9510),
+                            Date = new DateTime(2025, 10, 2, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9650),
                             RefNo = "REF-100126",
                             Region = "İç Anadolu",
                             Status = "Bekliyor"
@@ -1453,7 +1456,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 18462.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 128 A.Ş.",
-                            Date = new DateTime(2025, 10, 1, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9520),
+                            Date = new DateTime(2025, 10, 1, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9660),
                             RefNo = "REF-100127",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -1464,7 +1467,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 18600m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 129 A.Ş.",
-                            Date = new DateTime(2025, 9, 30, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9530),
+                            Date = new DateTime(2025, 9, 30, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9670),
                             RefNo = "REF-100128",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -1475,7 +1478,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 18737.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 130 A.Ş.",
-                            Date = new DateTime(2025, 9, 29, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9540),
+                            Date = new DateTime(2025, 9, 29, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9680),
                             RefNo = "REF-100129",
                             Region = "Ege",
                             Status = "Bekliyor"
@@ -1486,7 +1489,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 18875m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 131 A.Ş.",
-                            Date = new DateTime(2025, 9, 28, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9550),
+                            Date = new DateTime(2025, 9, 28, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9690),
                             RefNo = "REF-100130",
                             Region = "İç Anadolu",
                             Status = "Pasif"
@@ -1497,7 +1500,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 19012.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 132 A.Ş.",
-                            Date = new DateTime(2025, 9, 27, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9580),
+                            Date = new DateTime(2025, 9, 27, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9700),
                             RefNo = "REF-100131",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -1508,7 +1511,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 19150m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 133 A.Ş.",
-                            Date = new DateTime(2025, 9, 26, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9590),
+                            Date = new DateTime(2025, 9, 26, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9710),
                             RefNo = "REF-100132",
                             Region = "Marmara",
                             Status = "Bekliyor"
@@ -1519,7 +1522,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 19287.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 134 A.Ş.",
-                            Date = new DateTime(2025, 9, 25, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9600),
+                            Date = new DateTime(2025, 9, 25, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9720),
                             RefNo = "REF-100133",
                             Region = "Ege",
                             Status = "Aktif"
@@ -1530,7 +1533,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 19425m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 135 A.Ş.",
-                            Date = new DateTime(2025, 9, 24, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9610),
+                            Date = new DateTime(2025, 9, 24, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9730),
                             RefNo = "REF-100134",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -1541,7 +1544,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 19562.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 136 A.Ş.",
-                            Date = new DateTime(2025, 9, 23, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9620),
+                            Date = new DateTime(2025, 9, 23, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9740),
                             RefNo = "REF-100135",
                             Region = "Akdeniz",
                             Status = "Pasif"
@@ -1552,7 +1555,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 19700m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 137 A.Ş.",
-                            Date = new DateTime(2025, 9, 22, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9630),
+                            Date = new DateTime(2025, 9, 22, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9750),
                             RefNo = "REF-100136",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -1563,7 +1566,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 19837.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 138 A.Ş.",
-                            Date = new DateTime(2025, 9, 21, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9640),
+                            Date = new DateTime(2025, 9, 21, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9760),
                             RefNo = "REF-100137",
                             Region = "Ege",
                             Status = "Aktif"
@@ -1574,7 +1577,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 19975m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 139 A.Ş.",
-                            Date = new DateTime(2025, 9, 20, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9650),
+                            Date = new DateTime(2025, 9, 20, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9770),
                             RefNo = "REF-100138",
                             Region = "İç Anadolu",
                             Status = "Bekliyor"
@@ -1585,7 +1588,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 20112.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 140 A.Ş.",
-                            Date = new DateTime(2025, 9, 19, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9660),
+                            Date = new DateTime(2025, 9, 19, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9780),
                             RefNo = "REF-100139",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -1596,7 +1599,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 20250m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 141 A.Ş.",
-                            Date = new DateTime(2025, 9, 18, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9670),
+                            Date = new DateTime(2025, 9, 18, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9790),
                             RefNo = "REF-100140",
                             Region = "Marmara",
                             Status = "Pasif"
@@ -1607,7 +1610,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 20387.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 142 A.Ş.",
-                            Date = new DateTime(2025, 9, 17, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9690),
+                            Date = new DateTime(2025, 9, 17, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9800),
                             RefNo = "REF-100141",
                             Region = "Ege",
                             Status = "Bekliyor"
@@ -1618,7 +1621,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 20525m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 143 A.Ş.",
-                            Date = new DateTime(2025, 9, 16, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9700),
+                            Date = new DateTime(2025, 9, 16, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9810),
                             RefNo = "REF-100142",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -1629,7 +1632,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 20662.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 144 A.Ş.",
-                            Date = new DateTime(2025, 9, 15, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9710),
+                            Date = new DateTime(2025, 9, 15, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9820),
                             RefNo = "REF-100143",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -1640,7 +1643,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 20800m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 145 A.Ş.",
-                            Date = new DateTime(2025, 9, 14, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9720),
+                            Date = new DateTime(2025, 9, 14, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9830),
                             RefNo = "REF-100144",
                             Region = "Marmara",
                             Status = "Bekliyor"
@@ -1651,7 +1654,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 20937.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 146 A.Ş.",
-                            Date = new DateTime(2025, 9, 13, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9730),
+                            Date = new DateTime(2025, 9, 13, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9840),
                             RefNo = "REF-100145",
                             Region = "Ege",
                             Status = "Pasif"
@@ -1662,7 +1665,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 21075m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 147 A.Ş.",
-                            Date = new DateTime(2025, 9, 12, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9740),
+                            Date = new DateTime(2025, 9, 12, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9850),
                             RefNo = "REF-100146",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -1673,7 +1676,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 21212.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 148 A.Ş.",
-                            Date = new DateTime(2025, 9, 11, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9750),
+                            Date = new DateTime(2025, 9, 11, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9860),
                             RefNo = "REF-100147",
                             Region = "Akdeniz",
                             Status = "Bekliyor"
@@ -1684,7 +1687,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 21350m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 149 A.Ş.",
-                            Date = new DateTime(2025, 9, 10, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9760),
+                            Date = new DateTime(2025, 9, 10, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9880),
                             RefNo = "REF-100148",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -1695,7 +1698,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 21487.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 150 A.Ş.",
-                            Date = new DateTime(2025, 9, 9, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9770),
+                            Date = new DateTime(2025, 9, 9, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9890),
                             RefNo = "REF-100149",
                             Region = "Ege",
                             Status = "Aktif"
@@ -1706,7 +1709,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 21625m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 151 A.Ş.",
-                            Date = new DateTime(2025, 9, 8, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9780),
+                            Date = new DateTime(2025, 9, 8, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9900),
                             RefNo = "REF-100150",
                             Region = "İç Anadolu",
                             Status = "Pasif"
@@ -1717,7 +1720,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 21762.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 152 A.Ş.",
-                            Date = new DateTime(2025, 9, 7, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9800),
+                            Date = new DateTime(2025, 9, 7, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9910),
                             RefNo = "REF-100151",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -1728,7 +1731,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 21900m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 153 A.Ş.",
-                            Date = new DateTime(2025, 9, 6, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9810),
+                            Date = new DateTime(2025, 9, 6, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9920),
                             RefNo = "REF-100152",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -1739,7 +1742,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 22037.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 154 A.Ş.",
-                            Date = new DateTime(2025, 9, 5, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9820),
+                            Date = new DateTime(2025, 9, 5, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9930),
                             RefNo = "REF-100153",
                             Region = "Ege",
                             Status = "Bekliyor"
@@ -1750,7 +1753,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 22175m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 155 A.Ş.",
-                            Date = new DateTime(2025, 9, 4, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9830),
+                            Date = new DateTime(2025, 9, 4, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9940),
                             RefNo = "REF-100154",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -1761,7 +1764,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 22312.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 156 A.Ş.",
-                            Date = new DateTime(2025, 9, 3, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9840),
+                            Date = new DateTime(2025, 9, 3, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9950),
                             RefNo = "REF-100155",
                             Region = "Akdeniz",
                             Status = "Pasif"
@@ -1772,7 +1775,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 22450m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 157 A.Ş.",
-                            Date = new DateTime(2025, 9, 2, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9850),
+                            Date = new DateTime(2025, 9, 2, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9960),
                             RefNo = "REF-100156",
                             Region = "Marmara",
                             Status = "Bekliyor"
@@ -1783,7 +1786,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 22587.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 158 A.Ş.",
-                            Date = new DateTime(2025, 9, 1, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9860),
+                            Date = new DateTime(2025, 9, 1, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9970),
                             RefNo = "REF-100157",
                             Region = "Ege",
                             Status = "Aktif"
@@ -1794,7 +1797,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 22725m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 159 A.Ş.",
-                            Date = new DateTime(2025, 8, 31, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9870),
+                            Date = new DateTime(2025, 8, 31, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9980),
                             RefNo = "REF-100158",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -1805,7 +1808,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 22862.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 160 A.Ş.",
-                            Date = new DateTime(2025, 8, 30, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9880),
+                            Date = new DateTime(2025, 8, 30, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(9990),
                             RefNo = "REF-100159",
                             Region = "Akdeniz",
                             Status = "Bekliyor"
@@ -1816,7 +1819,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 23000m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 161 A.Ş.",
-                            Date = new DateTime(2025, 8, 29, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9900),
+                            Date = new DateTime(2025, 8, 29, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(20),
                             RefNo = "REF-100160",
                             Region = "Marmara",
                             Status = "Pasif"
@@ -1827,7 +1830,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 23137.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 162 A.Ş.",
-                            Date = new DateTime(2025, 8, 28, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9910),
+                            Date = new DateTime(2025, 8, 28, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(30),
                             RefNo = "REF-100161",
                             Region = "Ege",
                             Status = "Aktif"
@@ -1838,7 +1841,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 23275m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 163 A.Ş.",
-                            Date = new DateTime(2025, 8, 27, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9920),
+                            Date = new DateTime(2025, 8, 27, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(40),
                             RefNo = "REF-100162",
                             Region = "İç Anadolu",
                             Status = "Bekliyor"
@@ -1849,7 +1852,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 23412.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 164 A.Ş.",
-                            Date = new DateTime(2025, 8, 26, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9930),
+                            Date = new DateTime(2025, 8, 26, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(50),
                             RefNo = "REF-100163",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -1860,7 +1863,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 23550m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 165 A.Ş.",
-                            Date = new DateTime(2025, 8, 25, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9940),
+                            Date = new DateTime(2025, 8, 25, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(60),
                             RefNo = "REF-100164",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -1871,7 +1874,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 23687.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 166 A.Ş.",
-                            Date = new DateTime(2025, 8, 24, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9950),
+                            Date = new DateTime(2025, 8, 24, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(70),
                             RefNo = "REF-100165",
                             Region = "Ege",
                             Status = "Pasif"
@@ -1882,7 +1885,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 23825m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 167 A.Ş.",
-                            Date = new DateTime(2025, 8, 23, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9960),
+                            Date = new DateTime(2025, 8, 23, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(80),
                             RefNo = "REF-100166",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -1893,7 +1896,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 23962.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 168 A.Ş.",
-                            Date = new DateTime(2025, 8, 22, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9970),
+                            Date = new DateTime(2025, 8, 22, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(90),
                             RefNo = "REF-100167",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -1904,7 +1907,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 24100m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 169 A.Ş.",
-                            Date = new DateTime(2025, 8, 21, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(9980),
+                            Date = new DateTime(2025, 8, 21, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(100),
                             RefNo = "REF-100168",
                             Region = "Marmara",
                             Status = "Bekliyor"
@@ -1915,7 +1918,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 24237.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 170 A.Ş.",
-                            Date = new DateTime(2025, 8, 20, 15, 41, 23, 301, DateTimeKind.Local),
+                            Date = new DateTime(2025, 8, 20, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(110),
                             RefNo = "REF-100169",
                             Region = "Ege",
                             Status = "Aktif"
@@ -1926,7 +1929,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 24375m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 171 A.Ş.",
-                            Date = new DateTime(2025, 8, 19, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(10),
+                            Date = new DateTime(2025, 8, 19, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(120),
                             RefNo = "REF-100170",
                             Region = "İç Anadolu",
                             Status = "Pasif"
@@ -1937,7 +1940,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 24512.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 172 A.Ş.",
-                            Date = new DateTime(2025, 8, 18, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(20),
+                            Date = new DateTime(2025, 8, 18, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(130),
                             RefNo = "REF-100171",
                             Region = "Akdeniz",
                             Status = "Bekliyor"
@@ -1948,7 +1951,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 24650m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 173 A.Ş.",
-                            Date = new DateTime(2025, 8, 17, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(30),
+                            Date = new DateTime(2025, 8, 17, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(140),
                             RefNo = "REF-100172",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -1959,7 +1962,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 24787.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 174 A.Ş.",
-                            Date = new DateTime(2025, 8, 16, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(40),
+                            Date = new DateTime(2025, 8, 16, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(150),
                             RefNo = "REF-100173",
                             Region = "Ege",
                             Status = "Aktif"
@@ -1970,7 +1973,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 24925m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 175 A.Ş.",
-                            Date = new DateTime(2025, 8, 15, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(50),
+                            Date = new DateTime(2025, 8, 15, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(160),
                             RefNo = "REF-100174",
                             Region = "İç Anadolu",
                             Status = "Bekliyor"
@@ -1981,7 +1984,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 25062.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 176 A.Ş.",
-                            Date = new DateTime(2025, 8, 14, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(60),
+                            Date = new DateTime(2025, 8, 14, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(170),
                             RefNo = "REF-100175",
                             Region = "Akdeniz",
                             Status = "Pasif"
@@ -1992,7 +1995,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 25200m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 177 A.Ş.",
-                            Date = new DateTime(2025, 8, 13, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(70),
+                            Date = new DateTime(2025, 8, 13, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(180),
                             RefNo = "REF-100176",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -2003,7 +2006,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 25337.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 178 A.Ş.",
-                            Date = new DateTime(2025, 8, 12, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(80),
+                            Date = new DateTime(2025, 8, 12, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(190),
                             RefNo = "REF-100177",
                             Region = "Ege",
                             Status = "Bekliyor"
@@ -2014,7 +2017,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 25475m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 179 A.Ş.",
-                            Date = new DateTime(2025, 8, 11, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(100),
+                            Date = new DateTime(2025, 8, 11, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(200),
                             RefNo = "REF-100178",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -2025,7 +2028,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 25612.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 180 A.Ş.",
-                            Date = new DateTime(2025, 8, 10, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(110),
+                            Date = new DateTime(2025, 8, 10, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(220),
                             RefNo = "REF-100179",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -2036,7 +2039,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 25750m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 181 A.Ş.",
-                            Date = new DateTime(2025, 8, 9, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(120),
+                            Date = new DateTime(2025, 8, 9, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(230),
                             RefNo = "REF-100180",
                             Region = "Marmara",
                             Status = "Pasif"
@@ -2047,7 +2050,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 25887.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 182 A.Ş.",
-                            Date = new DateTime(2025, 8, 8, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(130),
+                            Date = new DateTime(2025, 8, 8, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(240),
                             RefNo = "REF-100181",
                             Region = "Ege",
                             Status = "Aktif"
@@ -2058,7 +2061,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 26025m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 183 A.Ş.",
-                            Date = new DateTime(2025, 8, 7, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(140),
+                            Date = new DateTime(2025, 8, 7, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(250),
                             RefNo = "REF-100182",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -2069,7 +2072,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 26162.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 184 A.Ş.",
-                            Date = new DateTime(2025, 8, 6, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(150),
+                            Date = new DateTime(2025, 8, 6, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(260),
                             RefNo = "REF-100183",
                             Region = "Akdeniz",
                             Status = "Bekliyor"
@@ -2080,7 +2083,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 26300m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 185 A.Ş.",
-                            Date = new DateTime(2025, 8, 5, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(160),
+                            Date = new DateTime(2025, 8, 5, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(270),
                             RefNo = "REF-100184",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -2091,7 +2094,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 26437.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 186 A.Ş.",
-                            Date = new DateTime(2025, 8, 4, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(170),
+                            Date = new DateTime(2025, 8, 4, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(280),
                             RefNo = "REF-100185",
                             Region = "Ege",
                             Status = "Pasif"
@@ -2102,7 +2105,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 26575m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 187 A.Ş.",
-                            Date = new DateTime(2025, 8, 3, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(180),
+                            Date = new DateTime(2025, 8, 3, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(290),
                             RefNo = "REF-100186",
                             Region = "İç Anadolu",
                             Status = "Bekliyor"
@@ -2113,7 +2116,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 26712.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 188 A.Ş.",
-                            Date = new DateTime(2025, 8, 2, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(190),
+                            Date = new DateTime(2025, 8, 2, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(300),
                             RefNo = "REF-100187",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -2124,7 +2127,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 26850m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 189 A.Ş.",
-                            Date = new DateTime(2025, 8, 1, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(230),
+                            Date = new DateTime(2025, 8, 1, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(310),
                             RefNo = "REF-100188",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -2135,7 +2138,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 26987.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 190 A.Ş.",
-                            Date = new DateTime(2025, 7, 31, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(250),
+                            Date = new DateTime(2025, 7, 31, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(320),
                             RefNo = "REF-100189",
                             Region = "Ege",
                             Status = "Bekliyor"
@@ -2146,7 +2149,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 27125m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 191 A.Ş.",
-                            Date = new DateTime(2025, 7, 30, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(260),
+                            Date = new DateTime(2025, 7, 30, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(330),
                             RefNo = "REF-100190",
                             Region = "İç Anadolu",
                             Status = "Pasif"
@@ -2157,7 +2160,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 27262.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 192 A.Ş.",
-                            Date = new DateTime(2025, 7, 29, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(270),
+                            Date = new DateTime(2025, 7, 29, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(340),
                             RefNo = "REF-100191",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -2168,7 +2171,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 27400m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 193 A.Ş.",
-                            Date = new DateTime(2025, 7, 28, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(280),
+                            Date = new DateTime(2025, 7, 28, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(350),
                             RefNo = "REF-100192",
                             Region = "Marmara",
                             Status = "Bekliyor"
@@ -2179,7 +2182,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 27537.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 194 A.Ş.",
-                            Date = new DateTime(2025, 7, 27, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(290),
+                            Date = new DateTime(2025, 7, 27, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(400),
                             RefNo = "REF-100193",
                             Region = "Ege",
                             Status = "Aktif"
@@ -2190,7 +2193,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 27675m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 195 A.Ş.",
-                            Date = new DateTime(2025, 7, 26, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(300),
+                            Date = new DateTime(2025, 7, 26, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(410),
                             RefNo = "REF-100194",
                             Region = "İç Anadolu",
                             Status = "Aktif"
@@ -2201,7 +2204,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 27812.5m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 196 A.Ş.",
-                            Date = new DateTime(2025, 7, 25, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(310),
+                            Date = new DateTime(2025, 7, 25, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(420),
                             RefNo = "REF-100195",
                             Region = "Akdeniz",
                             Status = "Pasif"
@@ -2212,7 +2215,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 27950m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 197 A.Ş.",
-                            Date = new DateTime(2025, 7, 24, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(320),
+                            Date = new DateTime(2025, 7, 24, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(430),
                             RefNo = "REF-100196",
                             Region = "Marmara",
                             Status = "Aktif"
@@ -2223,7 +2226,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 28087.5m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 198 A.Ş.",
-                            Date = new DateTime(2025, 7, 23, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(330),
+                            Date = new DateTime(2025, 7, 23, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(440),
                             RefNo = "REF-100197",
                             Region = "Ege",
                             Status = "Aktif"
@@ -2234,7 +2237,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 28225m,
                             Category = "Kurumsal",
                             CustomerName = "Müşteri 199 A.Ş.",
-                            Date = new DateTime(2025, 7, 22, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(340),
+                            Date = new DateTime(2025, 7, 22, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(450),
                             RefNo = "REF-100198",
                             Region = "İç Anadolu",
                             Status = "Bekliyor"
@@ -2245,7 +2248,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 28362.5m,
                             Category = "Bireysel",
                             CustomerName = "Müşteri 200 A.Ş.",
-                            Date = new DateTime(2025, 7, 21, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(350),
+                            Date = new DateTime(2025, 7, 21, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(480),
                             RefNo = "REF-100199",
                             Region = "Akdeniz",
                             Status = "Aktif"
@@ -2256,7 +2259,7 @@ namespace BlazorWebApp.Migrations
                             Amount = 28500m,
                             Category = "Kamu",
                             CustomerName = "Müşteri 201 A.Ş.",
-                            Date = new DateTime(2025, 7, 20, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(360),
+                            Date = new DateTime(2025, 7, 20, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(490),
                             RefNo = "REF-100200",
                             Region = "Marmara",
                             Status = "Pasif"
@@ -2531,201 +2534,6 @@ namespace BlazorWebApp.Migrations
                             PoolDefinitionId = 2,
                             PropertyName = "Actions",
                             Width = "100px"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            CssClass = "col-index",
-                            DataType = "Text",
-                            HeaderCssClass = "col-index",
-                            HeaderText = "#",
-                            IsVisible = true,
-                            OrderIndex = 1,
-                            PoolDefinitionId = 3,
-                            PropertyName = "Id",
-                            Width = "50px"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            CssClass = "d-none d-lg-table-cell",
-                            DataType = "Text",
-                            HeaderCssClass = "d-none d-lg-table-cell",
-                            HeaderText = "ID",
-                            IsVisible = true,
-                            OrderIndex = 2,
-                            PoolDefinitionId = 3,
-                            PropertyName = "Id",
-                            Width = ""
-                        },
-                        new
-                        {
-                            Id = 20,
-                            CssClass = "d-none d-md-table-cell",
-                            DataType = "BadgeLight",
-                            HeaderCssClass = "d-none d-md-table-cell",
-                            HeaderText = "Proje",
-                            IsVisible = true,
-                            OrderIndex = 3,
-                            PoolDefinitionId = 3,
-                            PropertyName = "Project",
-                            Width = ""
-                        },
-                        new
-                        {
-                            Id = 21,
-                            CssClass = "d-none d-xl-table-cell",
-                            DataType = "Text",
-                            HeaderCssClass = "d-none d-xl-table-cell",
-                            HeaderText = "Yıl",
-                            IsVisible = true,
-                            OrderIndex = 4,
-                            PoolDefinitionId = 3,
-                            PropertyName = "Year",
-                            Width = ""
-                        },
-                        new
-                        {
-                            Id = 22,
-                            CssClass = "d-none d-lg-table-cell text-muted",
-                            DataType = "Text",
-                            HeaderCssClass = "d-none d-lg-table-cell",
-                            HeaderText = "Bölge",
-                            IsVisible = true,
-                            OrderIndex = 5,
-                            PoolDefinitionId = 3,
-                            PropertyName = "Region",
-                            Width = ""
-                        },
-                        new
-                        {
-                            Id = 23,
-                            CssClass = "d-none d-lg-table-cell",
-                            DataType = "Text",
-                            HeaderCssClass = "d-none d-lg-table-cell",
-                            HeaderText = "Şube",
-                            IsVisible = true,
-                            OrderIndex = 6,
-                            PoolDefinitionId = 3,
-                            PropertyName = "Branch",
-                            Width = ""
-                        },
-                        new
-                        {
-                            Id = 24,
-                            CssClass = "fw-medium",
-                            DataType = "Text",
-                            HeaderCssClass = "",
-                            HeaderText = "Müşteri",
-                            IsVisible = true,
-                            OrderIndex = 7,
-                            PoolDefinitionId = 3,
-                            PropertyName = "Customer",
-                            Width = ""
-                        },
-                        new
-                        {
-                            Id = 25,
-                            CssClass = "fw-bold",
-                            DataType = "Text",
-                            HeaderCssClass = "",
-                            HeaderText = "Adı",
-                            IsVisible = true,
-                            OrderIndex = 8,
-                            PoolDefinitionId = 3,
-                            PropertyName = "Name",
-                            Width = ""
-                        },
-                        new
-                        {
-                            Id = 26,
-                            CssClass = "d-none d-sm-table-cell",
-                            DataType = "Text",
-                            HeaderCssClass = "d-none d-sm-table-cell",
-                            HeaderText = "Kategori",
-                            IsVisible = true,
-                            OrderIndex = 9,
-                            PoolDefinitionId = 3,
-                            PropertyName = "Category",
-                            Width = ""
-                        },
-                        new
-                        {
-                            Id = 27,
-                            CssClass = "text-center",
-                            DataType = "PriorityBadge",
-                            HeaderCssClass = "text-center",
-                            HeaderText = "Öncelik",
-                            IsVisible = true,
-                            OrderIndex = 10,
-                            PoolDefinitionId = 3,
-                            PropertyName = "Priority",
-                            Width = ""
-                        },
-                        new
-                        {
-                            Id = 28,
-                            CssClass = "d-none d-xxl-table-cell",
-                            DataType = "UserAvatar",
-                            HeaderCssClass = "d-none d-xxl-table-cell",
-                            HeaderText = "Atanan",
-                            IsVisible = true,
-                            OrderIndex = 11,
-                            PoolDefinitionId = 3,
-                            PropertyName = "AssignedTo",
-                            Width = ""
-                        },
-                        new
-                        {
-                            Id = 29,
-                            CssClass = "text-end font-monospace fw-bold",
-                            DataType = "Currency",
-                            HeaderCssClass = "text-end",
-                            HeaderText = "Değer (TL)",
-                            IsVisible = true,
-                            OrderIndex = 12,
-                            PoolDefinitionId = 3,
-                            PropertyName = "Value",
-                            Width = ""
-                        },
-                        new
-                        {
-                            Id = 30,
-                            CssClass = "text-center",
-                            DataType = "PaymentStatus",
-                            HeaderCssClass = "text-center",
-                            HeaderText = "Ödeme",
-                            IsVisible = true,
-                            OrderIndex = 13,
-                            PoolDefinitionId = 3,
-                            PropertyName = "PaymentStatus",
-                            Width = ""
-                        },
-                        new
-                        {
-                            Id = 31,
-                            CssClass = "text-center",
-                            DataType = "StatusPill",
-                            HeaderCssClass = "text-center",
-                            HeaderText = "Durum",
-                            IsVisible = true,
-                            OrderIndex = 14,
-                            PoolDefinitionId = 3,
-                            PropertyName = "Status",
-                            Width = ""
-                        },
-                        new
-                        {
-                            Id = 32,
-                            CssClass = "d-none d-xxl-table-cell",
-                            DataType = "TextTruncate",
-                            HeaderCssClass = "d-none d-xxl-table-cell",
-                            HeaderText = "Açıklama",
-                            IsVisible = true,
-                            OrderIndex = 15,
-                            PoolDefinitionId = 3,
-                            PropertyName = "Description",
-                            Width = ""
                         });
                 });
 
@@ -2736,9 +2544,6 @@ namespace BlazorWebApp.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ConnectionString")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -2752,10 +2557,6 @@ namespace BlazorWebApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TableName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("PoolDefinitions");
@@ -2766,24 +2567,14 @@ namespace BlazorWebApp.Migrations
                             Id = 1,
                             Description = "Yüksek performanslı ticari işlem veri havuzu",
                             DisplayName = "Ticari Kayıtlar",
-                            Name = "DataPool2",
-                            TableName = "CommercialRecords"
+                            Name = "DataPool2"
                         },
                         new
                         {
                             Id = 2,
                             Description = "Aktif proje takip ve bütçe yönetim havuzu",
                             DisplayName = "Proje Yönetimi",
-                            Name = "DataPool3",
-                            TableName = "ProjectRecords"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Genel veri havuzu",
-                            DisplayName = "Veri Havuzu (Excel)",
-                            Name = "UnifiedData",
-                            TableName = "SampleDatas"
+                            Name = "DataPool3"
                         });
                 });
 
@@ -2826,7 +2617,7 @@ namespace BlazorWebApp.Migrations
                             Id = 1,
                             Budget = 161900m,
                             CustomerName = "Global Müşteri 2",
-                            DueDate = new DateTime(2026, 3, 10, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(420),
+                            DueDate = new DateTime(2026, 3, 10, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(540),
                             Progress = 32,
                             ProjectName = "Proje Görselleştirme #1001",
                             Status = "Pending"
@@ -2836,7 +2627,7 @@ namespace BlazorWebApp.Migrations
                             Id = 2,
                             Budget = 396992m,
                             CustomerName = "Global Müşteri 3",
-                            DueDate = new DateTime(2026, 5, 9, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(450),
+                            DueDate = new DateTime(2026, 5, 9, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(570),
                             Progress = 79,
                             ProjectName = "Proje Görselleştirme #1002",
                             Status = "On Hold"
@@ -2846,7 +2637,7 @@ namespace BlazorWebApp.Migrations
                             Id = 3,
                             Budget = 182083m,
                             CustomerName = "Global Müşteri 4",
-                            DueDate = new DateTime(2026, 3, 15, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(500),
+                            DueDate = new DateTime(2026, 3, 15, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(600),
                             Progress = 36,
                             ProjectName = "Proje Görselleştirme #1003",
                             Status = "Completed"
@@ -2856,7 +2647,7 @@ namespace BlazorWebApp.Migrations
                             Id = 4,
                             Budget = 417175m,
                             CustomerName = "Global Müşteri 5",
-                            DueDate = new DateTime(2026, 5, 14, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(530),
+                            DueDate = new DateTime(2026, 5, 14, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(620),
                             Progress = 83,
                             ProjectName = "Proje Görselleştirme #1004",
                             Status = "Active"
@@ -2866,7 +2657,7 @@ namespace BlazorWebApp.Migrations
                             Id = 5,
                             Budget = 202266m,
                             CustomerName = "Global Müşteri 6",
-                            DueDate = new DateTime(2026, 3, 20, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(560),
+                            DueDate = new DateTime(2026, 3, 20, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(650),
                             Progress = 40,
                             ProjectName = "Proje Görselleştirme #1005",
                             Status = "Pending"
@@ -2876,7 +2667,7 @@ namespace BlazorWebApp.Migrations
                             Id = 6,
                             Budget = 437357m,
                             CustomerName = "Global Müşteri 7",
-                            DueDate = new DateTime(2026, 5, 19, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(590),
+                            DueDate = new DateTime(2026, 5, 19, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(680),
                             Progress = 87,
                             ProjectName = "Proje Görselleştirme #1006",
                             Status = "On Hold"
@@ -2886,7 +2677,7 @@ namespace BlazorWebApp.Migrations
                             Id = 7,
                             Budget = 222449m,
                             CustomerName = "Global Müşteri 8",
-                            DueDate = new DateTime(2026, 3, 26, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(620),
+                            DueDate = new DateTime(2026, 3, 26, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(710),
                             Progress = 44,
                             ProjectName = "Proje Görselleştirme #1007",
                             Status = "Completed"
@@ -2896,7 +2687,7 @@ namespace BlazorWebApp.Migrations
                             Id = 8,
                             Budget = 457540m,
                             CustomerName = "Global Müşteri 9",
-                            DueDate = new DateTime(2026, 5, 25, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(650),
+                            DueDate = new DateTime(2026, 5, 25, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(740),
                             Progress = 91,
                             ProjectName = "Proje Görselleştirme #1008",
                             Status = "Active"
@@ -2906,7 +2697,7 @@ namespace BlazorWebApp.Migrations
                             Id = 9,
                             Budget = 242631m,
                             CustomerName = "Global Müşteri 10",
-                            DueDate = new DateTime(2026, 3, 31, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(680),
+                            DueDate = new DateTime(2026, 3, 31, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(770),
                             Progress = 48,
                             ProjectName = "Proje Görselleştirme #1009",
                             Status = "Pending"
@@ -2916,7 +2707,7 @@ namespace BlazorWebApp.Migrations
                             Id = 10,
                             Budget = 477723m,
                             CustomerName = "Global Müşteri 11",
-                            DueDate = new DateTime(2026, 5, 30, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(710),
+                            DueDate = new DateTime(2026, 5, 30, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(800),
                             Progress = 95,
                             ProjectName = "Proje Görselleştirme #1010",
                             Status = "On Hold"
@@ -2926,7 +2717,7 @@ namespace BlazorWebApp.Migrations
                             Id = 11,
                             Budget = 262814m,
                             CustomerName = "Global Müşteri 12",
-                            DueDate = new DateTime(2026, 4, 5, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(740),
+                            DueDate = new DateTime(2026, 4, 5, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(820),
                             Progress = 52,
                             ProjectName = "Proje Görselleştirme #1011",
                             Status = "Completed"
@@ -2936,7 +2727,7 @@ namespace BlazorWebApp.Migrations
                             Id = 12,
                             Budget = 497906m,
                             CustomerName = "Global Müşteri 13",
-                            DueDate = new DateTime(2026, 6, 4, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(770),
+                            DueDate = new DateTime(2026, 6, 4, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(870),
                             Progress = 99,
                             ProjectName = "Proje Görselleştirme #1012",
                             Status = "Active"
@@ -2946,7 +2737,7 @@ namespace BlazorWebApp.Migrations
                             Id = 13,
                             Budget = 282997m,
                             CustomerName = "Global Müşteri 14",
-                            DueDate = new DateTime(2026, 4, 10, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(800),
+                            DueDate = new DateTime(2026, 4, 10, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(900),
                             Progress = 56,
                             ProjectName = "Proje Görselleştirme #1013",
                             Status = "Pending"
@@ -2956,7 +2747,7 @@ namespace BlazorWebApp.Migrations
                             Id = 14,
                             Budget = 68088m,
                             CustomerName = "Global Müşteri 15",
-                            DueDate = new DateTime(2026, 2, 14, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(830),
+                            DueDate = new DateTime(2026, 2, 14, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(930),
                             Progress = 13,
                             ProjectName = "Proje Görselleştirme #1014",
                             Status = "On Hold"
@@ -2966,7 +2757,7 @@ namespace BlazorWebApp.Migrations
                             Id = 15,
                             Budget = 303180m,
                             CustomerName = "Global Müşteri 16",
-                            DueDate = new DateTime(2026, 4, 15, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(870),
+                            DueDate = new DateTime(2026, 4, 15, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(950),
                             Progress = 60,
                             ProjectName = "Proje Görselleştirme #1015",
                             Status = "Completed"
@@ -2976,7 +2767,7 @@ namespace BlazorWebApp.Migrations
                             Id = 16,
                             Budget = 88271m,
                             CustomerName = "Global Müşteri 17",
-                            DueDate = new DateTime(2026, 2, 19, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(900),
+                            DueDate = new DateTime(2026, 2, 19, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(980),
                             Progress = 17,
                             ProjectName = "Proje Görselleştirme #1016",
                             Status = "Active"
@@ -2986,7 +2777,7 @@ namespace BlazorWebApp.Migrations
                             Id = 17,
                             Budget = 323363m,
                             CustomerName = "Global Müşteri 18",
-                            DueDate = new DateTime(2026, 4, 20, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(930),
+                            DueDate = new DateTime(2026, 4, 20, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1010),
                             Progress = 64,
                             ProjectName = "Proje Görselleştirme #1017",
                             Status = "Pending"
@@ -2996,7 +2787,7 @@ namespace BlazorWebApp.Migrations
                             Id = 18,
                             Budget = 108454m,
                             CustomerName = "Global Müşteri 19",
-                            DueDate = new DateTime(2026, 2, 24, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(960),
+                            DueDate = new DateTime(2026, 2, 24, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1040),
                             Progress = 21,
                             ProjectName = "Proje Görselleştirme #1018",
                             Status = "On Hold"
@@ -3006,7 +2797,7 @@ namespace BlazorWebApp.Migrations
                             Id = 19,
                             Budget = 343545m,
                             CustomerName = "Global Müşteri 20",
-                            DueDate = new DateTime(2026, 4, 26, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(990),
+                            DueDate = new DateTime(2026, 4, 26, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1070),
                             Progress = 68,
                             ProjectName = "Proje Görselleştirme #1019",
                             Status = "Completed"
@@ -3016,7 +2807,7 @@ namespace BlazorWebApp.Migrations
                             Id = 20,
                             Budget = 128637m,
                             CustomerName = "Global Müşteri 21",
-                            DueDate = new DateTime(2026, 3, 2, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1020),
+                            DueDate = new DateTime(2026, 3, 2, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1100),
                             Progress = 25,
                             ProjectName = "Proje Görselleştirme #1020",
                             Status = "Active"
@@ -3026,7 +2817,7 @@ namespace BlazorWebApp.Migrations
                             Id = 21,
                             Budget = 363728m,
                             CustomerName = "Global Müşteri 22",
-                            DueDate = new DateTime(2026, 5, 1, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1050),
+                            DueDate = new DateTime(2026, 5, 1, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1120),
                             Progress = 72,
                             ProjectName = "Proje Görselleştirme #1021",
                             Status = "Pending"
@@ -3036,7 +2827,7 @@ namespace BlazorWebApp.Migrations
                             Id = 22,
                             Budget = 148820m,
                             CustomerName = "Global Müşteri 23",
-                            DueDate = new DateTime(2026, 3, 7, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1080),
+                            DueDate = new DateTime(2026, 3, 7, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1150),
                             Progress = 29,
                             ProjectName = "Proje Görselleştirme #1022",
                             Status = "On Hold"
@@ -3046,7 +2837,7 @@ namespace BlazorWebApp.Migrations
                             Id = 23,
                             Budget = 383911m,
                             CustomerName = "Global Müşteri 24",
-                            DueDate = new DateTime(2026, 5, 6, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1100),
+                            DueDate = new DateTime(2026, 5, 6, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1180),
                             Progress = 76,
                             ProjectName = "Proje Görselleştirme #1023",
                             Status = "Completed"
@@ -3056,7 +2847,7 @@ namespace BlazorWebApp.Migrations
                             Id = 24,
                             Budget = 169002m,
                             CustomerName = "Global Müşteri 25",
-                            DueDate = new DateTime(2026, 3, 12, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1130),
+                            DueDate = new DateTime(2026, 3, 12, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1220),
                             Progress = 33,
                             ProjectName = "Proje Görselleştirme #1024",
                             Status = "Active"
@@ -3066,7 +2857,7 @@ namespace BlazorWebApp.Migrations
                             Id = 25,
                             Budget = 404094m,
                             CustomerName = "Global Müşteri 26",
-                            DueDate = new DateTime(2026, 5, 11, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1160),
+                            DueDate = new DateTime(2026, 5, 11, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1250),
                             Progress = 80,
                             ProjectName = "Proje Görselleştirme #1025",
                             Status = "Pending"
@@ -3076,7 +2867,7 @@ namespace BlazorWebApp.Migrations
                             Id = 26,
                             Budget = 189185m,
                             CustomerName = "Global Müşteri 27",
-                            DueDate = new DateTime(2026, 3, 17, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1190),
+                            DueDate = new DateTime(2026, 3, 17, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1270),
                             Progress = 37,
                             ProjectName = "Proje Görselleştirme #1026",
                             Status = "On Hold"
@@ -3086,7 +2877,7 @@ namespace BlazorWebApp.Migrations
                             Id = 27,
                             Budget = 424277m,
                             CustomerName = "Global Müşteri 28",
-                            DueDate = new DateTime(2026, 5, 16, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1240),
+                            DueDate = new DateTime(2026, 5, 16, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1300),
                             Progress = 84,
                             ProjectName = "Proje Görselleştirme #1027",
                             Status = "Completed"
@@ -3096,7 +2887,7 @@ namespace BlazorWebApp.Migrations
                             Id = 28,
                             Budget = 209368m,
                             CustomerName = "Global Müşteri 29",
-                            DueDate = new DateTime(2026, 3, 22, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1270),
+                            DueDate = new DateTime(2026, 3, 22, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1330),
                             Progress = 41,
                             ProjectName = "Proje Görselleştirme #1028",
                             Status = "Active"
@@ -3106,7 +2897,7 @@ namespace BlazorWebApp.Migrations
                             Id = 29,
                             Budget = 444459m,
                             CustomerName = "Global Müşteri 30",
-                            DueDate = new DateTime(2026, 5, 21, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1290),
+                            DueDate = new DateTime(2026, 5, 21, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1360),
                             Progress = 88,
                             ProjectName = "Proje Görselleştirme #1029",
                             Status = "Pending"
@@ -3116,7 +2907,7 @@ namespace BlazorWebApp.Migrations
                             Id = 30,
                             Budget = 229551m,
                             CustomerName = "Global Müşteri 31",
-                            DueDate = new DateTime(2026, 3, 27, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1320),
+                            DueDate = new DateTime(2026, 3, 27, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1390),
                             Progress = 45,
                             ProjectName = "Proje Görselleştirme #1030",
                             Status = "On Hold"
@@ -3126,7 +2917,7 @@ namespace BlazorWebApp.Migrations
                             Id = 31,
                             Budget = 464642m,
                             CustomerName = "Global Müşteri 32",
-                            DueDate = new DateTime(2026, 5, 26, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1360),
+                            DueDate = new DateTime(2026, 5, 26, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1420),
                             Progress = 92,
                             ProjectName = "Proje Görselleştirme #1031",
                             Status = "Completed"
@@ -3136,7 +2927,7 @@ namespace BlazorWebApp.Migrations
                             Id = 32,
                             Budget = 249733m,
                             CustomerName = "Global Müşteri 33",
-                            DueDate = new DateTime(2026, 4, 2, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1390),
+                            DueDate = new DateTime(2026, 4, 2, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1450),
                             Progress = 49,
                             ProjectName = "Proje Görselleştirme #1032",
                             Status = "Active"
@@ -3146,7 +2937,7 @@ namespace BlazorWebApp.Migrations
                             Id = 33,
                             Budget = 484825m,
                             CustomerName = "Global Müşteri 34",
-                            DueDate = new DateTime(2026, 6, 1, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1430),
+                            DueDate = new DateTime(2026, 6, 1, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1470),
                             Progress = 96,
                             ProjectName = "Proje Görselleştirme #1033",
                             Status = "Pending"
@@ -3156,7 +2947,7 @@ namespace BlazorWebApp.Migrations
                             Id = 34,
                             Budget = 269916m,
                             CustomerName = "Global Müşteri 35",
-                            DueDate = new DateTime(2026, 4, 7, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1460),
+                            DueDate = new DateTime(2026, 4, 7, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1500),
                             Progress = 53,
                             ProjectName = "Proje Görselleştirme #1034",
                             Status = "On Hold"
@@ -3166,7 +2957,7 @@ namespace BlazorWebApp.Migrations
                             Id = 35,
                             Budget = 55008m,
                             CustomerName = "Global Müşteri 36",
-                            DueDate = new DateTime(2026, 2, 11, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1490),
+                            DueDate = new DateTime(2026, 2, 11, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1530),
                             Progress = 11,
                             ProjectName = "Proje Görselleştirme #1035",
                             Status = "Completed"
@@ -3176,7 +2967,7 @@ namespace BlazorWebApp.Migrations
                             Id = 36,
                             Budget = 290099m,
                             CustomerName = "Global Müşteri 37",
-                            DueDate = new DateTime(2026, 4, 12, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1520),
+                            DueDate = new DateTime(2026, 4, 12, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1560),
                             Progress = 58,
                             ProjectName = "Proje Görselleştirme #1036",
                             Status = "Active"
@@ -3186,7 +2977,7 @@ namespace BlazorWebApp.Migrations
                             Id = 37,
                             Budget = 75190m,
                             CustomerName = "Global Müşteri 38",
-                            DueDate = new DateTime(2026, 2, 16, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1550),
+                            DueDate = new DateTime(2026, 2, 16, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1590),
                             Progress = 15,
                             ProjectName = "Proje Görselleştirme #1037",
                             Status = "Pending"
@@ -3196,7 +2987,7 @@ namespace BlazorWebApp.Migrations
                             Id = 38,
                             Budget = 310282m,
                             CustomerName = "Global Müşteri 39",
-                            DueDate = new DateTime(2026, 4, 17, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1580),
+                            DueDate = new DateTime(2026, 4, 17, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1620),
                             Progress = 62,
                             ProjectName = "Proje Görselleştirme #1038",
                             Status = "On Hold"
@@ -3206,7 +2997,7 @@ namespace BlazorWebApp.Migrations
                             Id = 39,
                             Budget = 95373m,
                             CustomerName = "Global Müşteri 40",
-                            DueDate = new DateTime(2026, 2, 21, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1620),
+                            DueDate = new DateTime(2026, 2, 21, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1640),
                             Progress = 19,
                             ProjectName = "Proje Görselleştirme #1039",
                             Status = "Completed"
@@ -3216,7 +3007,7 @@ namespace BlazorWebApp.Migrations
                             Id = 40,
                             Budget = 330465m,
                             CustomerName = "Global Müşteri 41",
-                            DueDate = new DateTime(2026, 4, 22, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1650),
+                            DueDate = new DateTime(2026, 4, 22, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1670),
                             Progress = 66,
                             ProjectName = "Proje Görselleştirme #1040",
                             Status = "Active"
@@ -3226,7 +3017,7 @@ namespace BlazorWebApp.Migrations
                             Id = 41,
                             Budget = 115556m,
                             CustomerName = "Global Müşteri 42",
-                            DueDate = new DateTime(2026, 2, 26, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1680),
+                            DueDate = new DateTime(2026, 2, 26, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1750),
                             Progress = 23,
                             ProjectName = "Proje Görselleştirme #1041",
                             Status = "Pending"
@@ -3236,7 +3027,7 @@ namespace BlazorWebApp.Migrations
                             Id = 42,
                             Budget = 350647m,
                             CustomerName = "Global Müşteri 43",
-                            DueDate = new DateTime(2026, 4, 27, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1710),
+                            DueDate = new DateTime(2026, 4, 27, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1780),
                             Progress = 70,
                             ProjectName = "Proje Görselleştirme #1042",
                             Status = "On Hold"
@@ -3246,7 +3037,7 @@ namespace BlazorWebApp.Migrations
                             Id = 43,
                             Budget = 135739m,
                             CustomerName = "Global Müşteri 44",
-                            DueDate = new DateTime(2026, 3, 3, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1740),
+                            DueDate = new DateTime(2026, 3, 3, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1800),
                             Progress = 27,
                             ProjectName = "Proje Görselleştirme #1043",
                             Status = "Completed"
@@ -3256,7 +3047,7 @@ namespace BlazorWebApp.Migrations
                             Id = 44,
                             Budget = 370830m,
                             CustomerName = "Global Müşteri 45",
-                            DueDate = new DateTime(2026, 5, 2, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1770),
+                            DueDate = new DateTime(2026, 5, 2, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1830),
                             Progress = 74,
                             ProjectName = "Proje Görselleştirme #1044",
                             Status = "Active"
@@ -3266,7 +3057,7 @@ namespace BlazorWebApp.Migrations
                             Id = 45,
                             Budget = 155922m,
                             CustomerName = "Global Müşteri 46",
-                            DueDate = new DateTime(2026, 3, 9, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1800),
+                            DueDate = new DateTime(2026, 3, 9, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1860),
                             Progress = 31,
                             ProjectName = "Proje Görselleştirme #1045",
                             Status = "Pending"
@@ -3276,7 +3067,7 @@ namespace BlazorWebApp.Migrations
                             Id = 46,
                             Budget = 391013m,
                             CustomerName = "Global Müşteri 47",
-                            DueDate = new DateTime(2026, 5, 8, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1830),
+                            DueDate = new DateTime(2026, 5, 8, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1890),
                             Progress = 78,
                             ProjectName = "Proje Görselleştirme #1046",
                             Status = "On Hold"
@@ -3286,7 +3077,7 @@ namespace BlazorWebApp.Migrations
                             Id = 47,
                             Budget = 176104m,
                             CustomerName = "Global Müşteri 48",
-                            DueDate = new DateTime(2026, 3, 14, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1850),
+                            DueDate = new DateTime(2026, 3, 14, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1930),
                             Progress = 35,
                             ProjectName = "Proje Görselleştirme #1047",
                             Status = "Completed"
@@ -3296,7 +3087,7 @@ namespace BlazorWebApp.Migrations
                             Id = 48,
                             Budget = 411196m,
                             CustomerName = "Global Müşteri 49",
-                            DueDate = new DateTime(2026, 5, 13, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1880),
+                            DueDate = new DateTime(2026, 5, 13, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1960),
                             Progress = 82,
                             ProjectName = "Proje Görselleştirme #1048",
                             Status = "Active"
@@ -3306,7 +3097,7 @@ namespace BlazorWebApp.Migrations
                             Id = 49,
                             Budget = 196287m,
                             CustomerName = "Global Müşteri 50",
-                            DueDate = new DateTime(2026, 3, 19, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1910),
+                            DueDate = new DateTime(2026, 3, 19, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(1980),
                             Progress = 39,
                             ProjectName = "Proje Görselleştirme #1049",
                             Status = "Pending"
@@ -3316,7 +3107,7 @@ namespace BlazorWebApp.Migrations
                             Id = 50,
                             Budget = 431379m,
                             CustomerName = "Global Müşteri 1",
-                            DueDate = new DateTime(2026, 5, 18, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1940),
+                            DueDate = new DateTime(2026, 5, 18, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2010),
                             Progress = 86,
                             ProjectName = "Proje Görselleştirme #1050",
                             Status = "On Hold"
@@ -3326,7 +3117,7 @@ namespace BlazorWebApp.Migrations
                             Id = 51,
                             Budget = 216470m,
                             CustomerName = "Global Müşteri 2",
-                            DueDate = new DateTime(2026, 3, 24, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(1980),
+                            DueDate = new DateTime(2026, 3, 24, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2040),
                             Progress = 43,
                             ProjectName = "Proje Görselleştirme #1051",
                             Status = "Completed"
@@ -3336,7 +3127,7 @@ namespace BlazorWebApp.Migrations
                             Id = 52,
                             Budget = 451561m,
                             CustomerName = "Global Müşteri 3",
-                            DueDate = new DateTime(2026, 5, 23, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2010),
+                            DueDate = new DateTime(2026, 5, 23, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2070),
                             Progress = 90,
                             ProjectName = "Proje Görselleştirme #1052",
                             Status = "Active"
@@ -3346,7 +3137,7 @@ namespace BlazorWebApp.Migrations
                             Id = 53,
                             Budget = 236653m,
                             CustomerName = "Global Müşteri 4",
-                            DueDate = new DateTime(2026, 3, 29, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2040),
+                            DueDate = new DateTime(2026, 3, 29, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2090),
                             Progress = 47,
                             ProjectName = "Proje Görselleştirme #1053",
                             Status = "Pending"
@@ -3356,7 +3147,7 @@ namespace BlazorWebApp.Migrations
                             Id = 54,
                             Budget = 471744m,
                             CustomerName = "Global Müşteri 5",
-                            DueDate = new DateTime(2026, 5, 28, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2070),
+                            DueDate = new DateTime(2026, 5, 28, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2120),
                             Progress = 94,
                             ProjectName = "Proje Görselleştirme #1054",
                             Status = "On Hold"
@@ -3366,7 +3157,7 @@ namespace BlazorWebApp.Migrations
                             Id = 55,
                             Budget = 256835m,
                             CustomerName = "Global Müşteri 6",
-                            DueDate = new DateTime(2026, 4, 3, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2100),
+                            DueDate = new DateTime(2026, 4, 3, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2150),
                             Progress = 51,
                             ProjectName = "Proje Görselleştirme #1055",
                             Status = "Completed"
@@ -3376,7 +3167,7 @@ namespace BlazorWebApp.Migrations
                             Id = 56,
                             Budget = 491927m,
                             CustomerName = "Global Müşteri 7",
-                            DueDate = new DateTime(2026, 6, 2, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2130),
+                            DueDate = new DateTime(2026, 6, 2, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2180),
                             Progress = 98,
                             ProjectName = "Proje Görselleştirme #1056",
                             Status = "Active"
@@ -3386,7 +3177,7 @@ namespace BlazorWebApp.Migrations
                             Id = 57,
                             Budget = 277018m,
                             CustomerName = "Global Müşteri 8",
-                            DueDate = new DateTime(2026, 4, 9, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2170),
+                            DueDate = new DateTime(2026, 4, 9, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2210),
                             Progress = 55,
                             ProjectName = "Proje Görselleştirme #1057",
                             Status = "Pending"
@@ -3396,7 +3187,7 @@ namespace BlazorWebApp.Migrations
                             Id = 58,
                             Budget = 62110m,
                             CustomerName = "Global Müşteri 9",
-                            DueDate = new DateTime(2026, 2, 13, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2200),
+                            DueDate = new DateTime(2026, 2, 13, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2240),
                             Progress = 12,
                             ProjectName = "Proje Görselleştirme #1058",
                             Status = "On Hold"
@@ -3406,7 +3197,7 @@ namespace BlazorWebApp.Migrations
                             Id = 59,
                             Budget = 297201m,
                             CustomerName = "Global Müşteri 10",
-                            DueDate = new DateTime(2026, 4, 14, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2230),
+                            DueDate = new DateTime(2026, 4, 14, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2270),
                             Progress = 59,
                             ProjectName = "Proje Görselleştirme #1059",
                             Status = "Completed"
@@ -3416,7 +3207,7 @@ namespace BlazorWebApp.Migrations
                             Id = 60,
                             Budget = 82292m,
                             CustomerName = "Global Müşteri 11",
-                            DueDate = new DateTime(2026, 2, 18, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2250),
+                            DueDate = new DateTime(2026, 2, 18, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2300),
                             Progress = 16,
                             ProjectName = "Proje Görselleştirme #1060",
                             Status = "Active"
@@ -3426,7 +3217,7 @@ namespace BlazorWebApp.Migrations
                             Id = 61,
                             Budget = 317384m,
                             CustomerName = "Global Müşteri 12",
-                            DueDate = new DateTime(2026, 4, 19, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2290),
+                            DueDate = new DateTime(2026, 4, 19, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2330),
                             Progress = 63,
                             ProjectName = "Proje Görselleştirme #1061",
                             Status = "Pending"
@@ -3436,7 +3227,7 @@ namespace BlazorWebApp.Migrations
                             Id = 62,
                             Budget = 102475m,
                             CustomerName = "Global Müşteri 13",
-                            DueDate = new DateTime(2026, 2, 23, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2320),
+                            DueDate = new DateTime(2026, 2, 23, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2360),
                             Progress = 20,
                             ProjectName = "Proje Görselleştirme #1062",
                             Status = "On Hold"
@@ -3446,7 +3237,7 @@ namespace BlazorWebApp.Migrations
                             Id = 63,
                             Budget = 337567m,
                             CustomerName = "Global Müşteri 14",
-                            DueDate = new DateTime(2026, 4, 24, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2360),
+                            DueDate = new DateTime(2026, 4, 24, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2390),
                             Progress = 67,
                             ProjectName = "Proje Görselleştirme #1063",
                             Status = "Completed"
@@ -3456,7 +3247,7 @@ namespace BlazorWebApp.Migrations
                             Id = 64,
                             Budget = 122658m,
                             CustomerName = "Global Müşteri 15",
-                            DueDate = new DateTime(2026, 2, 28, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2390),
+                            DueDate = new DateTime(2026, 2, 28, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2420),
                             Progress = 24,
                             ProjectName = "Proje Görselleştirme #1064",
                             Status = "Active"
@@ -3466,7 +3257,7 @@ namespace BlazorWebApp.Migrations
                             Id = 65,
                             Budget = 357749m,
                             CustomerName = "Global Müşteri 16",
-                            DueDate = new DateTime(2026, 4, 29, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2420),
+                            DueDate = new DateTime(2026, 4, 29, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2450),
                             Progress = 71,
                             ProjectName = "Proje Görselleştirme #1065",
                             Status = "Pending"
@@ -3476,7 +3267,7 @@ namespace BlazorWebApp.Migrations
                             Id = 66,
                             Budget = 142841m,
                             CustomerName = "Global Müşteri 17",
-                            DueDate = new DateTime(2026, 3, 5, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2450),
+                            DueDate = new DateTime(2026, 3, 5, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2480),
                             Progress = 28,
                             ProjectName = "Proje Görselleştirme #1066",
                             Status = "On Hold"
@@ -3486,7 +3277,7 @@ namespace BlazorWebApp.Migrations
                             Id = 67,
                             Budget = 377932m,
                             CustomerName = "Global Müşteri 18",
-                            DueDate = new DateTime(2026, 5, 4, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2480),
+                            DueDate = new DateTime(2026, 5, 4, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2510),
                             Progress = 75,
                             ProjectName = "Proje Görselleştirme #1067",
                             Status = "Completed"
@@ -3496,7 +3287,7 @@ namespace BlazorWebApp.Migrations
                             Id = 68,
                             Budget = 163024m,
                             CustomerName = "Global Müşteri 19",
-                            DueDate = new DateTime(2026, 3, 10, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2510),
+                            DueDate = new DateTime(2026, 3, 10, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2530),
                             Progress = 32,
                             ProjectName = "Proje Görselleştirme #1068",
                             Status = "Active"
@@ -3506,7 +3297,7 @@ namespace BlazorWebApp.Migrations
                             Id = 69,
                             Budget = 398115m,
                             CustomerName = "Global Müşteri 20",
-                            DueDate = new DateTime(2026, 5, 9, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2540),
+                            DueDate = new DateTime(2026, 5, 9, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2560),
                             Progress = 79,
                             ProjectName = "Proje Görselleştirme #1069",
                             Status = "Pending"
@@ -3516,7 +3307,7 @@ namespace BlazorWebApp.Migrations
                             Id = 70,
                             Budget = 183206m,
                             CustomerName = "Global Müşteri 21",
-                            DueDate = new DateTime(2026, 3, 16, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2570),
+                            DueDate = new DateTime(2026, 3, 16, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2590),
                             Progress = 36,
                             ProjectName = "Proje Görselleştirme #1070",
                             Status = "On Hold"
@@ -3526,7 +3317,7 @@ namespace BlazorWebApp.Migrations
                             Id = 71,
                             Budget = 418298m,
                             CustomerName = "Global Müşteri 22",
-                            DueDate = new DateTime(2026, 5, 15, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2600),
+                            DueDate = new DateTime(2026, 5, 15, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2630),
                             Progress = 83,
                             ProjectName = "Proje Görselleştirme #1071",
                             Status = "Completed"
@@ -3536,7 +3327,7 @@ namespace BlazorWebApp.Migrations
                             Id = 72,
                             Budget = 203389m,
                             CustomerName = "Global Müşteri 23",
-                            DueDate = new DateTime(2026, 3, 21, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2630),
+                            DueDate = new DateTime(2026, 3, 21, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2660),
                             Progress = 40,
                             ProjectName = "Proje Görselleştirme #1072",
                             Status = "Active"
@@ -3546,7 +3337,7 @@ namespace BlazorWebApp.Migrations
                             Id = 73,
                             Budget = 438481m,
                             CustomerName = "Global Müşteri 24",
-                            DueDate = new DateTime(2026, 5, 20, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2650),
+                            DueDate = new DateTime(2026, 5, 20, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2690),
                             Progress = 87,
                             ProjectName = "Proje Görselleştirme #1073",
                             Status = "Pending"
@@ -3556,7 +3347,7 @@ namespace BlazorWebApp.Migrations
                             Id = 74,
                             Budget = 223572m,
                             CustomerName = "Global Müşteri 25",
-                            DueDate = new DateTime(2026, 3, 26, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2700),
+                            DueDate = new DateTime(2026, 3, 26, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2710),
                             Progress = 44,
                             ProjectName = "Proje Görselleştirme #1074",
                             Status = "On Hold"
@@ -3566,7 +3357,7 @@ namespace BlazorWebApp.Migrations
                             Id = 75,
                             Budget = 458663m,
                             CustomerName = "Global Müşteri 26",
-                            DueDate = new DateTime(2026, 5, 25, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2730),
+                            DueDate = new DateTime(2026, 5, 25, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2740),
                             Progress = 91,
                             ProjectName = "Proje Görselleştirme #1075",
                             Status = "Completed"
@@ -3576,7 +3367,7 @@ namespace BlazorWebApp.Migrations
                             Id = 76,
                             Budget = 243755m,
                             CustomerName = "Global Müşteri 27",
-                            DueDate = new DateTime(2026, 3, 31, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2760),
+                            DueDate = new DateTime(2026, 3, 31, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2770),
                             Progress = 48,
                             ProjectName = "Proje Görselleştirme #1076",
                             Status = "Active"
@@ -3586,7 +3377,7 @@ namespace BlazorWebApp.Migrations
                             Id = 77,
                             Budget = 478846m,
                             CustomerName = "Global Müşteri 28",
-                            DueDate = new DateTime(2026, 5, 30, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2790),
+                            DueDate = new DateTime(2026, 5, 30, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2800),
                             Progress = 95,
                             ProjectName = "Proje Görselleştirme #1077",
                             Status = "Pending"
@@ -3596,7 +3387,7 @@ namespace BlazorWebApp.Migrations
                             Id = 78,
                             Budget = 263937m,
                             CustomerName = "Global Müşteri 29",
-                            DueDate = new DateTime(2026, 4, 5, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2820),
+                            DueDate = new DateTime(2026, 4, 5, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2820),
                             Progress = 52,
                             ProjectName = "Proje Görselleştirme #1078",
                             Status = "On Hold"
@@ -3606,7 +3397,7 @@ namespace BlazorWebApp.Migrations
                             Id = 79,
                             Budget = 499029m,
                             CustomerName = "Global Müşteri 30",
-                            DueDate = new DateTime(2026, 6, 4, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2850),
+                            DueDate = new DateTime(2026, 6, 4, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2850),
                             Progress = 99,
                             ProjectName = "Proje Görselleştirme #1079",
                             Status = "Completed"
@@ -3616,7 +3407,7 @@ namespace BlazorWebApp.Migrations
                             Id = 80,
                             Budget = 284120m,
                             CustomerName = "Global Müşteri 31",
-                            DueDate = new DateTime(2026, 4, 10, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2880),
+                            DueDate = new DateTime(2026, 4, 10, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2880),
                             Progress = 56,
                             ProjectName = "Proje Görselleştirme #1080",
                             Status = "Active"
@@ -3626,7 +3417,7 @@ namespace BlazorWebApp.Migrations
                             Id = 81,
                             Budget = 69212m,
                             CustomerName = "Global Müşteri 32",
-                            DueDate = new DateTime(2026, 2, 14, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2910),
+                            DueDate = new DateTime(2026, 2, 14, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2910),
                             Progress = 13,
                             ProjectName = "Proje Görselleştirme #1081",
                             Status = "Pending"
@@ -3636,7 +3427,7 @@ namespace BlazorWebApp.Migrations
                             Id = 82,
                             Budget = 304303m,
                             CustomerName = "Global Müşteri 33",
-                            DueDate = new DateTime(2026, 4, 15, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2940),
+                            DueDate = new DateTime(2026, 4, 15, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2940),
                             Progress = 60,
                             ProjectName = "Proje Görselleştirme #1082",
                             Status = "On Hold"
@@ -3646,7 +3437,7 @@ namespace BlazorWebApp.Migrations
                             Id = 83,
                             Budget = 89394m,
                             CustomerName = "Global Müşteri 34",
-                            DueDate = new DateTime(2026, 2, 20, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2960),
+                            DueDate = new DateTime(2026, 2, 20, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(2980),
                             Progress = 17,
                             ProjectName = "Proje Görselleştirme #1083",
                             Status = "Completed"
@@ -3656,7 +3447,7 @@ namespace BlazorWebApp.Migrations
                             Id = 84,
                             Budget = 324486m,
                             CustomerName = "Global Müşteri 35",
-                            DueDate = new DateTime(2026, 4, 21, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(2990),
+                            DueDate = new DateTime(2026, 4, 21, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3000),
                             Progress = 64,
                             ProjectName = "Proje Görselleştirme #1084",
                             Status = "Active"
@@ -3666,7 +3457,7 @@ namespace BlazorWebApp.Migrations
                             Id = 85,
                             Budget = 109577m,
                             CustomerName = "Global Müşteri 36",
-                            DueDate = new DateTime(2026, 2, 25, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(3020),
+                            DueDate = new DateTime(2026, 2, 25, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3030),
                             Progress = 21,
                             ProjectName = "Proje Görselleştirme #1085",
                             Status = "Pending"
@@ -3676,7 +3467,7 @@ namespace BlazorWebApp.Migrations
                             Id = 86,
                             Budget = 344669m,
                             CustomerName = "Global Müşteri 37",
-                            DueDate = new DateTime(2026, 4, 26, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(3050),
+                            DueDate = new DateTime(2026, 4, 26, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3060),
                             Progress = 68,
                             ProjectName = "Proje Görselleştirme #1086",
                             Status = "On Hold"
@@ -3686,7 +3477,7 @@ namespace BlazorWebApp.Migrations
                             Id = 87,
                             Budget = 129760m,
                             CustomerName = "Global Müşteri 38",
-                            DueDate = new DateTime(2026, 3, 2, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(3100),
+                            DueDate = new DateTime(2026, 3, 2, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3090),
                             Progress = 25,
                             ProjectName = "Proje Görselleştirme #1087",
                             Status = "Completed"
@@ -3696,7 +3487,7 @@ namespace BlazorWebApp.Migrations
                             Id = 88,
                             Budget = 364851m,
                             CustomerName = "Global Müşteri 39",
-                            DueDate = new DateTime(2026, 5, 1, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(3130),
+                            DueDate = new DateTime(2026, 5, 1, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3120),
                             Progress = 72,
                             ProjectName = "Proje Görselleştirme #1088",
                             Status = "Active"
@@ -3706,7 +3497,7 @@ namespace BlazorWebApp.Migrations
                             Id = 89,
                             Budget = 149943m,
                             CustomerName = "Global Müşteri 40",
-                            DueDate = new DateTime(2026, 3, 7, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(3150),
+                            DueDate = new DateTime(2026, 3, 7, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3150),
                             Progress = 29,
                             ProjectName = "Proje Görselleştirme #1089",
                             Status = "Pending"
@@ -3716,7 +3507,7 @@ namespace BlazorWebApp.Migrations
                             Id = 90,
                             Budget = 385034m,
                             CustomerName = "Global Müşteri 41",
-                            DueDate = new DateTime(2026, 5, 6, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(3180),
+                            DueDate = new DateTime(2026, 5, 6, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3180),
                             Progress = 77,
                             ProjectName = "Proje Görselleştirme #1090",
                             Status = "On Hold"
@@ -3726,7 +3517,7 @@ namespace BlazorWebApp.Migrations
                             Id = 91,
                             Budget = 170126m,
                             CustomerName = "Global Müşteri 42",
-                            DueDate = new DateTime(2026, 3, 12, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(3210),
+                            DueDate = new DateTime(2026, 3, 12, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3210),
                             Progress = 34,
                             ProjectName = "Proje Görselleştirme #1091",
                             Status = "Completed"
@@ -3736,7 +3527,7 @@ namespace BlazorWebApp.Migrations
                             Id = 92,
                             Budget = 405217m,
                             CustomerName = "Global Müşteri 43",
-                            DueDate = new DateTime(2026, 5, 11, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(3240),
+                            DueDate = new DateTime(2026, 5, 11, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3230),
                             Progress = 81,
                             ProjectName = "Proje Görselleştirme #1092",
                             Status = "Active"
@@ -3746,7 +3537,7 @@ namespace BlazorWebApp.Migrations
                             Id = 93,
                             Budget = 190308m,
                             CustomerName = "Global Müşteri 44",
-                            DueDate = new DateTime(2026, 3, 17, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(3280),
+                            DueDate = new DateTime(2026, 3, 17, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3260),
                             Progress = 38,
                             ProjectName = "Proje Görselleştirme #1093",
                             Status = "Pending"
@@ -3756,7 +3547,7 @@ namespace BlazorWebApp.Migrations
                             Id = 94,
                             Budget = 425400m,
                             CustomerName = "Global Müşteri 45",
-                            DueDate = new DateTime(2026, 5, 16, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(3310),
+                            DueDate = new DateTime(2026, 5, 16, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3290),
                             Progress = 85,
                             ProjectName = "Proje Görselleştirme #1094",
                             Status = "On Hold"
@@ -3766,7 +3557,7 @@ namespace BlazorWebApp.Migrations
                             Id = 95,
                             Budget = 210491m,
                             CustomerName = "Global Müşteri 46",
-                            DueDate = new DateTime(2026, 3, 23, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(3340),
+                            DueDate = new DateTime(2026, 3, 23, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3360),
                             Progress = 42,
                             ProjectName = "Proje Görselleştirme #1095",
                             Status = "Completed"
@@ -3776,7 +3567,7 @@ namespace BlazorWebApp.Migrations
                             Id = 96,
                             Budget = 445583m,
                             CustomerName = "Global Müşteri 47",
-                            DueDate = new DateTime(2026, 5, 22, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(3370),
+                            DueDate = new DateTime(2026, 5, 22, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3390),
                             Progress = 89,
                             ProjectName = "Proje Görselleştirme #1096",
                             Status = "Active"
@@ -3786,7 +3577,7 @@ namespace BlazorWebApp.Migrations
                             Id = 97,
                             Budget = 230674m,
                             CustomerName = "Global Müşteri 48",
-                            DueDate = new DateTime(2026, 3, 28, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(3400),
+                            DueDate = new DateTime(2026, 3, 28, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3420),
                             Progress = 46,
                             ProjectName = "Proje Görselleştirme #1097",
                             Status = "Pending"
@@ -3796,7 +3587,7 @@ namespace BlazorWebApp.Migrations
                             Id = 98,
                             Budget = 465765m,
                             CustomerName = "Global Müşteri 49",
-                            DueDate = new DateTime(2026, 5, 27, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(3430),
+                            DueDate = new DateTime(2026, 5, 27, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3450),
                             Progress = 93,
                             ProjectName = "Proje Görselleştirme #1098",
                             Status = "On Hold"
@@ -3806,7 +3597,7 @@ namespace BlazorWebApp.Migrations
                             Id = 99,
                             Budget = 250857m,
                             CustomerName = "Global Müşteri 50",
-                            DueDate = new DateTime(2026, 4, 2, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(3470),
+                            DueDate = new DateTime(2026, 4, 2, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3470),
                             Progress = 50,
                             ProjectName = "Proje Görselleştirme #1099",
                             Status = "Completed"
@@ -3816,7 +3607,7 @@ namespace BlazorWebApp.Migrations
                             Id = 100,
                             Budget = 485948m,
                             CustomerName = "Global Müşteri 1",
-                            DueDate = new DateTime(2026, 6, 1, 15, 41, 23, 301, DateTimeKind.Local).AddTicks(3500),
+                            DueDate = new DateTime(2026, 6, 1, 15, 38, 6, 339, DateTimeKind.Local).AddTicks(3500),
                             Progress = 97,
                             ProjectName = "Proje Görselleştirme #1100",
                             Status = "Active"
@@ -3907,7 +3698,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "İnşaat",
                             Customer = "Emlak Konut",
-                            Date = new DateTime(2026, 1, 31, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6140),
+                            Date = new DateTime(2026, 1, 31, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(6850),
                             Description = "Merkez şube konut satışı",
                             Name = "Konut Projesi A",
                             PaymentStatus = "Paid",
@@ -3925,7 +3716,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Vestel A.Ş.",
-                            Date = new DateTime(2026, 1, 26, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6200),
+                            Date = new DateTime(2026, 1, 26, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(6910),
                             Description = "Ankara şube ofis kiralama",
                             Name = "Ofis Bloğu B",
                             PaymentStatus = "Pending",
@@ -3943,7 +3734,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "Ticari",
                             Customer = "Rönesans Holding",
-                            Date = new DateTime(2026, 1, 5, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6200),
+                            Date = new DateTime(2026, 1, 5, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(6910),
                             Description = "İzmir AVM projesi tamamlandı",
                             Name = "AVM Projesi C",
                             PaymentStatus = "Overdue",
@@ -3961,7 +3752,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Antalya",
                             Category = "Lüks Konut",
                             Customer = "Bireysel Yatırımcı",
-                            Date = new DateTime(2025, 12, 5, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6210),
+                            Date = new DateTime(2025, 12, 5, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(6920),
                             Description = "Antalya lüks villa projesi",
                             Name = "Villa Etap 1",
                             PaymentStatus = "Paid",
@@ -3979,7 +3770,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Kocaeli",
                             Category = "Sanayi",
                             Customer = "DHL Express",
-                            Date = new DateTime(2026, 1, 21, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6210),
+                            Date = new DateTime(2026, 1, 21, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(6920),
                             Description = "Kocaeli lojistik depo depo inşaatı",
                             Name = "Lojistik Merkezi",
                             PaymentStatus = "Paid",
@@ -3997,7 +3788,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Bursa",
                             Category = "Kamu",
                             Customer = "Sağlık Bakanlığı",
-                            Date = new DateTime(2026, 1, 16, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6220),
+                            Date = new DateTime(2026, 1, 16, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(6920),
                             Description = "Bursa şehir hastanesi ek bina",
                             Name = "Hastane Projesi",
                             PaymentStatus = "Paid",
@@ -4015,7 +3806,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "İnşaat",
                             Customer = "Ağaoğlu",
-                            Date = new DateTime(2026, 2, 2, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6220),
+                            Date = new DateTime(2026, 2, 2, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(6930),
                             Description = "Lüks rezidans satışı",
                             Name = "Rezidans X",
                             PaymentStatus = "Paid",
@@ -4033,7 +3824,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Kuzu Grup",
-                            Date = new DateTime(2026, 1, 29, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6220),
+                            Date = new DateTime(2026, 1, 29, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(6930),
                             Description = "Modern iş merkezi kiralama",
                             Name = "İş Merkezi Y",
                             PaymentStatus = "Pending",
@@ -4051,7 +3842,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Kocaeli",
                             Category = "Sanayi",
                             Customer = "Trendyol",
-                            Date = new DateTime(2026, 1, 5, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6240),
+                            Date = new DateTime(2026, 1, 5, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(6930),
                             Description = "Lojistik depo genişletme",
                             Name = "Depo Z",
                             PaymentStatus = "Overdue",
@@ -4069,7 +3860,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Bursa",
                             Category = "İnşaat",
                             Customer = "Sur Yapı",
-                            Date = new DateTime(2026, 1, 24, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6240),
+                            Date = new DateTime(2026, 1, 24, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(6940),
                             Description = "Yeni etap konut projesi",
                             Name = "Konut Sitesi D",
                             PaymentStatus = "Paid",
@@ -4087,7 +3878,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Antalya",
                             Category = "Turizm",
                             Customer = "Hilton",
-                            Date = new DateTime(2025, 11, 5, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6250),
+                            Date = new DateTime(2025, 11, 5, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(6940),
                             Description = "5 yıldızlı otel inşaatı",
                             Name = "Otel Projesi E",
                             PaymentStatus = "Paid",
@@ -4105,7 +3896,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "Kamu",
                             Customer = "İBB",
-                            Date = new DateTime(2026, 2, 1, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6250),
+                            Date = new DateTime(2026, 2, 1, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(6940),
                             Description = "Şehir parkı yenileme çalışması",
                             Name = "Park Revizyonu",
                             PaymentStatus = "Paid",
@@ -4123,7 +3914,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Müşteri 3",
-                            Date = new DateTime(2026, 1, 23, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6330),
+                            Date = new DateTime(2026, 1, 23, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7000),
                             Description = "Açıklama metni 13",
                             Name = "Örnek Proje 13",
                             PaymentStatus = "Pending",
@@ -4141,7 +3932,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "İnşaat",
                             Customer = "Müşteri 4",
-                            Date = new DateTime(2026, 1, 22, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6350),
+                            Date = new DateTime(2026, 1, 22, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7030),
                             Description = "Açıklama metni 14",
                             Name = "Örnek Proje 14",
                             PaymentStatus = "Overdue",
@@ -4159,7 +3950,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "Ticari",
                             Customer = "Müşteri 5",
-                            Date = new DateTime(2026, 1, 21, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6370),
+                            Date = new DateTime(2026, 1, 21, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7090),
                             Description = "Açıklama metni 15",
                             Name = "Örnek Proje 15",
                             PaymentStatus = "Paid",
@@ -4177,7 +3968,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "İnşaat",
                             Customer = "Müşteri 6",
-                            Date = new DateTime(2026, 1, 20, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6380),
+                            Date = new DateTime(2026, 1, 20, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7100),
                             Description = "Açıklama metni 16",
                             Name = "Örnek Proje 16",
                             PaymentStatus = "Pending",
@@ -4195,7 +3986,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "Ticari",
                             Customer = "Müşteri 7",
-                            Date = new DateTime(2026, 1, 19, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6400),
+                            Date = new DateTime(2026, 1, 19, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7110),
                             Description = "Açıklama metni 17",
                             Name = "Örnek Proje 17",
                             PaymentStatus = "Overdue",
@@ -4213,7 +4004,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "İnşaat",
                             Customer = "Müşteri 8",
-                            Date = new DateTime(2026, 1, 18, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6410),
+                            Date = new DateTime(2026, 1, 18, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7120),
                             Description = "Açıklama metni 18",
                             Name = "Örnek Proje 18",
                             PaymentStatus = "Paid",
@@ -4231,7 +4022,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Müşteri 9",
-                            Date = new DateTime(2026, 1, 17, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6420),
+                            Date = new DateTime(2026, 1, 17, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7140),
                             Description = "Açıklama metni 19",
                             Name = "Örnek Proje 19",
                             PaymentStatus = "Pending",
@@ -4249,7 +4040,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "İnşaat",
                             Customer = "Müşteri 0",
-                            Date = new DateTime(2026, 1, 16, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6430),
+                            Date = new DateTime(2026, 1, 16, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7150),
                             Description = "Açıklama metni 20",
                             Name = "Örnek Proje 20",
                             PaymentStatus = "Overdue",
@@ -4267,7 +4058,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "Ticari",
                             Customer = "Müşteri 1",
-                            Date = new DateTime(2026, 1, 15, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6450),
+                            Date = new DateTime(2026, 1, 15, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7160),
                             Description = "Açıklama metni 21",
                             Name = "Örnek Proje 21",
                             PaymentStatus = "Paid",
@@ -4285,7 +4076,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "İnşaat",
                             Customer = "Müşteri 2",
-                            Date = new DateTime(2026, 1, 14, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6460),
+                            Date = new DateTime(2026, 1, 14, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7170),
                             Description = "Açıklama metni 22",
                             Name = "Örnek Proje 22",
                             PaymentStatus = "Pending",
@@ -4303,7 +4094,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "Ticari",
                             Customer = "Müşteri 3",
-                            Date = new DateTime(2026, 1, 13, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6470),
+                            Date = new DateTime(2026, 1, 13, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7180),
                             Description = "Açıklama metni 23",
                             Name = "Örnek Proje 23",
                             PaymentStatus = "Overdue",
@@ -4321,7 +4112,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "İnşaat",
                             Customer = "Müşteri 4",
-                            Date = new DateTime(2026, 1, 12, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6480),
+                            Date = new DateTime(2026, 1, 12, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7190),
                             Description = "Açıklama metni 24",
                             Name = "Örnek Proje 24",
                             PaymentStatus = "Paid",
@@ -4339,7 +4130,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Müşteri 5",
-                            Date = new DateTime(2026, 1, 11, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6490),
+                            Date = new DateTime(2026, 1, 11, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7210),
                             Description = "Açıklama metni 25",
                             Name = "Örnek Proje 25",
                             PaymentStatus = "Pending",
@@ -4357,7 +4148,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "İnşaat",
                             Customer = "Müşteri 6",
-                            Date = new DateTime(2026, 1, 10, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6510),
+                            Date = new DateTime(2026, 1, 10, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7220),
                             Description = "Açıklama metni 26",
                             Name = "Örnek Proje 26",
                             PaymentStatus = "Overdue",
@@ -4375,7 +4166,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "Ticari",
                             Customer = "Müşteri 7",
-                            Date = new DateTime(2026, 1, 9, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6520),
+                            Date = new DateTime(2026, 1, 9, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7230),
                             Description = "Açıklama metni 27",
                             Name = "Örnek Proje 27",
                             PaymentStatus = "Paid",
@@ -4393,7 +4184,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "İnşaat",
                             Customer = "Müşteri 8",
-                            Date = new DateTime(2026, 1, 8, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6530),
+                            Date = new DateTime(2026, 1, 8, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7240),
                             Description = "Açıklama metni 28",
                             Name = "Örnek Proje 28",
                             PaymentStatus = "Pending",
@@ -4411,7 +4202,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "Ticari",
                             Customer = "Müşteri 9",
-                            Date = new DateTime(2026, 1, 7, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6540),
+                            Date = new DateTime(2026, 1, 7, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7310),
                             Description = "Açıklama metni 29",
                             Name = "Örnek Proje 29",
                             PaymentStatus = "Overdue",
@@ -4429,7 +4220,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "İnşaat",
                             Customer = "Müşteri 0",
-                            Date = new DateTime(2026, 1, 6, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6560),
+                            Date = new DateTime(2026, 1, 6, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7320),
                             Description = "Açıklama metni 30",
                             Name = "Örnek Proje 30",
                             PaymentStatus = "Paid",
@@ -4447,7 +4238,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Müşteri 1",
-                            Date = new DateTime(2026, 1, 5, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6570),
+                            Date = new DateTime(2026, 1, 5, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7340),
                             Description = "Açıklama metni 31",
                             Name = "Örnek Proje 31",
                             PaymentStatus = "Pending",
@@ -4465,7 +4256,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "İnşaat",
                             Customer = "Müşteri 2",
-                            Date = new DateTime(2026, 1, 4, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6580),
+                            Date = new DateTime(2026, 1, 4, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7350),
                             Description = "Açıklama metni 32",
                             Name = "Örnek Proje 32",
                             PaymentStatus = "Overdue",
@@ -4483,7 +4274,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "Ticari",
                             Customer = "Müşteri 3",
-                            Date = new DateTime(2026, 1, 3, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6590),
+                            Date = new DateTime(2026, 1, 3, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7360),
                             Description = "Açıklama metni 33",
                             Name = "Örnek Proje 33",
                             PaymentStatus = "Paid",
@@ -4501,7 +4292,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "İnşaat",
                             Customer = "Müşteri 4",
-                            Date = new DateTime(2026, 1, 2, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6600),
+                            Date = new DateTime(2026, 1, 2, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7370),
                             Description = "Açıklama metni 34",
                             Name = "Örnek Proje 34",
                             PaymentStatus = "Pending",
@@ -4519,7 +4310,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "Ticari",
                             Customer = "Müşteri 5",
-                            Date = new DateTime(2026, 1, 1, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6620),
+                            Date = new DateTime(2026, 1, 1, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7380),
                             Description = "Açıklama metni 35",
                             Name = "Örnek Proje 35",
                             PaymentStatus = "Overdue",
@@ -4537,7 +4328,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "İnşaat",
                             Customer = "Müşteri 6",
-                            Date = new DateTime(2025, 12, 31, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6630),
+                            Date = new DateTime(2025, 12, 31, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7390),
                             Description = "Açıklama metni 36",
                             Name = "Örnek Proje 36",
                             PaymentStatus = "Paid",
@@ -4555,7 +4346,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Müşteri 7",
-                            Date = new DateTime(2025, 12, 30, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6640),
+                            Date = new DateTime(2025, 12, 30, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7410),
                             Description = "Açıklama metni 37",
                             Name = "Örnek Proje 37",
                             PaymentStatus = "Pending",
@@ -4573,7 +4364,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "İnşaat",
                             Customer = "Müşteri 8",
-                            Date = new DateTime(2025, 12, 29, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6650),
+                            Date = new DateTime(2025, 12, 29, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7420),
                             Description = "Açıklama metni 38",
                             Name = "Örnek Proje 38",
                             PaymentStatus = "Overdue",
@@ -4591,7 +4382,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "Ticari",
                             Customer = "Müşteri 9",
-                            Date = new DateTime(2025, 12, 28, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6660),
+                            Date = new DateTime(2025, 12, 28, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7430),
                             Description = "Açıklama metni 39",
                             Name = "Örnek Proje 39",
                             PaymentStatus = "Paid",
@@ -4609,7 +4400,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "İnşaat",
                             Customer = "Müşteri 0",
-                            Date = new DateTime(2025, 12, 27, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6690),
+                            Date = new DateTime(2025, 12, 27, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7440),
                             Description = "Açıklama metni 40",
                             Name = "Örnek Proje 40",
                             PaymentStatus = "Pending",
@@ -4627,7 +4418,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "Ticari",
                             Customer = "Müşteri 1",
-                            Date = new DateTime(2025, 12, 26, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6700),
+                            Date = new DateTime(2025, 12, 26, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7450),
                             Description = "Açıklama metni 41",
                             Name = "Örnek Proje 41",
                             PaymentStatus = "Overdue",
@@ -4645,7 +4436,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "İnşaat",
                             Customer = "Müşteri 2",
-                            Date = new DateTime(2025, 12, 25, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6710),
+                            Date = new DateTime(2025, 12, 25, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7460),
                             Description = "Açıklama metni 42",
                             Name = "Örnek Proje 42",
                             PaymentStatus = "Paid",
@@ -4663,7 +4454,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Müşteri 3",
-                            Date = new DateTime(2025, 12, 24, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6720),
+                            Date = new DateTime(2025, 12, 24, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7480),
                             Description = "Açıklama metni 43",
                             Name = "Örnek Proje 43",
                             PaymentStatus = "Pending",
@@ -4681,7 +4472,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "İnşaat",
                             Customer = "Müşteri 4",
-                            Date = new DateTime(2025, 12, 23, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6730),
+                            Date = new DateTime(2025, 12, 23, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7490),
                             Description = "Açıklama metni 44",
                             Name = "Örnek Proje 44",
                             PaymentStatus = "Overdue",
@@ -4699,7 +4490,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "Ticari",
                             Customer = "Müşteri 5",
-                            Date = new DateTime(2025, 12, 22, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6750),
+                            Date = new DateTime(2025, 12, 22, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7500),
                             Description = "Açıklama metni 45",
                             Name = "Örnek Proje 45",
                             PaymentStatus = "Paid",
@@ -4717,7 +4508,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "İnşaat",
                             Customer = "Müşteri 6",
-                            Date = new DateTime(2025, 12, 21, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6760),
+                            Date = new DateTime(2025, 12, 21, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7510),
                             Description = "Açıklama metni 46",
                             Name = "Örnek Proje 46",
                             PaymentStatus = "Pending",
@@ -4735,7 +4526,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "Ticari",
                             Customer = "Müşteri 7",
-                            Date = new DateTime(2025, 12, 20, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6770),
+                            Date = new DateTime(2025, 12, 20, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7520),
                             Description = "Açıklama metni 47",
                             Name = "Örnek Proje 47",
                             PaymentStatus = "Overdue",
@@ -4753,7 +4544,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "İnşaat",
                             Customer = "Müşteri 8",
-                            Date = new DateTime(2025, 12, 19, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6780),
+                            Date = new DateTime(2025, 12, 19, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7530),
                             Description = "Açıklama metni 48",
                             Name = "Örnek Proje 48",
                             PaymentStatus = "Paid",
@@ -4771,7 +4562,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Müşteri 9",
-                            Date = new DateTime(2025, 12, 18, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6790),
+                            Date = new DateTime(2025, 12, 18, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7540),
                             Description = "Açıklama metni 49",
                             Name = "Örnek Proje 49",
                             PaymentStatus = "Pending",
@@ -4789,7 +4580,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "İnşaat",
                             Customer = "Müşteri 0",
-                            Date = new DateTime(2025, 12, 17, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6800),
+                            Date = new DateTime(2025, 12, 17, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7550),
                             Description = "Açıklama metni 50",
                             Name = "Örnek Proje 50",
                             PaymentStatus = "Overdue",
@@ -4807,7 +4598,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "Ticari",
                             Customer = "Müşteri 1",
-                            Date = new DateTime(2025, 12, 16, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6820),
+                            Date = new DateTime(2025, 12, 16, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7560),
                             Description = "Açıklama metni 51",
                             Name = "Örnek Proje 51",
                             PaymentStatus = "Paid",
@@ -4825,7 +4616,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "İnşaat",
                             Customer = "Müşteri 2",
-                            Date = new DateTime(2025, 12, 15, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6830),
+                            Date = new DateTime(2025, 12, 15, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7570),
                             Description = "Açıklama metni 52",
                             Name = "Örnek Proje 52",
                             PaymentStatus = "Pending",
@@ -4843,7 +4634,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "Ticari",
                             Customer = "Müşteri 3",
-                            Date = new DateTime(2025, 12, 14, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6840),
+                            Date = new DateTime(2025, 12, 14, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7580),
                             Description = "Açıklama metni 53",
                             Name = "Örnek Proje 53",
                             PaymentStatus = "Overdue",
@@ -4861,7 +4652,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "İnşaat",
                             Customer = "Müşteri 4",
-                            Date = new DateTime(2025, 12, 13, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6850),
+                            Date = new DateTime(2025, 12, 13, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7600),
                             Description = "Açıklama metni 54",
                             Name = "Örnek Proje 54",
                             PaymentStatus = "Paid",
@@ -4879,7 +4670,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Müşteri 5",
-                            Date = new DateTime(2025, 12, 12, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6870),
+                            Date = new DateTime(2025, 12, 12, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7610),
                             Description = "Açıklama metni 55",
                             Name = "Örnek Proje 55",
                             PaymentStatus = "Pending",
@@ -4897,7 +4688,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "İnşaat",
                             Customer = "Müşteri 6",
-                            Date = new DateTime(2025, 12, 11, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6880),
+                            Date = new DateTime(2025, 12, 11, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7620),
                             Description = "Açıklama metni 56",
                             Name = "Örnek Proje 56",
                             PaymentStatus = "Overdue",
@@ -4915,7 +4706,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "Ticari",
                             Customer = "Müşteri 7",
-                            Date = new DateTime(2025, 12, 10, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6890),
+                            Date = new DateTime(2025, 12, 10, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7630),
                             Description = "Açıklama metni 57",
                             Name = "Örnek Proje 57",
                             PaymentStatus = "Paid",
@@ -4933,7 +4724,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "İnşaat",
                             Customer = "Müşteri 8",
-                            Date = new DateTime(2025, 12, 9, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6900),
+                            Date = new DateTime(2025, 12, 9, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7680),
                             Description = "Açıklama metni 58",
                             Name = "Örnek Proje 58",
                             PaymentStatus = "Pending",
@@ -4951,7 +4742,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "Ticari",
                             Customer = "Müşteri 9",
-                            Date = new DateTime(2025, 12, 8, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6910),
+                            Date = new DateTime(2025, 12, 8, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7700),
                             Description = "Açıklama metni 59",
                             Name = "Örnek Proje 59",
                             PaymentStatus = "Overdue",
@@ -4969,7 +4760,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "İnşaat",
                             Customer = "Müşteri 0",
-                            Date = new DateTime(2025, 12, 7, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6920),
+                            Date = new DateTime(2025, 12, 7, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7710),
                             Description = "Açıklama metni 60",
                             Name = "Örnek Proje 60",
                             PaymentStatus = "Paid",
@@ -4987,7 +4778,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Müşteri 1",
-                            Date = new DateTime(2025, 12, 6, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6930),
+                            Date = new DateTime(2025, 12, 6, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7720),
                             Description = "Açıklama metni 61",
                             Name = "Örnek Proje 61",
                             PaymentStatus = "Pending",
@@ -5005,7 +4796,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "İnşaat",
                             Customer = "Müşteri 2",
-                            Date = new DateTime(2025, 12, 5, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6940),
+                            Date = new DateTime(2025, 12, 5, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7730),
                             Description = "Açıklama metni 62",
                             Name = "Örnek Proje 62",
                             PaymentStatus = "Overdue",
@@ -5023,7 +4814,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "Ticari",
                             Customer = "Müşteri 3",
-                            Date = new DateTime(2025, 12, 4, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6960),
+                            Date = new DateTime(2025, 12, 4, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7740),
                             Description = "Açıklama metni 63",
                             Name = "Örnek Proje 63",
                             PaymentStatus = "Paid",
@@ -5041,7 +4832,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "İnşaat",
                             Customer = "Müşteri 4",
-                            Date = new DateTime(2025, 12, 3, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6970),
+                            Date = new DateTime(2025, 12, 3, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7750),
                             Description = "Açıklama metni 64",
                             Name = "Örnek Proje 64",
                             PaymentStatus = "Pending",
@@ -5059,7 +4850,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "Ticari",
                             Customer = "Müşteri 5",
-                            Date = new DateTime(2025, 12, 2, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6980),
+                            Date = new DateTime(2025, 12, 2, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7760),
                             Description = "Açıklama metni 65",
                             Name = "Örnek Proje 65",
                             PaymentStatus = "Overdue",
@@ -5077,7 +4868,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "İnşaat",
                             Customer = "Müşteri 6",
-                            Date = new DateTime(2025, 12, 1, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(6990),
+                            Date = new DateTime(2025, 12, 1, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7770),
                             Description = "Açıklama metni 66",
                             Name = "Örnek Proje 66",
                             PaymentStatus = "Paid",
@@ -5095,7 +4886,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Müşteri 7",
-                            Date = new DateTime(2025, 11, 30, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7010),
+                            Date = new DateTime(2025, 11, 30, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7780),
                             Description = "Açıklama metni 67",
                             Name = "Örnek Proje 67",
                             PaymentStatus = "Pending",
@@ -5113,7 +4904,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "İnşaat",
                             Customer = "Müşteri 8",
-                            Date = new DateTime(2025, 11, 29, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7030),
+                            Date = new DateTime(2025, 11, 29, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7790),
                             Description = "Açıklama metni 68",
                             Name = "Örnek Proje 68",
                             PaymentStatus = "Overdue",
@@ -5131,7 +4922,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "Ticari",
                             Customer = "Müşteri 9",
-                            Date = new DateTime(2025, 11, 28, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7040),
+                            Date = new DateTime(2025, 11, 28, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7800),
                             Description = "Açıklama metni 69",
                             Name = "Örnek Proje 69",
                             PaymentStatus = "Paid",
@@ -5149,7 +4940,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "İnşaat",
                             Customer = "Müşteri 0",
-                            Date = new DateTime(2025, 11, 27, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7050),
+                            Date = new DateTime(2025, 11, 27, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7810),
                             Description = "Açıklama metni 70",
                             Name = "Örnek Proje 70",
                             PaymentStatus = "Pending",
@@ -5167,7 +4958,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "Ticari",
                             Customer = "Müşteri 1",
-                            Date = new DateTime(2025, 11, 26, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7060),
+                            Date = new DateTime(2025, 11, 26, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7830),
                             Description = "Açıklama metni 71",
                             Name = "Örnek Proje 71",
                             PaymentStatus = "Overdue",
@@ -5185,7 +4976,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "İnşaat",
                             Customer = "Müşteri 2",
-                            Date = new DateTime(2025, 11, 25, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7070),
+                            Date = new DateTime(2025, 11, 25, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7840),
                             Description = "Açıklama metni 72",
                             Name = "Örnek Proje 72",
                             PaymentStatus = "Paid",
@@ -5203,7 +4994,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Müşteri 3",
-                            Date = new DateTime(2025, 11, 24, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7080),
+                            Date = new DateTime(2025, 11, 24, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7850),
                             Description = "Açıklama metni 73",
                             Name = "Örnek Proje 73",
                             PaymentStatus = "Pending",
@@ -5221,7 +5012,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "İnşaat",
                             Customer = "Müşteri 4",
-                            Date = new DateTime(2025, 11, 23, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7100),
+                            Date = new DateTime(2025, 11, 23, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7860),
                             Description = "Açıklama metni 74",
                             Name = "Örnek Proje 74",
                             PaymentStatus = "Overdue",
@@ -5239,7 +5030,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "Ticari",
                             Customer = "Müşteri 5",
-                            Date = new DateTime(2025, 11, 22, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7110),
+                            Date = new DateTime(2025, 11, 22, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7870),
                             Description = "Açıklama metni 75",
                             Name = "Örnek Proje 75",
                             PaymentStatus = "Paid",
@@ -5257,7 +5048,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "İnşaat",
                             Customer = "Müşteri 6",
-                            Date = new DateTime(2025, 11, 21, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7120),
+                            Date = new DateTime(2025, 11, 21, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7880),
                             Description = "Açıklama metni 76",
                             Name = "Örnek Proje 76",
                             PaymentStatus = "Pending",
@@ -5275,7 +5066,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "Ticari",
                             Customer = "Müşteri 7",
-                            Date = new DateTime(2025, 11, 20, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7130),
+                            Date = new DateTime(2025, 11, 20, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7890),
                             Description = "Açıklama metni 77",
                             Name = "Örnek Proje 77",
                             PaymentStatus = "Overdue",
@@ -5293,7 +5084,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "İnşaat",
                             Customer = "Müşteri 8",
-                            Date = new DateTime(2025, 11, 19, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7140),
+                            Date = new DateTime(2025, 11, 19, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7900),
                             Description = "Açıklama metni 78",
                             Name = "Örnek Proje 78",
                             PaymentStatus = "Paid",
@@ -5311,7 +5102,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Müşteri 9",
-                            Date = new DateTime(2025, 11, 18, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7150),
+                            Date = new DateTime(2025, 11, 18, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7910),
                             Description = "Açıklama metni 79",
                             Name = "Örnek Proje 79",
                             PaymentStatus = "Pending",
@@ -5329,7 +5120,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "İnşaat",
                             Customer = "Müşteri 0",
-                            Date = new DateTime(2025, 11, 17, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7160),
+                            Date = new DateTime(2025, 11, 17, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7920),
                             Description = "Açıklama metni 80",
                             Name = "Örnek Proje 80",
                             PaymentStatus = "Overdue",
@@ -5347,7 +5138,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "Ticari",
                             Customer = "Müşteri 1",
-                            Date = new DateTime(2025, 11, 16, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7170),
+                            Date = new DateTime(2025, 11, 16, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7930),
                             Description = "Açıklama metni 81",
                             Name = "Örnek Proje 81",
                             PaymentStatus = "Paid",
@@ -5365,7 +5156,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "İnşaat",
                             Customer = "Müşteri 2",
-                            Date = new DateTime(2025, 11, 15, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7190),
+                            Date = new DateTime(2025, 11, 15, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7940),
                             Description = "Açıklama metni 82",
                             Name = "Örnek Proje 82",
                             PaymentStatus = "Pending",
@@ -5383,7 +5174,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "Ticari",
                             Customer = "Müşteri 3",
-                            Date = new DateTime(2025, 11, 14, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7200),
+                            Date = new DateTime(2025, 11, 14, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7950),
                             Description = "Açıklama metni 83",
                             Name = "Örnek Proje 83",
                             PaymentStatus = "Overdue",
@@ -5401,7 +5192,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "İnşaat",
                             Customer = "Müşteri 4",
-                            Date = new DateTime(2025, 11, 13, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7210),
+                            Date = new DateTime(2025, 11, 13, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7970),
                             Description = "Açıklama metni 84",
                             Name = "Örnek Proje 84",
                             PaymentStatus = "Paid",
@@ -5419,7 +5210,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Müşteri 5",
-                            Date = new DateTime(2025, 11, 12, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7220),
+                            Date = new DateTime(2025, 11, 12, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(7990),
                             Description = "Açıklama metni 85",
                             Name = "Örnek Proje 85",
                             PaymentStatus = "Pending",
@@ -5437,7 +5228,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "İnşaat",
                             Customer = "Müşteri 6",
-                            Date = new DateTime(2025, 11, 11, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7230),
+                            Date = new DateTime(2025, 11, 11, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8000),
                             Description = "Açıklama metni 86",
                             Name = "Örnek Proje 86",
                             PaymentStatus = "Overdue",
@@ -5455,7 +5246,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "Ticari",
                             Customer = "Müşteri 7",
-                            Date = new DateTime(2025, 11, 10, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7240),
+                            Date = new DateTime(2025, 11, 10, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8010),
                             Description = "Açıklama metni 87",
                             Name = "Örnek Proje 87",
                             PaymentStatus = "Paid",
@@ -5473,7 +5264,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "İnşaat",
                             Customer = "Müşteri 8",
-                            Date = new DateTime(2025, 11, 9, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7260),
+                            Date = new DateTime(2025, 11, 9, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8020),
                             Description = "Açıklama metni 88",
                             Name = "Örnek Proje 88",
                             PaymentStatus = "Pending",
@@ -5491,7 +5282,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "Ticari",
                             Customer = "Müşteri 9",
-                            Date = new DateTime(2025, 11, 8, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7270),
+                            Date = new DateTime(2025, 11, 8, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8030),
                             Description = "Açıklama metni 89",
                             Name = "Örnek Proje 89",
                             PaymentStatus = "Overdue",
@@ -5509,7 +5300,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "İnşaat",
                             Customer = "Müşteri 0",
-                            Date = new DateTime(2025, 11, 7, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7280),
+                            Date = new DateTime(2025, 11, 7, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8040),
                             Description = "Açıklama metni 90",
                             Name = "Örnek Proje 90",
                             PaymentStatus = "Paid",
@@ -5527,7 +5318,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Müşteri 1",
-                            Date = new DateTime(2025, 11, 6, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7290),
+                            Date = new DateTime(2025, 11, 6, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8050),
                             Description = "Açıklama metni 91",
                             Name = "Örnek Proje 91",
                             PaymentStatus = "Pending",
@@ -5545,7 +5336,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "İnşaat",
                             Customer = "Müşteri 2",
-                            Date = new DateTime(2025, 11, 5, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7300),
+                            Date = new DateTime(2025, 11, 5, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8060),
                             Description = "Açıklama metni 92",
                             Name = "Örnek Proje 92",
                             PaymentStatus = "Overdue",
@@ -5563,7 +5354,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "Ticari",
                             Customer = "Müşteri 3",
-                            Date = new DateTime(2025, 11, 4, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7310),
+                            Date = new DateTime(2025, 11, 4, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8070),
                             Description = "Açıklama metni 93",
                             Name = "Örnek Proje 93",
                             PaymentStatus = "Paid",
@@ -5581,7 +5372,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "İnşaat",
                             Customer = "Müşteri 4",
-                            Date = new DateTime(2025, 11, 3, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7320),
+                            Date = new DateTime(2025, 11, 3, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8080),
                             Description = "Açıklama metni 94",
                             Name = "Örnek Proje 94",
                             PaymentStatus = "Pending",
@@ -5599,7 +5390,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "Ticari",
                             Customer = "Müşteri 5",
-                            Date = new DateTime(2025, 11, 2, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7330),
+                            Date = new DateTime(2025, 11, 2, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8090),
                             Description = "Açıklama metni 95",
                             Name = "Örnek Proje 95",
                             PaymentStatus = "Overdue",
@@ -5617,7 +5408,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "İnşaat",
                             Customer = "Müşteri 6",
-                            Date = new DateTime(2025, 11, 1, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7350),
+                            Date = new DateTime(2025, 11, 1, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8100),
                             Description = "Açıklama metni 96",
                             Name = "Örnek Proje 96",
                             PaymentStatus = "Paid",
@@ -5635,7 +5426,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "Ticari",
                             Customer = "Müşteri 7",
-                            Date = new DateTime(2025, 10, 31, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7370),
+                            Date = new DateTime(2025, 10, 31, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8120),
                             Description = "Açıklama metni 97",
                             Name = "Örnek Proje 97",
                             PaymentStatus = "Pending",
@@ -5653,7 +5444,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İzmir",
                             Category = "İnşaat",
                             Customer = "Müşteri 8",
-                            Date = new DateTime(2025, 10, 30, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7380),
+                            Date = new DateTime(2025, 10, 30, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8130),
                             Description = "Açıklama metni 98",
                             Name = "Örnek Proje 98",
                             PaymentStatus = "Overdue",
@@ -5671,7 +5462,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "İstanbul",
                             Category = "Ticari",
                             Customer = "Müşteri 9",
-                            Date = new DateTime(2025, 10, 29, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7390),
+                            Date = new DateTime(2025, 10, 29, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8140),
                             Description = "Açıklama metni 99",
                             Name = "Örnek Proje 99",
                             PaymentStatus = "Paid",
@@ -5689,7 +5480,7 @@ namespace BlazorWebApp.Migrations
                             Branch = "Ankara",
                             Category = "İnşaat",
                             Customer = "Müşteri 0",
-                            Date = new DateTime(2025, 10, 28, 15, 41, 23, 300, DateTimeKind.Local).AddTicks(7400),
+                            Date = new DateTime(2025, 10, 28, 15, 38, 6, 338, DateTimeKind.Local).AddTicks(8150),
                             Description = "Açıklama metni 100",
                             Name = "Örnek Proje 100",
                             PaymentStatus = "Pending",

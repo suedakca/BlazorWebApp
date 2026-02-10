@@ -134,8 +134,19 @@
         {
             TabService.AddTab("Ana Sayfa", "/", "bi-house-door");
             NavManager.NavigateTo("/");
-            return; // StateHasChanged will be called by AddTab's Notify
+            return;
         }
+
+        var activeTab = TabService.Tabs.FirstOrDefault(t => t.IsActive);
+        if (activeTab != null)
+        {
+            var activeUri = NavManager.ToAbsoluteUri(activeTab.Url).ToString();
+            if (!string.Equals(NavManager.Uri, activeUri, StringComparison.OrdinalIgnoreCase))
+            {
+                NavManager.NavigateTo(activeTab.Url);
+            }
+        }
+
         InvokeAsync(StateHasChanged);
     }
 

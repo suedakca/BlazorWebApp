@@ -1,4 +1,7 @@
 ﻿@page "/"
+@inject IJSRuntime JSRuntime
+
+@inject NavigationManager NavManager
 
 <PageTitle>Dashboard | Ana Sayfa</PageTitle>
 
@@ -13,10 +16,10 @@
                     Bugün sistemde ilgilenmeniz gereken <strong>3 yeni rapor</strong> ve incelenmeyi bekleyen <strong>2 proje güncellemesi</strong> bulunuyor.
                 </p>
                 <div class="d-flex gap-3">
-                    <button class="btn btn-light px-4 py-2 fw-semibold text-primary shadow-sm" type="button">
+                    <button class="btn btn-light px-4 py-2 fw-semibold text-primary shadow-sm" type="button" @onclick='() => NavManager.NavigateTo("/reports")'>
                         <span class="bi bi-file-text me-2"></span>Özet Raporu Gör
                     </button>
-                    <button class="btn btn-outline-light px-4 py-2 fw-semibold" type="button">
+                    <button class="btn btn-outline-light px-4 py-2 fw-semibold" type="button" @onclick='() => NavManager.NavigateTo("/data-pool-3")'>
                         <span class="bi bi-gear me-2"></span>Projeleri Yönet
                     </button>
                 </div>
@@ -98,13 +101,8 @@
                         <button class="btn btn-sm btn-light border dropdown-toggle" type="button">This Week</button>
                     </div>
                 </div>
-                <div class="card-body p-4">
-                    <div class="chart-container">
-                        <div class="text-center">
-                            <span class="bi bi-graph-up fs-1 d-block mb-2 opacity-50"></span>
-                            <span>Grafik Verileri Yükleniyor...</span>
-                        </div>
-                    </div>
+                <div class="card-body p-0">
+                    <div id="home-performance-chart" class="w-100" style="min-height: 350px;"></div>
                 </div>
             </div>
         </div>
@@ -163,3 +161,13 @@
         </div>
     </div>
 </div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("renderAreaChart", "home-performance-chart");
+        }
+    }
+}

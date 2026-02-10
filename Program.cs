@@ -7,11 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-builder.Services.AddDbContext<BlazorWebApp.Data.AppDbContext>(options =>
+// Use DbContextFactory for Blazor Server concurrency safety
+builder.Services.AddDbContextFactory<BlazorWebApp.Data.AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<BlazorWebApp.Services.TabService>();
+builder.Services.AddScoped<BlazorWebApp.Services.TabService>();
 builder.Services.AddScoped<BlazorWebApp.Services.UserService>();
+builder.Services.AddScoped<BlazorWebApp.Services.PoolService>();
 
 var app = builder.Build();
 

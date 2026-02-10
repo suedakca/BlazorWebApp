@@ -5,20 +5,35 @@
 
 <div class="h-100 w-100 bg-light overflow-auto">
     <div class="p-4">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <div>
-                <h2 class="fw-bold mb-1 text-primary">Raporlama Merkezi</h2>
-                <p class="text-muted mb-0">Detaylı analizler ve grafiksel gösterimler</p>
-            </div>
-            <div class="d-flex gap-2">
-                 <div class="btn-group">
-                    <button class="btn btn-white border shadow-sm">Günlük</button>
-                    <button class="btn btn-white border shadow-sm active">Haftalık</button>
-                    <button class="btn btn-white border shadow-sm">Aylık</button>
+    <!-- Modern Page Header -->
+    <div class="bg-body-tertiary border-bottom px-4 py-3 mb-4">
+         <div class="row align-items-center g-3">
+            <div class="col-md-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-1 small">
+                        <li class="breadcrumb-item text-muted">Ana Sayfa</li>
+                        <li class="breadcrumb-item active text-primary fw-semibold">Raporlar</li>
+                    </ol>
+                </nav>
+                <div class="d-flex align-items-center">
+                    <h4 class="fw-bold text-dark mb-0 me-3">Raporlama Merkezi</h4>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3">
+                         <i class="bi bi-arrow-up-right me-1"></i> %12 Büyüme
+                    </span>
                 </div>
-                <button class="btn btn-primary shadow-sm"><i class="bi bi-download me-2"></i>PDF İndir</button>
+            </div>
+             <div class="col-md-6">
+                <div class="d-flex justify-content-md-end gap-2">
+                    <div class="btn-group shadow-sm">
+                        <button class="btn btn-white border">Günlük</button>
+                        <button class="btn btn-white border active">Haftalık</button>
+                        <button class="btn btn-white border">Aylık</button>
+                    </div>
+                    <button class="btn btn-primary shadow-sm" @onclick='async () => await JSRuntime.InvokeVoidAsync("printPage")'><i class="bi bi-file-earmark-pdf me-2"></i>PDF</button>
+                </div>
             </div>
         </div>
+    </div>
 
         <!-- KPI Cards -->
         <div class="row g-4 mb-4">

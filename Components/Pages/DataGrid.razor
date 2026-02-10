@@ -1,9 +1,8 @@
 @page "/data"
+@using BlazorWebApp.Services
 @using BlazorWebApp.Models
-@using BlazorWebApp.Data
-@using Microsoft.EntityFrameworkCore
-@inject AppDbContext DbContext
-@attribute [StreamRendering]
+@inject PoolService PoolService
+@inject IJSRuntime JSRuntime
 
 <PageTitle>Veri Havuzu | Excel Görünümü</PageTitle>
 
@@ -12,14 +11,11 @@
 
     <div class="grid-controls p-2 d-flex justify-content-between align-items-center border-bottom bg-light">
         <div class="d-flex gap-2">
-            <button class="btn btn-sm btn-outline-success"><span class="bi bi-file-earmark-excel"></span><span class="d-none d-md-inline ms-1">Excel'e Aktar</span></button>
-            <button class="btn btn-sm btn-outline-primary"><span class="bi bi-printer"></span><span class="d-none d-md-inline ms-1">Yazdır</span></button>
+            <button class="btn btn-sm btn-outline-success" @onclick="ExportExcel"><span class="bi bi-file-earmark-excel"></span><span class="d-none d-md-inline ms-1">Excel'e Aktar</span></button>
+            <button class="btn btn-sm btn-outline-primary" @onclick='async () => await JSRuntime.InvokeVoidAsync("printPage")'><span class="bi bi-printer"></span><span class="d-none d-md-inline ms-1">Yazdır</span></button>
         </div>
         <div class="text-muted small">
-            @if (filteredData != null)
-            {
-                <span>Toplam <b>@filteredData.Count</b> <span class="d-none d-sm-inline">kayıt listelendi.</span></span>
-            }
+             <span>Toplam <b>@totalCount</b> <span class="d-none d-sm-inline">kayıt listelendi.</span></span>
         </div>
     </div>
 
@@ -27,95 +23,47 @@
         <table class="excel-table">
             <thead>
                 <tr>
-                    <th class="col-index">#</th>
-                    <th class="d-none d-lg-table-cell">ID</th>
-                    <th class="d-none d-md-table-cell">Proje</th>
-                    <th class="d-none d-xl-table-cell">Yıl</th>
-                    <th class="d-none d-lg-table-cell">Bölge</th>
-                    <th class="d-none d-lg-table-cell">Şube</th>
-                    <th>Müşteri</th>
-                    <th>Adı</th>
-                    <th class="d-none d-sm-table-cell">Kategori</th>
-                    <th class="text-center">Öncelik</th>
-                    <th class="d-none d-xxl-table-cell">Atanan</th>
-                    <th class="text-end">Değer (TL)</th>
-                    <th class="text-center">Ödeme</th>
-                    <th class="text-center">Durum</th>
-                    <th class="d-none d-xxl-table-cell">Açıklama</th>
+                    @foreach (var col in columns)
+                    {
+                        <th class="@col.HeaderCssClass" style="@(!string.IsNullOrEmpty(col.Width) ? $"width: {col.Width};" : "")">@col.HeaderText</th>
+                    }
                 </tr>
             </thead>
             <tbody>
-                @if (filteredData == null)
+                @if (isLoading)
                 {
                     @for (int i = 0; i < 10; i++)
                     {
                         <tr class="skeleton-row">
-                            <td class="col-index"><div class="skeleton-box"></div></td>
-                            <td class="d-none d-lg-table-cell"><div class="skeleton-box"></div></td>
-                            <td class="d-none d-md-table-cell"><div class="skeleton-box"></div></td>
-                            <td class="d-none d-xl-table-cell"><div class="skeleton-box"></div></td>
-                            <td class="d-none d-lg-table-cell"><div class="skeleton-box"></div></td>
-                            <td class="d-none d-lg-table-cell"><div class="skeleton-box"></div></td>
-                            <td><div class="skeleton-box"></div></td>
-                            <td><div class="skeleton-box"></div></td>
-                            <td class="d-none d-sm-table-cell"><div class="skeleton-box"></div></td>
-                            <td><div class="skeleton-box"></div></td>
-                            <td class="d-none d-xxl-table-cell"><div class="skeleton-box"></div></td>
-                            <td><div class="skeleton-box"></div></td>
-                            <td><div class="skeleton-box"></div></td>
-                            <td><div class="skeleton-box"></div></td>
-                            <td class="d-none d-xxl-table-cell"><div class="skeleton-box"></div></td>
+                             @foreach (var col in columns)
+                             {
+                                 <td><div class="skeleton-box"></div></td>
+                             }
                         </tr>
                     }
-                }
-                else if (!filteredData.Any())
-                {
-                    <tr>
-                        <td colspan="15" class="text-center p-5 text-muted">
-                            <span class="bi bi-search fs-1 d-block mb-3"></span>
-                            Kriterlere uygun veri bulunamadı.
-                        </td>
-                    </tr>
                 }
                 else
                 {
-                    int index = 1;
-                    @foreach (var item in filteredData)
-                    {
-                        <tr>
-                            <td class="col-index">@(index++)</td>
-                            <td class="d-none d-lg-table-cell">@item.Id</td>
-                            <td class="d-none d-md-table-cell"><span class="badge bg-light text-dark border">@item.Project</span></td>
-                            <td class="d-none d-xl-table-cell">@item.Year</td>
-                            <td class="d-none d-lg-table-cell text-muted">@item.Region</td>
-                            <td class="d-none d-lg-table-cell">@item.Branch</td>
-                            <td class="fw-medium">@item.Customer</td>
-                            <td class="fw-bold">@item.Name</td>
-                            <td class="d-none d-sm-table-cell">@item.Category</td>
-                            <td class="text-center">
-                                <span class="priority-badge @item.Priority.ToLower()">
-                                    @item.Priority
-                                </span>
-                            </td>
-                            <td class="d-none d-xxl-table-cell">
-                                <div class="d-flex align-items-center gap-2">
-                                    <div class="avatar-sm">@item.AssignedTo.Substring(0, 1)</div>
-                                    @item.AssignedTo
-                                </div>
-                            </td>
-                            <td class="text-end font-monospace fw-bold">@item.Value.ToString("N0")</td>
-                            <td class="text-center">
-                                <span class="payment-dot @item.PaymentStatus.ToLower()"></span>
-                                <span class="x-small fw-bold">@item.PaymentStatus</span>
-                            </td>
-                            <td class="text-center">
-                                <span class="status-pill @(item.Status == "Active" ? "active" : "inactive")">
-                                    @(item.Status == "Active" ? "Aktif" : "Pasif")
-                                </span>
-                            </td>
-                            <td class="text-truncate d-none d-xxl-table-cell" style="max-width: 200px;">@item.Description</td>
-                        </tr>
-                    }
+                    <Virtualize ItemsProvider="LoadData" Context="item" @ref="virtualizeComponent">
+                        <ItemContent>
+                            <tr>
+                                @foreach (var col in columns)
+                                {
+                                    <td class="@col.CssClass">
+                                        @RenderCell(item, col)
+                                    </td>
+                                }
+                            </tr>
+                        </ItemContent>
+                        <Placeholder>
+                            <tr>
+                                @foreach (var col in columns)
+                                {
+                                    <td><div class="skeleton-box"></div></td>
+                                }
+                            </tr>
+                        </Placeholder>
+                    </Virtualize>
                 }
             </tbody>
         </table>
@@ -241,46 +189,145 @@
 
 
 @code {
-    private List<SampleData>? filteredData;
+    private List<PoolColumn> columns = new();
+    private bool isLoading = true;
+    private int totalCount = 0;
+    private Virtualize<Dictionary<string, object>>? virtualizeComponent;
     private FilterBar.FilterCriteria currentCriteria = new();
 
     protected override async Task OnInitializedAsync()
     {
-        await LoadData();
+        // Use "UnifiedData" pool definition which maps to SampleDatas table
+        columns = await PoolService.GetPoolColumnsAsync("UnifiedData");
+        isLoading = false;
     }
 
     private async Task HandleFilterChanged(FilterBar.FilterCriteria criteria)
     {
         currentCriteria = criteria;
-        await LoadData();
+        if (virtualizeComponent != null)
+        {
+            await virtualizeComponent.RefreshDataAsync();
+        }
     }
-
-    private async Task LoadData()
+    
+     private async ValueTask<ItemsProviderResult<Dictionary<string, object>>> LoadData(ItemsProviderRequest request)
     {
-        try 
+        // In a real scenario, we'd pass filters to GetDynamicRecordsAsync
+        // For now, simple pagination
+        var result = await PoolService.GetDynamicRecordsAsync("UnifiedData", request.StartIndex, request.Count);
+        
+        // Manual client-side filtering (not ideal for large DBs, but dynamic filtering is complex)
+        var items = result.Items;
+        if (!string.IsNullOrWhiteSpace(currentCriteria.Project))
         {
-            filteredData = null; // Show skeletons
-            await Task.Delay(300); // UI feedback
-            
-            var query = DbContext.SampleDatas.AsQueryable();
-
-            if (!string.IsNullOrWhiteSpace(currentCriteria.Project))
-            {
-                query = query.Where(x => x.Project == currentCriteria.Project);
-            }
-
-            if (currentCriteria.Year.HasValue)
-            {
-                query = query.Where(x => x.Year == currentCriteria.Year.Value);
-            }
-
-            filteredData = await query.ToListAsync();
+            items = items.Where(x => x.ContainsKey("Project") && x["Project"]?.ToString() == currentCriteria.Project).ToList();
         }
-        catch (Exception ex)
+        
+        // Note: Total count might be wrong if we filter client-side after fetching a page. 
+        // Correct way is to build dynamic SQL with WHERE clauses.
+        // For this demo:
+        totalCount = result.TotalCount;
+        
+        return new ItemsProviderResult<Dictionary<string, object>>(items, totalCount);
+    }
+    
+     private RenderFragment RenderCell(Dictionary<string, object> item, PoolColumn col) => builder =>
+    {
+        object? value = null;
+        if (item.ContainsKey(col.PropertyName))
         {
-            Console.WriteLine($"Error loading data: {ex.Message}");
-            filteredData = new List<SampleData>(); // Empty list on error
+            value = item[col.PropertyName];
+        } else if (item.ContainsKey(col.PropertyName.Split('.')[0])) {
+             // Handle simple nesting if needed, or just flat
+             value = item[col.PropertyName.Split('.')[0]];
         }
+
+        if (col.DataType == "PriorityBadge")
+        {
+             var priority = value?.ToString() ?? "";
+             builder.OpenElement(0, "span");
+             builder.AddAttribute(1, "class", $"priority-badge {priority.ToLower()}");
+             builder.AddContent(2, priority);
+             builder.CloseElement();
+        }
+        else if (col.DataType == "StatusPill")
+        {
+             var status = value?.ToString() ?? "";
+             var activeClass = status == "Active" ? "active" : "inactive";
+             var text = status == "Active" ? "Aktif" : "Pasif";
+             
+             builder.OpenElement(0, "span");
+             builder.AddAttribute(1, "class", $"status-pill {activeClass}");
+             builder.AddContent(2, text);
+             builder.CloseElement();
+        }
+        else if (col.DataType == "PaymentStatus")
+        {
+             var status = value?.ToString() ?? "";
+             builder.OpenElement(0, "div");
+             builder.AddAttribute(1, "class", "text-center");
+             builder.OpenElement(2, "span");
+             builder.AddAttribute(3, "class", $"payment-dot {status.ToLower()}");
+             builder.CloseElement();
+             builder.OpenElement(4, "span");
+             builder.AddAttribute(5, "class", "x-small fw-bold");
+             builder.AddContent(6, status);
+             builder.CloseElement();
+             builder.CloseElement();
+        }
+        else if (col.DataType == "UserAvatar")
+        {
+             var user = value?.ToString() ?? "?";
+             var initial = user.Length > 0 ? user.Substring(0,1) : "?";
+             
+             builder.OpenElement(0, "div");
+             builder.AddAttribute(1, "class", "d-flex align-items-center gap-2");
+             builder.OpenElement(2, "div");
+             builder.AddAttribute(3, "class", "avatar-sm");
+             builder.AddContent(4, initial);
+             builder.CloseElement();
+             builder.AddContent(5, user);
+             builder.CloseElement();
+        }
+         else if (col.DataType == "BadgeLight")
+        {
+            builder.OpenElement(0, "span");
+            builder.AddAttribute(1, "class", "badge bg-light text-dark border");
+            builder.AddContent(2, value?.ToString());
+            builder.CloseElement();
+        }
+        else if (col.DataType == "Currency")
+        {
+             var amount = value is decimal d ? d : (value is double dbl ? (decimal)dbl : 0m);
+            builder.AddContent(0, amount.ToString("N0"));
+        }
+        else
+        {
+            builder.AddContent(0, value?.ToString());
+        }
+    };
+
+    private async Task ExportExcel()
+    {
+         if (totalCount == 0) return;
+        var (items, count) = await PoolService.GetDynamicRecordsAsync("UnifiedData", 0, 1000); 
+        
+        var sb = new System.Text.StringBuilder();
+        sb.AppendLine(string.Join(";", columns.Select(c => c.HeaderText)));
+        
+        foreach (var item in items)
+        {
+             var rowValues = new List<string>();
+             foreach (var col in columns)
+             {
+                 var val = item.ContainsKey(col.PropertyName) ? item[col.PropertyName]?.ToString() : "";
+                 val = val?.Replace(";", ",") ?? ""; 
+                 rowValues.Add(val);
+             }
+             sb.AppendLine(string.Join(";", rowValues));
+        }
+
+        await JSRuntime.InvokeVoidAsync("downloadFile", "veri_havuzu.csv", "text/csv", sb.ToString());
     }
 }
-

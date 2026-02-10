@@ -5,7 +5,7 @@ Bu proje, modern bir web arayüzüne sahip, **.NET 8** ve **Blazor Server** tekn
 ## 🚀 Özellikler
 
 - **Modern Arayüz:** responsive ve şık tasarım, özel animasyonlar.
-- **Veri Havuzu - 2:** Milyonlarca satır veriyi sanallaştırma (Virtualization) ile performanslı gösterme.
+- **Veri Havuzu:** Milyonlarca satır veriyi sanallaştırma (Virtualization) ile performanslı gösterme.
 - **Raporlama Merkezi:** ApexCharts entegrasyonu ile interaktif grafikler (Alan, Halka, Bar).
 - **Dinamik Sekme Yönetimi:** Sekmeler arası gezinti ve kalıcı "Ana Sayfa" mantığı.
 - **Kullanıcı Yönetimi:** Dinamik kullanıcı değiştirme ve profil yönetimi.

@@ -158,3 +158,71 @@ a:hover {
     font-size: 0.9rem;
     border-top: 1px solid #fecaca;
 }
+
+/* PRINT STYLES */
+@media print {
+    /* Hide UI Elements */
+    .sidebar, 
+    .top-bar, 
+    .tab-bar, 
+    footer,
+    .grid-controls, /* Hide buttons inside page */
+    .btn,
+    .filter-bar,
+    .no-print {
+        display: none !important;
+    }
+
+    /* Reset Page Layout */
+    html, body {
+        height: auto !important;
+        overflow: visible !important;
+        display: block !important;
+        background: white !important;
+    }
+
+    /* Expand Content Containers */
+    .page, 
+    main, 
+    .content-area, 
+    .h-100, 
+    .overflow-auto,
+    .table-wrapper {
+        height: auto !important;
+        width: 100% !important;
+        overflow: visible !important;
+        display: block !important;
+        position: static !important;
+    }
+
+    /* Table Specifics */
+    table {
+        width: 100% !important;
+        page-break-inside: auto;
+    }
+
+    tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+    
+    tfoot {
+        display: table-footer-group;
+    }
+
+    /* Ensure backgrounds print */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    /* Remove sticky headers for print as they can glitch */
+    .sticky-top {
+        position: static !important;
+    }
+}

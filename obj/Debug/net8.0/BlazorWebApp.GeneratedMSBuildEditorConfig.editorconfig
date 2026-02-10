@@ -50,10 +50,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9TZXR0aW5ncy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/suedaakca/Documents/GitHub/BlazorWebApp/Components/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9XZWF0aGVyLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/suedaakca/Documents/GitHub/BlazorWebApp/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Sb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -73,6 +69,10 @@ build_metadata.AdditionalFiles.CssScope = b-zpxme7j96v
 [/Users/suedaakca/Documents/GitHub/BlazorWebApp/Components/Pages/DataPool2.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9EYXRhUG9vbDIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-07bz1jy3hy
+
+[/Users/suedaakca/Documents/GitHub/BlazorWebApp/Components/Pages/DataPool3.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9EYXRhUG9vbDMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-c23qi7auf6
 
 [/Users/suedaakca/Documents/GitHub/BlazorWebApp/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ib21lLnJhem9y

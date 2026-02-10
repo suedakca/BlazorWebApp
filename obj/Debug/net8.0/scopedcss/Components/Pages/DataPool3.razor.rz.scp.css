@@ -1,0 +1,53 @@
+.table-hover tbody tr:hover[b-c23qi7auf6] {
+    background-color: #f1f5f9;
+}
+
+.sticky-top[b-c23qi7auf6] {
+    z-index: 1020;
+}
+
+/* Brand Header Style */
+.brand-header[b-c23qi7auf6] {
+    background: linear-gradient(135deg, #0077b6 0%, #0096c7 100%);
+    border-bottom: 2px solid #023e8a;
+}
+
+.table th[b-c23qi7auf6] {
+    font-size: 0.75rem;
+    font-weight: 600;
+    vertical-align: middle;
+    letter-spacing: 0.5px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-color: rgba(255,255,255,0.1); /* Subtle separators in header */
+}
+
+.table td[b-c23qi7auf6] {
+    vertical-align: middle;
+    border-color: #e9ecef;
+}
+
+.avatar-circle[b-c23qi7auf6] {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.avatar-circle:hover[b-c23qi7auf6] {
+    transform: translateY(-2px);
+    z-index: 50 !important;
+}
+
+.x-small[b-c23qi7auf6] {
+    font-size: 0.7rem;
+}
+
+.btn-icon:hover[b-c23qi7auf6] {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    border-color: var(--primary-color) !important;
+}

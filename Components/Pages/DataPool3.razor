@@ -1,0 +1,225 @@
+@page "/data-pool-3"
+@using BlazorWebApp.Services
+@using BlazorWebApp.Models
+@inject PoolService PoolService
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Proje Yönetim Havuzu | @poolDisplayName</PageTitle>
+
+<div class="h-100 w-100 d-flex flex-column bg-white">
+    <!-- Modern Header -->
+    <div class="px-4 py-3 border-bottom d-flex justify-content-between align-items-center bg-white sticky-top">
+        <div class="d-flex align-items-center gap-3">
+            <div class="icon-box bg-primary bg-opacity-10 text-primary rounded-3 p-2">
+                <i class="bi bi-kanban fs-4"></i>
+            </div>
+            <div>
+                <h5 class="fw-bold text-dark mb-0">@poolDisplayName</h5>
+                <small class="text-muted">@poolDescription</small>
+            </div>
+        </div>
+        <div class="d-flex gap-2 align-items-center">
+            <div class="btn-group shadow-sm p-1 bg-white rounded">
+                 <button class="btn btn-sm btn-white border-0 active fw-medium">Hepsi</button>
+                 <button class="btn btn-sm btn-white border-0 fw-medium">Aktif</button>
+                 <button class="btn btn-sm btn-white border-0 fw-medium">Tamamlanan</button>
+            </div>
+             <button class="btn btn-sm btn-primary shadow-sm" @onclick="ExportExcel">
+                <i class="bi bi-download me-1"></i>Dışa Aktar
+            </button>
+        </div>
+    </div>
+
+    <!-- Data Grid -->
+    <div class="flex-grow-1 bg-light p-3 d-flex flex-column" style="min-height: 0;">
+        <div class="card border-0 shadow-sm flex-grow-1 overflow-hidden">
+            <div class="card-body p-0 d-flex flex-column h-100">
+                 <div class="flex-grow-1 overflow-auto">
+                     <table class="table table-hover mb-0 align-middle" style="font-size: 0.85rem;">
+                        <thead class="bg-light sticky-header">
+                            <tr>
+                                <th class="text-center fw-bold text-muted" style="width: 60px;">#</th>
+                                <th style="width: 250px;">PROJE DETAYLARI</th>
+                                <th class="text-center" style="width: 120px;">DURUM</th>
+                                <th class="text-end" style="width: 150px;">BÜTÇE</th>
+                                <th style="width: 200px;">İLERLEME</th>
+                                <th style="width: 150px;">EKİP</th>
+                                <th style="width: 120px;">TESLİM</th>
+                                <th class="text-center" style="width: 100px;">İŞLEM</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (isLoading)
+                            {
+                                <tr>
+                                    <td colspan="8" class="text-center p-5">
+                                        <div class="spinner-border text-primary" role="status"></div>
+                                        <p class="mt-2 text-muted">Projeler yükleniyor...</p>
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                 <Virtualize ItemsProvider="LoadData" Context="item" @ref="virtualizeComponent">
+                                    <ItemContent>
+                                        <tr>
+                                            <!-- ID -->
+                                            <td class="text-center fw-bold text-muted">@item.Id</td>
+                                            
+                                            <!-- Project Details -->
+                                            <td>
+                                                <div class="d-flex flex-column">
+                                                    <span class="fw-bold text-dark">@item.ProjectName</span>
+                                                    <span class="small text-muted text-truncate" style="max-width: 250px;">@item.CustomerName</span>
+                                                </div>
+                                            </td>
+
+                                            <!-- Status -->
+                                            <td class="text-center">
+                                                @{
+                                                    var statusColor = GetStatusColor(item.Status);
+                                                }
+                                                <span class="badge rounded-pill" style="background-color: @(statusColor)20; color: @statusColor; border: 1px solid @(statusColor)40;">
+                                                    <i class="bi bi-dot me-1"></i>@item.Status
+                                                </span>
+                                            </td>
+
+                                            <!-- Budget -->
+                                            <td class="text-end font-monospace fw-bold text-dark">
+                                                @item.Budget.ToString("N0") ₺
+                                            </td>
+
+                                            <!-- Progress -->
+                                            <td>
+                                                @{
+                                                    var progressColor = GetProgressBarColor(item.Progress);
+                                                }
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <div class="progress w-100" style="height: 6px;">
+                                                        <div class="progress-bar bg-@progressColor" style="width: @item.Progress%"></div>
+                                                    </div>
+                                                    <span class="small text-muted fw-bold">@item.Progress%</span>
+                                                </div>
+                                            </td>
+
+                                            <!-- Team -->
+                                            <td>
+                                                <div class="avatar-group d-flex">
+                                                    @for(int i=0; i<3; i++) {
+                                                        <div class="avatar-circle border border-white" style="position: relative; width:24px; height:24px; border-radius:50%; background:#ccc; margin-left:-8px; z-index:@(10-i)"></div>
+                                                    }
+                                                </div>
+                                            </td>
+
+                                            <!-- Due Date -->
+                                            <td class="text-muted small">
+                                                <i class="bi bi-calendar2-week me-1"></i>@item.DueDate.ToString("dd MMM yyyy")
+                                            </td>
+
+                                            <!-- Actions -->
+                                            <td class="text-center">
+                                                <div class='dropdown'>
+                                                    <button class='btn btn-link text-muted p-0' data-bs-toggle='dropdown'>
+                                                        <i class='bi bi-three-dots-vertical'></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </ItemContent>
+                                    <Placeholder>
+                                         <tr>
+                                            <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                            <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                            <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                            <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                            <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                            <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                            <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                            <td><div class="placeholder-glow"><span class="placeholder col-12"></span></div></td>
+                                        </tr>
+                                    </Placeholder>
+                                </Virtualize>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .sticky-header th { position: sticky; top: 0; background-color: #f8f9fa; z-index: 100; border-bottom: 2px solid #edf2f9; color: #5e6e82; font-weight: 600; padding: 1rem; }
+    td { padding: 1rem; color: #4d5969; font-weight: 500; }
+    tr:hover td { background-color: #f9fbfd; color: #1e2e3e; }
+    .icon-box { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; }
+</style>
+
+@code {
+    private string poolDisplayName = "Proje Yönetimi";
+    private string poolDescription = "Aktif proje takip ve bütçe yönetim havuzu";
+    private bool isLoading = true;
+    private int totalCount = 0;
+    private Virtualize<ProjectRecord>? virtualizeComponent;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Minimal delay to ensure UI renders loading state if needed, though usually not strictly necessary with EF
+        await Task.Yield();
+        isLoading = false;
+    }
+
+    private async ValueTask<ItemsProviderResult<ProjectRecord>> LoadData(ItemsProviderRequest request)
+    {
+        var result = await PoolService.GetProjectRecordsAsync(request.StartIndex, request.Count);
+        totalCount = result.TotalCount;
+        return new ItemsProviderResult<ProjectRecord>(result.Items, result.TotalCount);
+    }
+
+    private string GetStatusColor(string? status)
+    {
+        return status switch
+        {
+            "Active" => "#3b82f6", // Blue
+            "Completed" => "#10b981", // Green
+            "On Hold" => "#f59e0b", // Orange
+            "Pending" => "#6b7280", // Gray
+            _ => "#6b7280"
+        };
+    }
+    
+    private string GetProgressBarColor(int progress)
+    {
+        if (progress >= 100) return "success";
+        if (progress > 50) return "primary";
+        if (progress > 20) return "info";
+        return "warning";
+    }
+
+    private async Task ExportExcel()
+    {
+        if (totalCount == 0) return;
+        
+        var (items, count) = await PoolService.GetProjectRecordsAsync(0, 1000); 
+        
+        var sb = new System.Text.StringBuilder();
+        sb.AppendLine("ID;PROJE DETAYLARI;DURUM;BÜTÇE;İLERLEME;TESLİM");
+        
+        foreach (var item in items)
+        {
+             var rowValues = new List<string>
+             {
+                 item.Id.ToString(),
+                 $"{item.ProjectName} - {item.CustomerName}",
+                 item.Status,
+                 item.Budget.ToString("N0"),
+                 item.Progress.ToString(),
+                 item.DueDate.ToString("yyyy-MM-dd")
+             };
+             
+             sb.AppendLine(string.Join(";", rowValues));
+        }
+
+        await JSRuntime.InvokeVoidAsync("downloadFile", "projects_export.csv", "text/csv", sb.ToString());
+    }
+}

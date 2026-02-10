@@ -1,9 +1,7 @@
 @page "/analytics"
+@using BlazorWebApp.Services
 @using BlazorWebApp.Models
-@using BlazorWebApp.Data
-@using Microsoft.EntityFrameworkCore
-@inject AppDbContext DbContext
-@attribute [StreamRendering]
+@inject PoolService PoolService
 
 <PageTitle>Analiz Görünümü | Kart Tasarımı</PageTitle>
 
@@ -14,14 +12,14 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h4 class="mb-0 fw-bold text-dark">Analiz Özeti</h4>
             <div class="text-muted small">
-                @if (filteredData != null)
+                @if (items != null)
                 {
-                    <span>Toplam <b>@filteredData.Count</b> kayıt analiz ediliyor.</span>
+                    <span>Toplam <b>@totalCount</b> kayıt analiz ediliyor.</span>
                 }
             </div>
         </div>
 
-        @if (filteredData == null)
+        @if (isLoading)
         {
             <div class="row g-4">
                 @for (int i = 0; i < 6; i++)
@@ -41,43 +39,56 @@
                 }
             </div>
         }
-        else if (!filteredData.Any())
+        else if (items != null && !items.Any())
         {
             <div class="text-center p-5 bg-white rounded-4 shadow-sm">
                 <span class="bi bi-search fs-1 d-block mb-3 text-muted"></span>
                 <p class="text-muted">Kriterlere uygun analiz verisi bulunamadı.</p>
             </div>
         }
-        else
+        else if (items != null)
         {
             <div class="row g-4">
-                @foreach (var item in filteredData)
+                @foreach (var item in items)
                 {
+                     // Extract values safely
+                     var name = GetValue(item, "Name");
+                     var project = GetValue(item, "Project");
+                     var priority = GetValue(item, "Priority");
+                     var value = GetValue(item, "Value");
+                     var customer = GetValue(item, "Customer");
+                     var region = GetValue(item, "Region");
+                     var assignedTo = GetValue(item, "AssignedTo");
+                     var paymentStatus = GetValue(item, "PaymentStatus");
+                     
+                     decimal amount = 0;
+                     if (decimal.TryParse(value, out var d)) amount = d;
+
                     <div class="col-12 col-md-6 col-xl-4">
                         <div class="card border-0 shadow-sm analytics-card h-100">
                             <div class="card-body p-4">
                                 <div class="d-flex justify-content-between align-items-start mb-3">
                                     <div>
-                                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle mb-2">@item.Project</span>
-                                        <h5 class="fw-bold mb-0">@item.Name</h5>
+                                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle mb-2">@project</span>
+                                        <h5 class="fw-bold mb-0">@name</h5>
                                     </div>
-                                    <span class="priority-tag @item.Priority.ToLower()">@item.Priority</span>
+                                    <span class="priority-tag @priority.ToLower()">@priority</span>
                                 </div>
 
                                 <div class="value-display my-4">
                                     <div class="text-muted x-small fw-bold text-uppercase">YATIRIM DEĞERİ</div>
-                                    <div class="display-6 fw-bold text-dark">₺@item.Value.ToString("N0")</div>
+                                    <div class="display-6 fw-bold text-dark">₺@amount.ToString("N0")</div>
                                 </div>
 
                                 <div class="details-grid mt-auto pt-3 border-top">
                                     <div class="row g-2 text-muted x-small fw-bold">
                                         <div class="col-6">
                                             <div class="mb-1"><span class="bi bi-person me-1"></span>MÜŞTERİ</div>
-                                            <div class="text-dark">@item.Customer</div>
+                                            <div class="text-dark">@customer</div>
                                         </div>
                                         <div class="col-6">
                                             <div class="mb-1"><span class="bi bi-geo-alt me-1"></span>BÖLGE</div>
-                                            <div class="text-dark">@item.Region</div>
+                                            <div class="text-dark">@region</div>
                                         </div>
                                     </div>
                                 </div>
@@ -85,13 +96,13 @@
                             <div class="card-footer bg-light border-0 px-4 py-3 d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center gap-2">
                                     <div class="avatar-sm">
-                                        @string.Join("", item.AssignedTo.Split(' ', StringSplitOptions.RemoveEmptyEntries).Take(2).Select(s => s[0]))
+                                        @string.Join("", assignedTo.Split(' ', StringSplitOptions.RemoveEmptyEntries).Take(2).Select(s => s[0]))
                                     </div>
-                                    <span class="small fw-medium">@item.AssignedTo</span>
+                                    <span class="small fw-medium">@assignedTo</span>
                                 </div>
                                 <div class="d-flex align-items-center gap-2">
-                                    <span class="payment-dot @item.PaymentStatus.ToLower()"></span>
-                                    <span class="x-small fw-bold">@item.PaymentStatus</span>
+                                    <span class="payment-dot @paymentStatus.ToLower()"></span>
+                                    <span class="x-small fw-bold">@paymentStatus</span>
                                 </div>
                             </div>
                         </div>
@@ -171,7 +182,9 @@
 </style>
 
 @code {
-    private List<SampleData>? filteredData;
+    private List<Dictionary<string, object>>? items;
+    private bool isLoading = true;
+    private int totalCount = 0;
     private FilterBar.FilterCriteria currentCriteria = new();
 
     protected override async Task OnInitializedAsync()
@@ -184,32 +197,48 @@
         currentCriteria = criteria;
         await LoadData();
     }
+    
+    private string GetValue(Dictionary<string, object> item, string key)
+    {
+        return item.ContainsKey(key) && item[key] != null ? item[key].ToString()! : "";
+    }
 
     private async Task LoadData()
     {
         try 
         {
-            filteredData = null;
-            await Task.Delay(500); // Visual feedback
+            isLoading = true;
+            items = null;
+            await Task.Delay(300); // Visual feedback
             
-            var query = DbContext.SampleDatas.AsQueryable();
-
+            // Fetch from UnifiedData (SampleDatas)
+            // Limit to 50 for analytics view for now
+            var result = await PoolService.GetDynamicRecordsAsync("UnifiedData", 0, 50);
+            
+            var allItems = result.Items;
+            
+            // Client-side filtering for demo
             if (!string.IsNullOrWhiteSpace(currentCriteria.Project))
             {
-                query = query.Where(x => x.Project == currentCriteria.Project);
+                allItems = allItems.Where(x => GetValue(x, "Project") == currentCriteria.Project).ToList();
             }
 
             if (currentCriteria.Year.HasValue)
             {
-                query = query.Where(x => x.Year == currentCriteria.Year.Value);
+                allItems = allItems.Where(x => GetValue(x, "Year") == currentCriteria.Year.Value.ToString()).ToList();
             }
 
-            filteredData = await query.ToListAsync();
+            items = allItems;
+            totalCount = items.Count;
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error loading analytics data: {ex.Message}");
-            filteredData = new List<SampleData>();
+            items = new List<Dictionary<string, object>>();
+        }
+        finally
+        {
+            isLoading = false;
         }
     }
 }
