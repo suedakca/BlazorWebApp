@@ -9,12 +9,20 @@
       "PackagePath": "staticwebassets/app.css"
     },
     {
+      "Id": "/Users/suedaakca/Documents/GitHub/BlazorWebApp/wwwroot/bootstrap/bootstrap-map.txt",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap-map.txt"
+    },
+    {
       "Id": "/Users/suedaakca/Documents/GitHub/BlazorWebApp/wwwroot/bootstrap/bootstrap.min.css",
       "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css"
     },
     {
       "Id": "/Users/suedaakca/Documents/GitHub/BlazorWebApp/wwwroot/bootstrap/bootstrap.min.css.map",
       "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/Users/suedaakca/Documents/GitHub/BlazorWebApp/wwwroot/bootstrap/bootstrap.txt",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.txt"
     },
     {
       "Id": "/Users/suedaakca/Documents/GitHub/BlazorWebApp/wwwroot/favicon.png",

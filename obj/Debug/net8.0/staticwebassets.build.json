@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nPksyFmPrI3Wkf2cYw63jFp+TuptEn3GzCh/N1f1tjo=",
+  "Hash": "zXEyhCQDiUK+bt2b9IP+G+1dshHNbXVB3JrsYybNTX4=",
   "Source": "BlazorWebApp",
   "BasePath": "_content/BlazorWebApp",
   "Mode": "Default",
@@ -74,6 +74,25 @@
       "OriginalItemSpec": "wwwroot/app.css"
     },
     {
+      "Identity": "/Users/suedaakca/Documents/GitHub/BlazorWebApp/wwwroot/bootstrap/bootstrap-map.txt",
+      "SourceId": "BlazorWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/suedaakca/Documents/GitHub/BlazorWebApp/wwwroot/",
+      "BasePath": "_content/BlazorWebApp",
+      "RelativePath": "bootstrap/bootstrap-map.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/bootstrap/bootstrap-map.txt"
+    },
+    {
       "Identity": "/Users/suedaakca/Documents/GitHub/BlazorWebApp/wwwroot/bootstrap/bootstrap.min.css",
       "SourceId": "BlazorWebApp",
       "SourceType": "Discovered",
@@ -110,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/bootstrap/bootstrap.min.css.map"
+    },
+    {
+      "Identity": "/Users/suedaakca/Documents/GitHub/BlazorWebApp/wwwroot/bootstrap/bootstrap.txt",
+      "SourceId": "BlazorWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/suedaakca/Documents/GitHub/BlazorWebApp/wwwroot/",
+      "BasePath": "_content/BlazorWebApp",
+      "RelativePath": "bootstrap/bootstrap.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/bootstrap/bootstrap.txt"
     },
     {
       "Identity": "/Users/suedaakca/Documents/GitHub/BlazorWebApp/wwwroot/favicon.png",
