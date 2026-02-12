@@ -11,6 +11,10 @@ namespace BlazorWebApp.Services
         public string Url { get; set; } = string.Empty;
         public bool IsActive { get; set; }
         public string Icon { get; set; } = "bi-file-earmark";
+        /// <summary>
+        /// Stores the state of the tab (e.g., filter criteria, search terms) to persist data when switching tabs.
+        /// </summary>
+        public Dictionary<string, object> State { get; set; } = new();
     }
 
     public class TabService

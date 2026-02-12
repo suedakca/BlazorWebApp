@@ -3,6 +3,7 @@
 @using BlazorWebApp.Services
 @using BlazorWebApp.Models
 @inject PoolService PoolService
+@inject TabService TabService
 @inject IJSRuntime JSRuntime
 
 <PageTitle>Proje Yönetim Havuzu | @poolDisplayName</PageTitle>
@@ -284,6 +285,14 @@
 
     protected override async Task OnInitializedAsync()
     {
+        // Check if we have a saved state for this tab (e.g. from a previous visit)
+        var activeTab = TabService.Tabs.FirstOrDefault(t => t.IsActive);
+        if (activeTab != null && activeTab.State.ContainsKey("showSummary"))
+        {
+            // Restore the "Summary View" toggle state
+            showSummary = (bool)activeTab.State["showSummary"];
+        }
+
         // Sync query param to local search term if present
         if (!string.IsNullOrEmpty(q))
         {
@@ -310,6 +319,13 @@
     private void ToggleSummary()
     {
         showSummary = !showSummary;
+        
+        var activeTab = TabService.Tabs.FirstOrDefault(t => t.IsActive);
+        if (activeTab != null)
+        {
+            // Save the new state so we can restore it later if the user switches tabs
+            activeTab.State["showSummary"] = showSummary;
+        }
     }
 
     private async Task HandleFilterChanged(FilterBar.FilterCriteria criteria)

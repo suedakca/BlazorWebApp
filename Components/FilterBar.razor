@@ -2,7 +2,7 @@
     <div class="row g-2 align-items-end mb-2">
         <div class="col-12 col-md-4 col-xl-3">
             <label class="form-label x-small fw-bold text-muted mb-1">PROJE SEÇİMİ</label>
-            <select class="form-select form-select-sm border-light-subtle bg-light-subtle" @onchange="OnProjectChanged">
+            <select class="form-select form-select-sm border-light-subtle bg-light-subtle" value="@criteria.Project" @onchange="OnProjectChanged">
                 <option value="">Tüm Projeler</option>
                 <option value="Alpha">Alpha Projesi</option>
                 <option value="Beta">Beta Projesi</option>
@@ -12,7 +12,7 @@
         </div>
         <div class="col-6 col-md-3 col-xl-2">
             <label class="form-label x-small fw-bold text-muted mb-1">YIL</label>
-            <select class="form-select form-select-sm border-light-subtle bg-light-subtle" @onchange="OnYearChanged">
+            <select class="form-select form-select-sm border-light-subtle bg-light-subtle" value="@criteria.Year" @onchange="OnYearChanged">
                 <option value="">Tüm Yıllar</option>
                 <option value="2024">2024</option>
                 <option value="2023">2023</option>
@@ -93,8 +93,18 @@
 
 @code {
     [Parameter] public EventCallback<FilterCriteria> OnFilterChanged { get; set; }
+    [Parameter] public FilterCriteria? InitialCriteria { get; set; }
 
     private FilterCriteria criteria = new();
+
+    protected override void OnInitialized()
+    {
+        // If we have initial criteria (restored from tab state), use it to populate the filter fields
+        if (InitialCriteria != null)
+        {
+            criteria = new FilterCriteria { Project = InitialCriteria.Project, Year = InitialCriteria.Year };
+        }
+    }
 
     private void OnProjectChanged(ChangeEventArgs e)
     {

@@ -2,11 +2,12 @@
 @using BlazorWebApp.Services
 @using BlazorWebApp.Models
 @inject PoolService PoolService
+@inject TabService TabService
 
 <PageTitle>Analiz Görünümü | Kart Tasarımı</PageTitle>
 
 <div class="h-100 w-100 d-flex flex-column bg-light">
-    <FilterBar OnFilterChanged="HandleFilterChanged" />
+    <FilterBar OnFilterChanged="HandleFilterChanged" InitialCriteria="currentCriteria" />
 
     <div class="analytics-content flex-grow-1 p-4 overflow-auto">
         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -189,12 +190,31 @@
 
     protected override async Task OnInitializedAsync()
     {
+        // If the user has visited this tab before, restore their filter settings
+        var activeTab = TabService.Tabs.FirstOrDefault(t => t.IsActive);
+        if (activeTab != null && activeTab.State.ContainsKey("filter_criteria"))
+        {
+            var savedCriteria = activeTab.State["filter_criteria"] as FilterBar.FilterCriteria;
+            if (savedCriteria != null)
+            {
+                currentCriteria = savedCriteria;
+            }
+        }
+
         await LoadData();
     }
 
     private async Task HandleFilterChanged(FilterBar.FilterCriteria criteria)
     {
         currentCriteria = criteria;
+        
+        var activeTab = TabService.Tabs.FirstOrDefault(t => t.IsActive);
+        if (activeTab != null)
+        {
+            // Keep the filter state in sync with the tab
+            activeTab.State["filter_criteria"] = currentCriteria;
+        }
+
         await LoadData();
     }
     
