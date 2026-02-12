@@ -286,12 +286,10 @@
     protected override async Task OnInitializedAsync()
     {
         // Check if we have a saved state for this tab (e.g. from a previous visit)
-        var activeTab = TabService.Tabs.FirstOrDefault(t => t.IsActive);
-        if (activeTab != null && activeTab.State.ContainsKey("showSummary"))
-        {
-            // Restore the "Summary View" toggle state
-            showSummary = (bool)activeTab.State["showSummary"];
-        }
+        var savedShowSummary = TabService.GetActiveTabState<bool>("showSummary");
+        // default bool is false, so no null check needed really, but GetActiveTabState returns nullable T? or default
+        // Since bool is struct, default is false.
+        showSummary = savedShowSummary;
 
         // Sync query param to local search term if present
         if (!string.IsNullOrEmpty(q))
@@ -320,12 +318,8 @@
     {
         showSummary = !showSummary;
         
-        var activeTab = TabService.Tabs.FirstOrDefault(t => t.IsActive);
-        if (activeTab != null)
-        {
-            // Save the new state so we can restore it later if the user switches tabs
-            activeTab.State["showSummary"] = showSummary;
-        }
+        // Save the new state so we can restore it later if the user switches tabs
+        TabService.SetActiveTabState("showSummary", showSummary);
     }
 
     private async Task HandleFilterChanged(FilterBar.FilterCriteria criteria)

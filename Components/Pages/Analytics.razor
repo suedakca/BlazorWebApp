@@ -191,14 +191,10 @@
     protected override async Task OnInitializedAsync()
     {
         // If the user has visited this tab before, restore their filter settings
-        var activeTab = TabService.Tabs.FirstOrDefault(t => t.IsActive);
-        if (activeTab != null && activeTab.State.ContainsKey("filter_criteria"))
+        var savedCriteria = TabService.GetActiveTabState<FilterBar.FilterCriteria>("filter_criteria");
+        if (savedCriteria != null)
         {
-            var savedCriteria = activeTab.State["filter_criteria"] as FilterBar.FilterCriteria;
-            if (savedCriteria != null)
-            {
-                currentCriteria = savedCriteria;
-            }
+            currentCriteria = savedCriteria;
         }
 
         await LoadData();
@@ -208,12 +204,8 @@
     {
         currentCriteria = criteria;
         
-        var activeTab = TabService.Tabs.FirstOrDefault(t => t.IsActive);
-        if (activeTab != null)
-        {
-            // Keep the filter state in sync with the tab
-            activeTab.State["filter_criteria"] = currentCriteria;
-        }
+        // Keep the filter state in sync with the tab
+        TabService.SetActiveTabState("filter_criteria", currentCriteria);
 
         await LoadData();
     }

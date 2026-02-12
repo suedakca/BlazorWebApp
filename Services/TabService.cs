@@ -85,6 +85,38 @@ namespace BlazorWebApp.Services
             }
         }
 
+        public T? GetActiveTabState<T>(string key)
+        {
+            var activeTab = Tabs.FirstOrDefault(t => t.IsActive);
+            if (activeTab != null && activeTab.State.ContainsKey(key))
+            {
+                if (activeTab.State[key] is T typedValue)
+                {
+                    return typedValue;
+                }
+                
+                // Handle potential JSON deserialization issues if state was serialized
+                try 
+                {
+                    return (T)Convert.ChangeType(activeTab.State[key], typeof(T));
+                }
+                catch
+                {
+                    return default;
+                }
+            }
+            return default;
+        }
+
+        public void SetActiveTabState(string key, object value)
+        {
+            var activeTab = Tabs.FirstOrDefault(t => t.IsActive);
+            if (activeTab != null)
+            {
+                activeTab.State[key] = value;
+            }
+        }
+
         private void NotifyStateChanged() => OnChange?.Invoke();
     }
 }

@@ -199,14 +199,10 @@
     protected override async Task OnInitializedAsync()
     {
         // Attempt to restore previous filter state for this tab
-        var activeTab = TabService.Tabs.FirstOrDefault(t => t.IsActive);
-        if (activeTab != null && activeTab.State.ContainsKey("filter_criteria"))
+        var savedCriteria = TabService.GetActiveTabState<FilterBar.FilterCriteria>("filter_criteria");
+        if (savedCriteria != null)
         {
-            var savedCriteria = activeTab.State["filter_criteria"] as FilterBar.FilterCriteria;
-            if (savedCriteria != null)
-            {
-                currentCriteria = savedCriteria;
-            }
+            currentCriteria = savedCriteria;
         }
 
         // Use "UnifiedData" pool definition which maps to SampleDatas table
@@ -218,12 +214,8 @@
     {
         currentCriteria = criteria;
         
-        var activeTab = TabService.Tabs.FirstOrDefault(t => t.IsActive);
-        if (activeTab != null)
-        {
-            // Persist the filter selection to the tab state
-            activeTab.State["filter_criteria"] = currentCriteria;
-        }
+        // Persist the filter selection to the tab state
+        TabService.SetActiveTabState("filter_criteria", currentCriteria);
 
         if (virtualizeComponent != null)
         {
